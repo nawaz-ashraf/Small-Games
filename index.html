@@ -1042,7 +1042,7 @@
     .precision-showcase-box {
       width: 100%;
       max-width: 480px;
-      height: 110px;
+      height: 124px;
       background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
       border: 2px dashed #FCD34D;
       border-radius: var(--radius-lg);
@@ -1052,15 +1052,15 @@
       align-items: center;
       justify-content: center;
       box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
-      margin: 6px 0;
+      margin: 8px 0;
     }
 
     .showcase-track-line {
       position: absolute;
       width: 86%;
-      height: 6px;
-      background: rgba(16, 38, 77, 0.12);
-      border-radius: 3px;
+      height: 8px;
+      background: linear-gradient(90deg, #E2E8F0 0%, #FEF08A 50%, #E2E8F0 100%);
+      border-radius: 4px;
     }
 
     .showcase-target-slot {
@@ -1068,36 +1068,41 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
+      width: 62px;
+      height: 62px;
+      border-radius: 12px;
       background: rgba(255, 152, 0, 0.12);
-      border: 1.5px dashed #FF9800;
+      border: 2px dashed #FF9800;
       display: flex;
       align-items: center;
       justify-content: center;
       animation: targetPulseGlow 2.5s infinite ease-in-out;
     }
 
+    .showcase-target-slot .target-diya-svg {
+      width: 54px;
+      height: 54px;
+    }
+
     @keyframes targetPulseGlow {
       0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 152, 0, 0.4)); transform: translate(-50%, -50%) scale(1); }
-      50% { filter: drop-shadow(0 0 12px rgba(255, 179, 0, 0.9)); transform: translate(-50%, -50%) scale(1.05); }
+      50% { filter: drop-shadow(0 0 14px rgba(255, 179, 0, 0.95)); transform: translate(-50%, -50%) scale(1.05); }
     }
 
     .showcase-moving-diya {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
+      width: 56px;
+      height: 56px;
       animation: demoDiyaGliding 4s infinite ease-in-out;
     }
 
     @keyframes demoDiyaGliding {
-      0% { left: 12%; }
-      40% { left: calc(50% - 22px); filter: drop-shadow(0 0 16px #FFD700); }
-      60% { left: calc(50% - 22px); filter: drop-shadow(0 0 20px #FF9800); }
-      100% { left: calc(88% - 44px); }
+      0% { left: 10%; }
+      40% { left: calc(50% - 28px); filter: drop-shadow(0 0 16px #FFD700); }
+      60% { left: calc(50% - 28px); filter: drop-shadow(0 0 20px #FF9800); }
+      100% { left: calc(90% - 56px); }
     }
 
     .precision-instructions {
@@ -1134,9 +1139,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px 24px 36px;
-      gap: 20px;
-      max-width: 800px;
+      padding: 12px 18px 20px;
+      gap: 12px;
+      max-width: 720px;
       width: 100%;
       margin: 0 auto;
       position: relative;
@@ -1145,7 +1150,7 @@
     /* HUD Top Bar */
     .precision-info-bar {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
       width: 100%;
@@ -1155,40 +1160,40 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      padding: 10px 20px;
+      padding: 6px 16px;
       text-align: center;
       box-shadow: var(--shadow-sm);
-      min-width: 130px;
+      min-width: 120px;
     }
 
     .precision-info-item .info-value {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 800;
       color: var(--navy);
       line-height: 1.2;
     }
 
     .precision-info-item .info-label {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--text-secondary);
       text-transform: uppercase;
       letter-spacing: 0.8px;
       font-weight: 700;
-      margin-top: 2px;
+      margin-top: 1px;
     }
 
     /* 5-Round Progress Indicators */
     .prec-round-pills {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
       width: 100%;
-      max-width: 580px;
+      max-width: 500px;
     }
 
     .round-pill {
       flex: 1;
-      height: 38px;
+      height: 32px;
       background: var(--surface);
       border: 2px solid var(--border);
       border-radius: var(--radius-md);
@@ -1276,98 +1281,163 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* Central Arcade Track */
+    /* Spacious Square Arcade Arena */
     .precision-track-container {
       width: 100%;
-      max-width: 660px;
-      background: var(--surface);
-      border: 2px solid #E2E8F0;
-      border-radius: var(--radius-xl);
-      padding: 42px 24px 38px;
+      max-width: min(100%, 420px);
+      aspect-ratio: 1 / 1;
+      height: 420px;
+      max-height: 80vw;
+      background: radial-gradient(circle at 50% 50%, #FFFDF7 0%, #FFF8E6 45%, #FEF0CE 100%);
+      border: 3px solid #E6CD8B;
+      border-radius: 24px;
+      padding: 16px 18px 14px;
       position: relative;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 14px 38px rgba(180, 83, 9, 0.16), 0 2px 8px rgba(0,0,0,0.04), inset 0 0 50px rgba(245, 158, 11, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    @supports (aspect-ratio: 1 / 1) {
+      .precision-track-container {
+        height: auto;
+      }
+    }
+
+    /* Ambient Festive Watermark in Square Arena */
+    .arena-mandala-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 88%;
+      height: 88%;
+      pointer-events: none;
+      opacity: 0.16;
+      z-index: 1;
+    }
+
+    .arena-top-banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      z-index: 5;
+      pointer-events: none;
     }
 
     .track-top-indicator {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 1.5px;
-      color: #D97706;
-      background: #FEF3C7;
-      border: 1px solid #FCD34D;
-      padding: 2px 10px;
-      border-radius: 12px;
+      letter-spacing: 1.8px;
+      color: #92400E;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border: 1.5px solid #F59E0B;
+      padding: 4px 14px;
+      border-radius: 20px;
       text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+    }
+
+    .arena-subtitle {
+      font-size: 12px;
+      font-weight: 700;
+      color: #B45309;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+
+    /* Track Stage in Center of Square Arena */
+    .precision-track-stage {
+      width: 100%;
+      position: relative;
+      margin: auto 0;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Vertical Center Axis Guide Line */
+    .track-center-axis {
+      position: absolute;
+      left: 50%;
+      top: -36px;
+      bottom: -32px;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0) 0%, rgba(245, 158, 11, 0.55) 25%, rgba(245, 158, 11, 0.85) 50%, rgba(245, 158, 11, 0.55) 75%, rgba(245, 158, 11, 0) 100%);
+      pointer-events: none;
+      z-index: 2;
     }
 
     .precision-track {
       width: 100%;
-      height: 14px;
-      background: linear-gradient(90deg, #E2E8F0 0%, #CBD5E1 50%, #E2E8F0 100%);
-      border-radius: 7px;
+      height: 22px;
+      background: linear-gradient(90deg, #E2E8F0 0%, #FEF08A 25%, #FDE047 50%, #FEF08A 75%, #E2E8F0 100%);
+      border: 2px solid #CBD5E1;
+      border-radius: 11px;
       position: relative;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.2), 0 3px 8px rgba(245, 158, 11, 0.25);
     }
 
-    /* Graduation Ticks */
-    .track-ticks {
-      position: absolute;
-      bottom: -14px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 4px;
-      font-size: 9px;
-      font-weight: 700;
-      color: #94A3B8;
-      pointer-events: none;
-    }
-
-    /* Fixed Target Silhouette Slot (Center) */
+    /* Scaled-Up Fixed Target Silhouette Slot (Center) */
     .precision-target-slot {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      background: rgba(255, 179, 0, 0.12);
-      border: 2px dashed rgba(245, 158, 11, 0.7);
-      box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
-      z-index: 2;
+      width: 96px;
+      height: 96px;
+      border-radius: 18px;
+      background: rgba(255, 193, 7, 0.12);
+      border: 2.5px dashed rgba(245, 158, 11, 0.85);
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.4), inset 0 0 16px rgba(255, 215, 0, 0.22);
+      z-index: 3;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
     }
 
+    /* Target Reticle Corner Brackets */
+    .target-corner {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-color: #D97706;
+      pointer-events: none;
+    }
+    .corner-tl { top: 4px; left: 4px; border-top: 2px solid; border-left: 2px solid; }
+    .corner-tr { top: 4px; right: 4px; border-top: 2px solid; border-right: 2px solid; }
+    .corner-bl { bottom: 4px; left: 4px; border-bottom: 2px solid; border-left: 2px solid; }
+    .corner-br { bottom: 4px; right: 4px; border-bottom: 2px solid; border-right: 2px solid; }
+
     /* Target Silhouette SVG */
     .target-diya-svg {
-      width: 56px;
-      height: 56px;
-      filter: drop-shadow(0 0 8px rgba(255, 152, 0, 0.75));
+      width: 88px;
+      height: 88px;
+      filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.8));
       animation: targetSilhouettePulse 2.8s infinite ease-in-out;
     }
 
     @keyframes targetSilhouettePulse {
-      0%, 100% { filter: drop-shadow(0 0 6px rgba(255, 152, 0, 0.6)); opacity: 0.9; }
-      50% { filter: drop-shadow(0 0 14px rgba(255, 215, 0, 1)); opacity: 1; }
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 152, 0, 0.65)); opacity: 0.9; }
+      50% { filter: drop-shadow(0 0 18px rgba(255, 215, 0, 1)); opacity: 1; }
     }
 
-    /* Moving Diya Element */
+    /* Scaled-Up Moving Diya Element */
     .precision-moving-diya {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 56px;
-      height: 56px;
-      z-index: 4;
+      width: 88px;
+      height: 88px;
+      z-index: 5;
       cursor: default;
       will-change: left;
     }
@@ -1375,8 +1445,44 @@
     .moving-diya-svg {
       width: 100%;
       height: 100%;
-      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25)) drop-shadow(0 0 12px rgba(245, 196, 81, 0.6));
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 18px rgba(245, 196, 81, 0.7));
       transition: filter 0.25s ease, transform 0.25s ease;
+    }
+
+    /* Ember Sparks Floating Animations */
+    @keyframes emberFloat {
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      50% { transform: translateY(-4px) translateX(1px) scale(1.2); opacity: 1; }
+      100% { transform: translateY(-9px) translateX(-1px) scale(0.6); opacity: 0.15; }
+    }
+
+    .sparkle-ember-1 { animation: emberFloat 1.4s infinite ease-out; }
+    .sparkle-ember-2 { animation: emberFloat 1.9s infinite ease-out 0.4s; }
+    .sparkle-ember-3 { animation: emberFloat 1.6s infinite ease-out 0.8s; }
+
+    /* Graduation Ticks */
+    .track-ticks {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 4px 0;
+      font-size: 11px;
+      font-weight: 800;
+      color: #92400E;
+      pointer-events: none;
+    }
+
+    .arena-bottom-accent {
+      z-index: 5;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #92400E;
+      text-transform: uppercase;
+      background: rgba(254, 243, 199, 0.8);
+      padding: 4px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
     }
 
     /* Stop Overlap Outcome Styles */
@@ -2578,18 +2684,47 @@
       .corner-left .corner-diya-unit { left: 8px; bottom: 8px; }
       .corner-right .corner-diya-unit { right: 8px; bottom: 8px; }
     }
+
+    @media (max-width: 540px) {
+      .precision-track-container {
+        max-width: min(92vw, 420px);
+        border-radius: 20px;
+        padding: 16px 14px 14px;
+      }
+
+      .precision-moving-diya {
+        width: clamp(74px, 19vw, 92px);
+        height: clamp(74px, 19vw, 92px);
+      }
+
+      .precision-target-slot {
+        width: clamp(80px, 21vw, 100px);
+        height: clamp(80px, 21vw, 100px);
+      }
+
+      .target-diya-svg {
+        width: clamp(74px, 19vw, 92px);
+        height: clamp(74px, 19vw, 92px);
+      }
+
+      .arena-subtitle {
+        display: none;
+      }
+    }
   </style>
 </head>
 
 <body>
   <svg style="width:0; height:0; position:absolute; pointer-events:none;">
     <defs>
+      <!-- Base Flame Radial Gradient -->
       <radialGradient id="flameGrad" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="#fffbea" />
-        <stop offset="30%" stop-color="#ffdc5e" />
-        <stop offset="70%" stop-color="#fd8a04" />
+        <stop offset="25%" stop-color="#ffdc5e" />
+        <stop offset="65%" stop-color="#fd8a04" />
         <stop offset="100%" stop-color="#d93800" />
       </radialGradient>
+      <!-- Ambient Bloom Filter -->
       <filter id="glow">
         <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
         <feMerge>
@@ -2597,12 +2732,130 @@
           <feMergeNode in="SourceGraphic"/>
         </feMerge>
       </filter>
+
+      <!-- 3D Metallic Brass & Gold Gradients for Ornate Diya -->
+      <linearGradient id="diya-gold-pedestal" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#5E3300" />
+        <stop offset="22%" stop-color="#B87B14" />
+        <stop offset="48%" stop-color="#FFE885" />
+        <stop offset="72%" stop-color="#C98616" />
+        <stop offset="90%" stop-color="#804900" />
+        <stop offset="100%" stop-color="#4A2600" />
+      </linearGradient>
+
+      <linearGradient id="diya-gold-bowl-3d" x1="12%" y1="0%" x2="88%" y2="100%">
+        <stop offset="0%" stop-color="#9C5B08" />
+        <stop offset="18%" stop-color="#E09A1E" />
+        <stop offset="38%" stop-color="#FFF099" />
+        <stop offset="58%" stop-color="#F5A823" />
+        <stop offset="78%" stop-color="#B86B06" />
+        <stop offset="100%" stop-color="#5E2E00" />
+      </linearGradient>
+
+      <radialGradient id="diya-gold-rim-3d" cx="50%" cy="50%" r="50%" fx="35%" fy="30%">
+        <stop offset="0%" stop-color="#FFFBE6" />
+        <stop offset="40%" stop-color="#FFDA66" />
+        <stop offset="75%" stop-color="#E59812" />
+        <stop offset="100%" stop-color="#8A4E00" />
+      </radialGradient>
+
+      <radialGradient id="diya-oil-pool" cx="50%" cy="45%" r="50%">
+        <stop offset="0%" stop-color="#FFF3B0" />
+        <stop offset="25%" stop-color="#DE7209" />
+        <stop offset="65%" stop-color="#6E2200" />
+        <stop offset="100%" stop-color="#260B00" />
+      </radialGradient>
+
+      <radialGradient id="diya-flame-outer" cx="50%" cy="70%" r="65%">
+        <stop offset="0%" stop-color="rgba(255, 235, 59, 0.95)" />
+        <stop offset="35%" stop-color="rgba(255, 112, 67, 0.85)" />
+        <stop offset="70%" stop-color="rgba(216, 27, 96, 0.4)" />
+        <stop offset="100%" stop-color="rgba(255, 61, 0, 0)" />
+      </radialGradient>
+
+      <radialGradient id="diya-flame-inner" cx="50%" cy="65%" r="55%">
+        <stop offset="0%" stop-color="#FFFFFF" />
+        <stop offset="25%" stop-color="#FFF9C4" />
+        <stop offset="60%" stop-color="#FFD54F" />
+        <stop offset="100%" stop-color="#FF6D00" />
+      </radialGradient>
+
+      <radialGradient id="diya-flame-blue" cx="50%" cy="80%" r="50%">
+        <stop offset="0%" stop-color="rgba(96, 165, 250, 0.95)" />
+        <stop offset="60%" stop-color="rgba(37, 99, 235, 0.55)" />
+        <stop offset="100%" stop-color="rgba(29, 78, 216, 0)" />
+      </radialGradient>
+
+      <!-- Upgraded 3D Ornate Festive Diya with Metallic Engravings and Vibrant Flame -->
       <g id="shared-diya">
-        <path d="M 50 15 Q 65 40 50 55 Q 35 40 50 15 Z" fill="url(#flameGrad)" filter="url(#glow)"/>
-        <path d="M 15 50 Q 50 90 85 50 Z" fill="#b05c24" />
-        <ellipse cx="50" cy="50" rx="35" ry="12" fill="#d97a38" />
-        <ellipse cx="50" cy="50" rx="25" ry="6" fill="#8c4212" />
+        <!-- Ambient Ground Shadow -->
+        <ellipse cx="50" cy="94" rx="26" ry="4" fill="rgba(0,0,0,0.24)" filter="url(#glow)" />
+
+        <!-- 3D Pedestal Base -->
+        <path d="M 33 85 C 33 83 38 82 50 82 C 62 82 67 83 67 85 L 69 91 C 69 93.5 61 95 50 95 C 39 95 31 93.5 31 91 Z" fill="url(#diya-gold-pedestal)" stroke="#804900" stroke-width="0.8"/>
+        <!-- Pedestal Ridge Metallic Rings -->
+        <ellipse cx="50" cy="85.5" rx="16.5" ry="2.2" fill="none" stroke="#FFE992" stroke-width="1.2"/>
+        <ellipse cx="50" cy="91.5" rx="18.5" ry="2.5" fill="none" stroke="#FFD700" stroke-width="0.8"/>
+
+        <!-- 3D Ornate Golden Bowl Body -->
+        <path d="M 12 48 C 12 68 28 84 50 84 C 72 84 88 68 88 48 C 72 58 28 58 12 48 Z" fill="url(#diya-gold-bowl-3d)" stroke="#733D00" stroke-width="1"/>
+
+        <!-- Intricate Metallic Engravings & Filigree Patterns -->
+        <g stroke="#FFF0A0" stroke-width="1" fill="none" opacity="0.88">
+          <path d="M 24 55 Q 36 68 50 72 Q 64 68 76 55" stroke-dasharray="2,2"/>
+          <path d="M 28 60 Q 38 72 50 76 Q 62 72 72 60"/>
+          <path d="M 34 66 Q 42 76 50 79 Q 58 76 66 66"/>
+          <!-- Vertical Filigree Ribs -->
+          <path d="M 50 56 L 50 82" stroke-width="1.2" stroke="#FFE484"/>
+          <path d="M 38 54 Q 40 70 42 80"/>
+          <path d="M 62 54 Q 60 70 58 80"/>
+        </g>
+        <!-- Embossed Beaded Pearls along Bowl Ridge -->
+        <g fill="#FFF5B8" opacity="0.95">
+          <circle cx="26" cy="55" r="1.3"/>
+          <circle cx="34" cy="62" r="1.4"/>
+          <circle cx="42" cy="67" r="1.5"/>
+          <circle cx="50" cy="69" r="1.7"/>
+          <circle cx="58" cy="67" r="1.5"/>
+          <circle cx="66" cy="62" r="1.4"/>
+          <circle cx="74" cy="55" r="1.3"/>
+        </g>
+
+        <!-- 3D Scalloped Metallic Rim -->
+        <ellipse cx="50" cy="48" rx="38" ry="11" fill="url(#diya-gold-rim-3d)" stroke="#9E5D06" stroke-width="1.2"/>
+        <!-- Specular Highlight Curve on Rim Edge -->
+        <path d="M 14 47 C 22 55 78 55 86 47" fill="none" stroke="#FFFCE6" stroke-width="1.6" opacity="0.9"/>
+
+        <!-- Deep Inner Oil Pool with Golden Reflection -->
+        <ellipse cx="50" cy="48" rx="29" ry="7.2" fill="url(#diya-oil-pool)" stroke="#4A1800" stroke-width="0.8"/>
+        <!-- Oil Surface Highlight Ripple -->
+        <ellipse cx="50" cy="47.5" rx="18" ry="3.5" fill="none" stroke="#FFBF43" stroke-width="0.8" opacity="0.75"/>
+
+        <!-- Brass Spout Tip & Charred Wick -->
+        <path d="M 47 43 Q 50 40 53 43 Z" fill="#FFE27A"/>
+        <path d="M 48.5 45 Q 50 34 51.5 28" stroke="#2B1405" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- Burning Ember Tip of Wick -->
+        <circle cx="51.5" cy="27" r="1.6" fill="#FF5722"/>
+
+        <!-- Combustion Blue Core at Wick Base -->
+        <ellipse cx="50" cy="42" rx="7" ry="3.5" fill="url(#diya-flame-blue)"/>
+
+        <!-- Vibrant 3D Glowing Multi-Layered Flame -->
+        <!-- Atmospheric Flame Glow -->
+        <path d="M 50 4 C 68 22 66 38 50 46 C 34 38 32 22 50 4 Z" fill="url(#diya-flame-outer)" filter="url(#glow)"/>
+        <!-- Mid Vibrant Flame -->
+        <path d="M 50 7 C 65 24 62 38 50 44 C 38 38 35 24 50 7 Z" fill="url(#flameGrad)"/>
+        <!-- Inner Golden Heart -->
+        <path d="M 50 14 C 60 26 58 37 50 42 C 42 37 40 26 50 14 Z" fill="url(#diya-flame-inner)"/>
+        <!-- Pure White Incandescent Flame Core -->
+        <path d="M 50 21 C 55 28 54 35 50 39 C 46 35 45 28 50 21 Z" fill="#FFFFFF" opacity="0.95"/>
+
+        <!-- Floating Golden Ember Sparks -->
+        <circle cx="44" cy="5" r="1.4" fill="#FFF59D" opacity="0.9" class="sparkle-ember-1"/>
+        <circle cx="56" cy="3" r="1.1" fill="#FFCC80" opacity="0.85" class="sparkle-ember-2"/>
+        <circle cx="50" cy="-2" r="1.3" fill="#FFE082" opacity="0.8" class="sparkle-ember-3"/>
       </g>
+
       <filter id="festive-shadow" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="0" dy="2.5" stdDeviation="2" flood-color="#000" flood-opacity="0.32"/>
       </filter>
@@ -2611,11 +2864,22 @@
         <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FF9800" flood-opacity="0.9"/>
         <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#FFD54F" flood-opacity="0.6"/>
       </filter>
+
+      <!-- Upgraded Target Silhouette Matching New 3D Diya Contours -->
       <g id="target-diya-silhouette">
-        <path d="M 50 15 Q 65 40 50 55 Q 35 40 50 15 Z" fill="rgba(255, 215, 0, 0.22)" stroke="#FFB300" stroke-width="2.5" stroke-dasharray="4,2"/>
-        <path d="M 15 50 Q 50 90 85 50 Z" fill="rgba(184, 92, 42, 0.2)" stroke="#FF9800" stroke-width="2.5" stroke-dasharray="4,2"/>
-        <ellipse cx="50" cy="50" rx="35" ry="12" fill="rgba(255, 179, 0, 0.2)" stroke="#FFB300" stroke-width="2"/>
-        <ellipse cx="50" cy="50" rx="25" ry="6" fill="rgba(0, 0, 0, 0.25)" stroke="#FFE082" stroke-width="1.5" stroke-dasharray="2,2"/>
+        <!-- Base Silhouette -->
+        <path d="M 33 85 C 33 83 38 82 50 82 C 62 82 67 83 67 85 L 69 91 C 69 93.5 61 95 50 95 C 39 95 31 93.5 31 91 Z" fill="rgba(245, 158, 11, 0.2)" stroke="#FFB300" stroke-width="2.2" stroke-dasharray="4,2"/>
+        <!-- Bowl Silhouette -->
+        <path d="M 12 48 C 12 68 28 84 50 84 C 72 84 88 68 88 48 C 72 58 28 58 12 48 Z" fill="rgba(255, 179, 0, 0.18)" stroke="#FFB300" stroke-width="2.5" stroke-dasharray="5,3"/>
+        <!-- Rim Silhouette -->
+        <ellipse cx="50" cy="48" rx="38" ry="11" fill="rgba(255, 215, 0, 0.22)" stroke="#FFC107" stroke-width="2.2"/>
+        <ellipse cx="50" cy="48" rx="29" ry="7.2" fill="rgba(0, 0, 0, 0.22)" stroke="#FFE082" stroke-width="1.4" stroke-dasharray="3,2"/>
+        <!-- Flame Silhouette -->
+        <path d="M 50 4 C 68 22 66 38 50 46 C 34 38 32 22 50 4 Z" fill="rgba(255, 215, 0, 0.26)" stroke="#FF9800" stroke-width="2.5" stroke-dasharray="4,2"/>
+        <!-- Reticle Target Alignment Crosshairs -->
+        <circle cx="50" cy="48" r="16" fill="none" stroke="rgba(255, 235, 59, 0.65)" stroke-width="1.2" stroke-dasharray="3,3"/>
+        <line x1="30" y1="48" x2="70" y2="48" stroke="rgba(255, 235, 59, 0.6)" stroke-width="1.2" stroke-dasharray="3,2"/>
+        <line x1="50" y1="20" x2="50" y2="76" stroke="rgba(255, 235, 59, 0.6)" stroke-width="1.2" stroke-dasharray="3,2"/>
       </g>
       <linearGradient id="goldString" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="#C59B27"/>
@@ -3167,31 +3431,61 @@
       <!-- 5-Round Progress Indicators -->
       <div class="prec-round-pills" id="prec-round-pills"></div>
 
-      <!-- Track Arena -->
+      <!-- Spacious Square Target Arena -->
       <div class="precision-track-container" id="prec-track-container">
-        <div class="track-top-indicator">▼ TARGET ZONE ▼</div>
-        <div class="precision-track" id="prec-track">
-          <!-- Fixed Target Silhouette Slot (Exact Center) -->
-          <div class="precision-target-slot" id="prec-target-slot" aria-label="Target alignment silhouette">
-            <svg class="target-diya-svg" viewBox="0 0 100 100">
-              <use href="#target-diya-silhouette" />
-            </svg>
-            <div class="celebrate-sparkle-box" id="prec-sparkle-box">✨ 🎯 ✨</div>
-          </div>
+        <!-- Festive Mandala Watermark in Center of Square Arena -->
+        <svg class="arena-mandala-watermark" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#F59E0B" stroke-width="1.2" stroke-dasharray="4,3"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="#D97706" stroke-width="1"/>
+          <circle cx="50" cy="50" r="24" fill="none" stroke="#B45309" stroke-width="0.8" stroke-dasharray="2,2"/>
+          <path d="M 50 4 L 50 96 M 4 50 L 96 50 M 17 17 L 83 83 M 17 83 L 83 17" stroke="#FBBF24" stroke-width="0.8" opacity="0.6"/>
+          <circle cx="50" cy="14" r="3" fill="#F59E0B" opacity="0.5"/>
+          <circle cx="50" cy="86" r="3" fill="#F59E0B" opacity="0.5"/>
+          <circle cx="14" cy="50" r="3" fill="#F59E0B" opacity="0.5"/>
+          <circle cx="86" cy="50" r="3" fill="#F59E0B" opacity="0.5"/>
+        </svg>
 
-          <!-- Single Moving Diya Travelling Horizontally -->
-          <div class="precision-moving-diya" id="prec-moving-diya" aria-label="Moving diya">
-            <svg class="moving-diya-svg" viewBox="0 0 100 100">
-              <use href="#shared-diya" />
-            </svg>
+        <!-- Top Indicator & Header -->
+        <div class="arena-top-banner">
+          <div class="track-top-indicator">✦ TARGET MATCH ARENA ✦</div>
+          <div class="arena-subtitle">Stop the Diya at the Golden Target</div>
+        </div>
+
+        <!-- Central Track Stage -->
+        <div class="precision-track-stage">
+          <div class="track-center-axis"></div>
+          <div class="precision-track" id="prec-track">
+            <!-- Fixed Target Silhouette Slot (Exact Center) -->
+            <div class="precision-target-slot" id="prec-target-slot" aria-label="Target alignment silhouette">
+              <span class="target-corner corner-tl"></span>
+              <span class="target-corner corner-tr"></span>
+              <span class="target-corner corner-bl"></span>
+              <span class="target-corner corner-br"></span>
+              <svg class="target-diya-svg" viewBox="0 0 100 100">
+                <use href="#target-diya-silhouette" />
+              </svg>
+              <div class="celebrate-sparkle-box" id="prec-sparkle-box">✨ 🎯 ✨</div>
+            </div>
+
+            <!-- Scaled-Up Single Moving Diya Travelling Horizontally -->
+            <div class="precision-moving-diya" id="prec-moving-diya" aria-label="Moving diya">
+              <svg class="moving-diya-svg" viewBox="0 0 100 100">
+                <use href="#shared-diya" />
+              </svg>
+            </div>
+          </div>
+          <div class="track-ticks">
+            <span>0%</span>
+            <span>25%</span>
+            <span style="color:#B45309;font-weight:900;">🎯 50% TARGET</span>
+            <span>75%</span>
+            <span>100%</span>
           </div>
         </div>
-        <div class="track-ticks">
-          <span>0%</span>
-          <span>25%</span>
-          <span>50% TARGET</span>
-          <span>75%</span>
-          <span>100%</span>
+
+        <!-- Arena Bottom Accent -->
+        <div class="arena-bottom-accent">
+          PERFECT ALIGNMENT = 1,000 PTS
         </div>
       </div>
 
@@ -3702,7 +3996,7 @@
       movingDiyaX: 0,
       movingDiyaDirection: 1,
       currentSpeed: 3.6,
-      diyaWidth: 56,
+      diyaWidth: 88,
       isStopLocked: false
     };
 
@@ -3813,13 +4107,14 @@
 
       // Reset Diya position to starting edge
       const track = document.getElementById('prec-track');
-      const trackWidth = track.clientWidth || 580;
+      const trackWidth = track.clientWidth || 500;
       const diyaEl = document.getElementById('prec-moving-diya');
       diyaEl.className = 'precision-moving-diya';
+      PrecisionState.diyaWidth = (diyaEl && diyaEl.offsetWidth) ? diyaEl.offsetWidth : 88;
       
       const startFromLeft = (PrecisionState.currentRound % 2 === 0);
       PrecisionState.movingDiyaDirection = startFromLeft ? 1 : -1;
-      PrecisionState.movingDiyaX = startFromLeft ? 10 : Math.max(0, trackWidth - PrecisionState.diyaWidth - 10);
+      PrecisionState.movingDiyaX = startFromLeft ? 6 : Math.max(0, trackWidth - PrecisionState.diyaWidth - 6);
       diyaEl.style.left = PrecisionState.movingDiyaX + 'px';
 
       // Reset feedback
@@ -3885,6 +4180,8 @@
       const track = document.getElementById('prec-track');
       if (!track) return;
       const trackWidth = track.clientWidth;
+      const diyaEl = document.getElementById('prec-moving-diya');
+      if (diyaEl && diyaEl.offsetWidth) PrecisionState.diyaWidth = diyaEl.offsetWidth;
       const maxPos = Math.max(0, trackWidth - PrecisionState.diyaWidth);
 
       PrecisionState.movingDiyaX += PrecisionState.currentSpeed * PrecisionState.movingDiyaDirection;
@@ -3897,7 +4194,6 @@
         PrecisionState.movingDiyaDirection = 1;
       }
 
-      const diyaEl = document.getElementById('prec-moving-diya');
       if (diyaEl) {
         diyaEl.style.left = PrecisionState.movingDiyaX + 'px';
       }
@@ -3925,7 +4221,9 @@
       }
 
       const track = document.getElementById('prec-track');
-      const trackWidth = track.clientWidth || 580;
+      const trackWidth = track.clientWidth || 500;
+      const diyaEl = document.getElementById('prec-moving-diya');
+      if (diyaEl && diyaEl.offsetWidth) PrecisionState.diyaWidth = diyaEl.offsetWidth;
       const targetCenterX = trackWidth / 2;
       const movingDiyaCenterX = PrecisionState.movingDiyaX + (PrecisionState.diyaWidth / 2);
       const distance = Math.abs(movingDiyaCenterX - targetCenterX);
@@ -3977,8 +4275,9 @@
       PrecisionState.roundTiers.push(tier);
 
       // Apply outcome visual state to moving Diya
-      const diyaEl = document.getElementById('prec-moving-diya');
-      diyaEl.className = `precision-moving-diya matched-${tier}`;
+      if (diyaEl) {
+        diyaEl.className = `precision-moving-diya matched-${tier}`;
+      }
 
       // Trigger sparkle burst if Perfect
       if (tier === 'perfect') {
