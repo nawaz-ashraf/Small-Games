@@ -549,15 +549,24 @@
    SCREEN: REGISTRATION
    ============================================ */
     #screen-register {
-      justify-content: center;
+      display: none;
+      flex-direction: column;
       align-items: center;
-      padding: 24px;
-      background: linear-gradient(135deg, var(--bg) 0%, #E0ECFA 100%);
+      justify-content: flex-start;
+      padding: 0 0 40px;
+      background: linear-gradient(135deg, #FFFDF7 0%, #FBF3E8 40%, #EBF4FF 100%);
+      min-height: 100vh;
+    }
+
+    #screen-register.active {
+      display: flex;
     }
 
     .register-container {
       max-width: 460px;
       width: 100%;
+      margin: 28px auto 0;
+      padding: 0 16px;
     }
 
     .register-header {
@@ -947,10 +956,11 @@
     }
 
     /* ============================================
-   SCREEN: PRECISION STOP GAME
-   ============================================ */
+       SCREEN: PRECISION STOP / DIYA MATCH GAME
+       ============================================ */
     #screen-precision-stop {
-      background: linear-gradient(180deg, #FFF9ED 0%, #FFF3D6 50%, #FFF9ED 100%);
+      background: radial-gradient(circle at 50% 30%, #FFFDF7 0%, #FFF8EA 45%, #FEEFC3 100%);
+      min-height: 100vh;
     }
 
     .game-top-bar {
@@ -960,194 +970,20 @@
       padding: 14px 24px;
       background: var(--surface);
       border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
     }
 
     .game-top-bar h2 {
-      font-size: 18px;
+      font-size: 19px;
       color: var(--navy);
-    }
-
-    .precision-container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      gap: 24px;
-    }
-
-    .precision-info-bar {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .precision-info-item {
-      text-align: center;
-    }
-
-    .precision-info-item .info-value {
-      font-size: 22px;
       font-weight: 800;
-      color: var(--navy);
-    }
-
-    .precision-info-item .info-label {
-      font-size: 11px;
-      color: var(--text-secondary);
-      text-transform: uppercase;
       letter-spacing: 0.5px;
-    }
-
-    .precision-track-container {
-      width: 100%;
-      max-width: 600px;
-      position: relative;
-      padding: 40px 0;
-    }
-
-    .precision-track {
-      width: 100%;
-      height: 6px;
-      background: rgba(16, 38, 77, 0.12);
-      border-radius: 3px;
-      position: relative;
-    }
-
-    .precision-target {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 4px;
-      height: 60px;
-      background: var(--navy);
-      border-radius: 2px;
-      z-index: 2;
-    }
-
-    .precision-target::before {
-      content: '▼';
-      position: absolute;
-      top: -22px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 14px;
-      color: var(--navy);
-    }
-
-    .precision-target-zone {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 50px;
-      background: rgba(22, 163, 74, 0.1);
-      border: 2px dashed rgba(22, 163, 74, 0.3);
-      border-radius: 4px;
-      z-index: 1;
-    }
-
-    .precision-light {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      z-index: 3;
-      cursor: default;
-    }
-
-    .diya-svg {
-      width: 100%;
-      height: 100%;
-      filter: drop-shadow(0 0 10px rgba(245, 196, 81, 0.4));
-      transition: filter 0.3s ease;
-    }
-
-    .precision-light.stopped .diya-svg {
-      filter: drop-shadow(0 0 5px rgba(245, 196, 81, 0.2));
-    }
-
-    .precision-light.perfect .diya-svg {
-      filter: drop-shadow(0 0 20px var(--success));
-    }
-
-    .precision-stop-btn {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--error), #B91C1C);
-      border: 4px solid #fff;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 6px 24px rgba(220, 38, 38, 0.35);
-      transition: all 0.15s ease;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      user-select: none;
-    }
-
-    .precision-stop-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 32px rgba(220, 38, 38, 0.45);
-    }
-
-    .precision-stop-btn:active {
-      transform: scale(0.95);
-    }
-
-    .precision-stop-btn:disabled {
-      background: #94A3B8;
-      box-shadow: none;
-      cursor: not-allowed;
-      transform: none;
-      border-color: #CBD5E1;
-    }
-
-    .precision-feedback {
-      font-size: 20px;
-      font-weight: 700;
-      text-align: center;
-      min-height: 30px;
-      transition: opacity 0.3s ease;
-    }
-
-    .precision-round-dots {
       display: flex;
+      align-items: center;
       gap: 8px;
-      justify-content: center;
     }
 
-    .round-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--border);
-      transition: background 0.3s ease;
-    }
-
-    .round-dot.active {
-      background: var(--primary);
-    }
-
-    .round-dot.done {
-      background: var(--success);
-    }
-
-    .round-dot.poor {
-      background: var(--warning);
-    }
-
-    .round-dot.miss {
-      background: var(--error);
-    }
-
-    /* Precision Stop Start Screen */
+    /* Start / Attract Screen */
     .precision-start {
       flex: 1;
       display: flex;
@@ -1156,17 +992,564 @@
       justify-content: center;
       padding: 24px;
       gap: 20px;
+      max-width: 620px;
+      margin: 0 auto;
+      width: 100%;
     }
 
-    .precision-start h2 {
-      font-size: 32px;
-      color: var(--navy);
-    }
-
-    .precision-start p {
-      color: var(--text-secondary);
+    .precision-start-card {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
-      max-width: 400px;
+      gap: 18px;
+    }
+
+    .precision-badge-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #B45309;
+      background: #FEF3C7;
+      border: 1px solid #FCD34D;
+      padding: 4px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .precision-start-card h2 {
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: 1px;
+      margin-top: -4px;
+    }
+
+    .precision-start-subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: #D97706;
+      margin-top: -10px;
+    }
+
+    /* Animated Demonstration Showcase */
+    .precision-showcase-box {
+      width: 100%;
+      max-width: 480px;
+      height: 110px;
+      background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 2px dashed #FCD34D;
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+      margin: 6px 0;
+    }
+
+    .showcase-track-line {
+      position: absolute;
+      width: 86%;
+      height: 6px;
+      background: rgba(16, 38, 77, 0.12);
+      border-radius: 3px;
+    }
+
+    .showcase-target-slot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background: rgba(255, 152, 0, 0.12);
+      border: 1.5px dashed #FF9800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: targetPulseGlow 2.5s infinite ease-in-out;
+    }
+
+    @keyframes targetPulseGlow {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 152, 0, 0.4)); transform: translate(-50%, -50%) scale(1); }
+      50% { filter: drop-shadow(0 0 12px rgba(255, 179, 0, 0.9)); transform: translate(-50%, -50%) scale(1.05); }
+    }
+
+    .showcase-moving-diya {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      animation: demoDiyaGliding 4s infinite ease-in-out;
+    }
+
+    @keyframes demoDiyaGliding {
+      0% { left: 12%; }
+      40% { left: calc(50% - 22px); filter: drop-shadow(0 0 16px #FFD700); }
+      60% { left: calc(50% - 22px); filter: drop-shadow(0 0 20px #FF9800); }
+      100% { left: calc(88% - 44px); }
+    }
+
+    .precision-instructions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+      width: 100%;
+      max-width: 480px;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .instruction-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .instruction-icon {
+      font-size: 16px;
+      width: 22px;
+      text-align: center;
+    }
+
+    /* Active Game Arena */
+    .precision-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 24px 36px;
+      gap: 20px;
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* HUD Top Bar */
+    .precision-info-bar {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .precision-info-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 10px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      min-width: 130px;
+    }
+
+    .precision-info-item .info-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .precision-info-item .info-label {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    /* 5-Round Progress Indicators */
+    .prec-round-pills {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      width: 100%;
+      max-width: 580px;
+    }
+
+    .round-pill {
+      flex: 1;
+      height: 38px;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .round-pill.active {
+      border-color: #F59E0B;
+      background: #FFFBEB;
+      color: #B45309;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+      transform: scale(1.05);
+    }
+
+    .round-pill.done-perfect {
+      background: #FEF3C7;
+      border-color: #F59E0B;
+      color: #92400E;
+    }
+
+    .round-pill.done-excellent {
+      background: #DCFCE7;
+      border-color: #16A34A;
+      color: #166534;
+    }
+
+    .round-pill.done-good {
+      background: #E0F2FE;
+      border-color: #0284C7;
+      color: #075985;
+    }
+
+    .round-pill.done-near {
+      background: #FEF3C7;
+      border-color: #F59E0B;
+      color: #B45309;
+    }
+
+    .round-pill.done-miss {
+      background: #FEE2E2;
+      border-color: #DC2626;
+      color: #991B1B;
+    }
+
+    /* Countdown Overlay */
+    .diya-countdown-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 253, 247, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 40;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-xl);
+    }
+
+    .diya-countdown-text {
+      font-size: 72px;
+      font-weight: 900;
+      color: #D97706;
+      text-shadow: 0 4px 16px rgba(217, 119, 6, 0.5);
+      animation: countdownZoom 0.85s infinite ease-out;
+    }
+
+    .diya-countdown-tip {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.5px;
+      margin-top: 10px;
+    }
+
+    @keyframes countdownZoom {
+      0% { transform: scale(0.6); opacity: 0; }
+      50% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Central Arcade Track */
+    .precision-track-container {
+      width: 100%;
+      max-width: 660px;
+      background: var(--surface);
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-xl);
+      padding: 42px 24px 38px;
+      position: relative;
+      box-shadow: var(--shadow-md);
+    }
+
+    .track-top-indicator {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #D97706;
+      background: #FEF3C7;
+      border: 1px solid #FCD34D;
+      padding: 2px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    .precision-track {
+      width: 100%;
+      height: 14px;
+      background: linear-gradient(90deg, #E2E8F0 0%, #CBD5E1 50%, #E2E8F0 100%);
+      border-radius: 7px;
+      position: relative;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    /* Graduation Ticks */
+    .track-ticks {
+      position: absolute;
+      bottom: -14px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 4px;
+      font-size: 9px;
+      font-weight: 700;
+      color: #94A3B8;
+      pointer-events: none;
+    }
+
+    /* Fixed Target Silhouette Slot (Center) */
+    .precision-target-slot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: rgba(255, 179, 0, 0.12);
+      border: 2px dashed rgba(245, 158, 11, 0.7);
+      box-shadow: 0 0 16px rgba(245, 158, 11, 0.35);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    /* Target Silhouette SVG */
+    .target-diya-svg {
+      width: 56px;
+      height: 56px;
+      filter: drop-shadow(0 0 8px rgba(255, 152, 0, 0.75));
+      animation: targetSilhouettePulse 2.8s infinite ease-in-out;
+    }
+
+    @keyframes targetSilhouettePulse {
+      0%, 100% { filter: drop-shadow(0 0 6px rgba(255, 152, 0, 0.6)); opacity: 0.9; }
+      50% { filter: drop-shadow(0 0 14px rgba(255, 215, 0, 1)); opacity: 1; }
+    }
+
+    /* Moving Diya Element */
+    .precision-moving-diya {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      z-index: 4;
+      cursor: default;
+      will-change: left;
+    }
+
+    .moving-diya-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25)) drop-shadow(0 0 12px rgba(245, 196, 81, 0.6));
+      transition: filter 0.25s ease, transform 0.25s ease;
+    }
+
+    /* Stop Overlap Outcome Styles */
+    .precision-moving-diya.matched-perfect .moving-diya-svg {
+      filter: drop-shadow(0 0 20px #FFD700) drop-shadow(0 0 35px #FF9800);
+      transform: scale(1.12);
+      animation: perfectPulse 0.6s ease;
+    }
+
+    @keyframes perfectPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.22); }
+      100% { transform: scale(1.12); }
+    }
+
+    .precision-moving-diya.matched-excellent .moving-diya-svg {
+      filter: drop-shadow(0 0 16px #10B981) drop-shadow(0 0 25px #34D399);
+      transform: scale(1.06);
+    }
+
+    .precision-moving-diya.matched-good .moving-diya-svg {
+      filter: drop-shadow(0 0 14px #0284C7) drop-shadow(0 0 20px #38BDF8);
+    }
+
+    .precision-moving-diya.matched-near .moving-diya-svg {
+      filter: drop-shadow(0 0 12px #F59E0B);
+    }
+
+    .precision-moving-diya.matched-miss {
+      animation: shakeMiss 0.4s ease;
+    }
+
+    @keyframes shakeMiss {
+      0%, 100% { transform: translateY(-50%) translateX(0); }
+      25% { transform: translateY(-50%) translateX(-6px); }
+      75% { transform: translateY(-50%) translateX(6px); }
+    }
+
+    /* Live Alignment Feedback Bar */
+    .precision-feedback-panel {
+      min-height: 58px;
+      width: 100%;
+      max-width: 660px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .feedback-badge {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .feedback-details {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Celebratory Sparkle Burst */
+    .celebrate-sparkle-box {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      font-size: 20px;
+      animation: sparkleBurst 0.9s forwards ease-out;
+      opacity: 0;
+    }
+
+    @keyframes sparkleBurst {
+      0% { transform: translateX(-50%) translateY(0) scale(0.5); opacity: 1; }
+      100% { transform: translateX(-50%) translateY(-25px) scale(1.3); opacity: 0; }
+    }
+
+    /* Large Arcade STOP Button */
+    .precision-controls-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .precision-stop-btn {
+      width: 124px;
+      height: 124px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #EF4444 0%, #DC2626 50%, #B91C1C 100%);
+      border: 5px solid #FFFFFF;
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(220, 38, 38, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+      transition: all 0.15s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      user-select: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .precision-stop-btn:hover:not(:disabled) {
+      transform: scale(1.06);
+      box-shadow: 0 10px 36px rgba(220, 38, 38, 0.55), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    }
+
+    .precision-stop-btn:active:not(:disabled) {
+      transform: scale(0.94);
+      box-shadow: 0 4px 16px rgba(220, 38, 38, 0.4);
+    }
+
+    .precision-stop-btn:disabled {
+      background: #94A3B8;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+      border-color: #CBD5E1;
+      opacity: 0.85;
+    }
+
+    /* Button State: Continue to Next Round */
+    .precision-stop-btn.btn-continue {
+      width: auto;
+      height: auto;
+      min-width: 260px;
+      border-radius: 30px;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      font-size: 16px;
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.45);
+      animation: pulseContinue 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseContinue {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); box-shadow: 0 10px 32px rgba(217, 119, 6, 0.6); }
+    }
+
+    .stop-keyboard-hint {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Dashboard Card Preview Specifics */
+    .game1-illust .diya-target-preview {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 32px;
+      height: 32px;
+      opacity: 0.85;
+      z-index: 1;
     }
 
     .difficulty-selector {
@@ -1713,6 +2096,488 @@
     .animate-pulse {
       animation: pulse 0.6s ease;
     }
+
+    /* ============================================
+       FESTIVE RETAIL THEME & AMBIENT EFFECTS
+       ============================================ */
+
+    /* Falling Confetti Particle Canvas */
+    #festive-confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 12;
+    }
+
+    /* Ambient Bottom Corner Lighting */
+    .festive-ambient-lighting {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      height: 0;
+      pointer-events: none;
+      z-index: 15;
+      transition: opacity 0.4s ease;
+    }
+
+    body.game-active .festive-ambient-lighting {
+      opacity: 0.35;
+    }
+
+    .festive-ambient-corner {
+      position: fixed;
+      bottom: 0;
+      width: 220px;
+      height: 200px;
+      pointer-events: none;
+    }
+
+    .festive-ambient-corner.corner-left {
+      left: 0;
+      background: radial-gradient(circle at 12% 88%, rgba(255, 140, 0, 0.28) 0%, rgba(255, 180, 50, 0.12) 35%, rgba(255, 100, 0, 0.02) 60%, transparent 75%);
+    }
+
+    .festive-ambient-corner.corner-right {
+      right: 0;
+      background: radial-gradient(circle at 88% 88%, rgba(255, 140, 0, 0.28) 0%, rgba(255, 180, 50, 0.12) 35%, rgba(255, 100, 0, 0.02) 60%, transparent 75%);
+    }
+
+    .corner-diya-unit {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+    }
+
+    .corner-left .corner-diya-unit {
+      left: 18px;
+    }
+
+    .corner-right .corner-diya-unit {
+      right: 18px;
+    }
+
+    .corner-mandala-watermark {
+      position: absolute;
+      bottom: -15px;
+      width: 120px;
+      height: 120px;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .corner-left .corner-mandala-watermark {
+      left: -15px;
+    }
+
+    .corner-right .corner-mandala-watermark {
+      right: -15px;
+      transform: scaleX(-1);
+    }
+
+    .corner-diya-svg {
+      width: 64px;
+      height: 64px;
+      animation: cornerDiyaFlameFlicker 3s infinite ease-in-out;
+      transform-origin: center bottom;
+    }
+
+    .corner-right .corner-diya-svg {
+      animation-delay: -1.4s;
+    }
+
+    @keyframes cornerDiyaFlameFlicker {
+      0%, 100% {
+        transform: scale(1) translateY(0);
+        filter: drop-shadow(0 0 10px rgba(255, 170, 0, 0.85)) drop-shadow(0 0 22px rgba(255, 100, 0, 0.5));
+      }
+      25% {
+        transform: scale(1.05, 0.95) translateY(-1px) rotate(-1.5deg);
+        filter: drop-shadow(0 0 14px rgba(255, 210, 0, 0.95)) drop-shadow(0 0 26px rgba(255, 80, 0, 0.65));
+      }
+      50% {
+        transform: scale(0.96, 1.04) translateY(0) rotate(1.2deg);
+        filter: drop-shadow(0 0 8px rgba(255, 150, 0, 0.75)) drop-shadow(0 0 18px rgba(255, 110, 0, 0.45));
+      }
+      75% {
+        transform: scale(1.04, 0.97) translateY(-2px) rotate(0deg);
+        filter: drop-shadow(0 0 13px rgba(255, 220, 0, 0.9)) drop-shadow(0 0 28px rgba(255, 90, 0, 0.6));
+      }
+    }
+
+    /* Ambient corner sparks drifting */
+    .corner-sparks {
+      position: absolute;
+      bottom: 45px;
+      width: 30px;
+      height: 40px;
+      pointer-events: none;
+    }
+
+    .corner-spark {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #FFE082;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #FFA000;
+      animation: floatSpark 2.4s infinite linear;
+    }
+
+    .corner-spark:nth-child(1) { left: 6px; animation-delay: 0s; }
+    .corner-spark:nth-child(2) { left: 16px; animation-delay: 0.8s; }
+    .corner-spark:nth-child(3) { left: 24px; animation-delay: 1.6s; }
+
+    @keyframes floatSpark {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      20% { opacity: 0.9; }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(-38px) scale(0.3); opacity: 0; }
+    }
+
+    /* ===== Festive Header Banner Component ===== */
+    .festive-header-banner {
+      width: 100%;
+      position: relative;
+      background: linear-gradient(180deg, #5A050B 0%, #7E0D15 35%, #991B1B 70%, #780E17 100%);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.22), 0 1px 0 rgba(255, 215, 0, 0.4);
+      padding: 10px 16px 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Bunting Swag Track */
+    .festive-bunting-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 85px;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .festive-bunting-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Banner Center Wrapper */
+    .festive-center-banner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Flanking Satin Ribbon Wings */
+    .festive-ribbon-wing {
+      display: flex;
+      align-items: center;
+      position: relative;
+      flex: 1;
+      max-width: 260px;
+      height: 38px;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.35));
+    }
+
+    .festive-ribbon-wing.ribbon-left {
+      justify-content: flex-end;
+    }
+
+    .festive-ribbon-wing.ribbon-right {
+      justify-content: flex-start;
+    }
+
+    .ribbon-strip {
+      background: linear-gradient(180deg, #991B1B 0%, #B91C1C 45%, #7F1D1D 100%);
+      border-top: 2px solid #FCD34D;
+      border-bottom: 2px solid #FCD34D;
+      color: #FFFBEB;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      padding: 0 18px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 10px rgba(251, 191, 36, 0.7);
+      box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.25), inset 0 -1px 3px rgba(0, 0, 0, 0.4);
+      flex: 1;
+    }
+
+    .ribbon-star {
+      color: #FCD34D;
+      font-size: 14px;
+      filter: drop-shadow(0 0 4px #F59E0B);
+    }
+
+    .ribbon-swallowtail {
+      width: 18px;
+      height: 38px;
+      background: linear-gradient(180deg, #7F1D1D 0%, #991B1B 50%, #681414 100%);
+      position: relative;
+      border-top: 2px solid #FCD34D;
+      border-bottom: 2px solid #FCD34D;
+    }
+
+    .tail-left {
+      clip-path: polygon(100% 0, 100% 100%, 0 100%, 45% 50%, 0 0);
+      margin-right: -1px;
+    }
+
+    .tail-right {
+      clip-path: polygon(0 0, 0 100%, 100% 100%, 55% 50%, 100% 0);
+      margin-left: -1px;
+    }
+
+    /* Central Glowing Ornamental Circular Badge */
+    .festive-badge-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      z-index: 5;
+    }
+
+    .festive-badge-glow {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.65) 0%, rgba(234, 88, 12, 0.35) 45%, transparent 70%);
+      filter: blur(10px);
+      pointer-events: none;
+      animation: badgeGlowPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes badgeGlowPulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    .festive-ornamental-badge {
+      width: 114px;
+      height: 114px;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 35% 30%, #FFE082 0%, #FF9800 28%, #D84315 58%, #880E18 85%, #420008 100%);
+      border: 3px solid #FDE047;
+      box-shadow: 
+        0 0 25px rgba(255, 179, 0, 0.65),
+        0 0 50px rgba(220, 38, 38, 0.4),
+        0 8px 24px rgba(0, 0, 0, 0.35),
+        inset 0 0 10px rgba(254, 240, 138, 0.5),
+        inset 0 0 18px rgba(127, 29, 29, 0.8);
+      overflow: hidden;
+      cursor: default;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+
+    .festive-ornamental-badge:hover {
+      transform: scale(1.04);
+    }
+
+    .badge-filigree-ring {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .badge-core {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      padding: 4px;
+    }
+
+    .badge-eyebrow {
+      font-size: 7.5px;
+      font-weight: 800;
+      color: #FEF08A;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      margin-top: 2px;
+      margin-bottom: 0px;
+    }
+
+    .badge-diya-symbol {
+      width: 26px;
+      height: 26px;
+      margin: 1px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+    }
+
+    .badge-diya-symbol svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .badge-heading {
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      color: #FFFBEB;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 8px rgba(251, 191, 36, 0.8);
+      line-height: 1.1;
+    }
+
+    .badge-stars {
+      font-size: 8px;
+      color: #FDE047;
+      letter-spacing: 2px;
+      margin-top: 1px;
+      text-shadow: 0 0 5px rgba(245, 158, 11, 0.8);
+    }
+
+    .badge-tag {
+      font-size: 7.5px;
+      font-weight: 800;
+      background: linear-gradient(90deg, #B91C1C 0%, #D97706 50%, #B91C1C 100%);
+      border: 1px solid #FDE047;
+      border-radius: 8px;
+      padding: 1px 6px;
+      color: #FFFBEB;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      margin-top: 2px;
+    }
+
+    /* Badge Shimmer Sweep */
+    .badge-shimmer-sweep {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+      transform: rotate(25deg);
+      animation: badgeShine 4.5s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes badgeShine {
+      0% { transform: translateY(-100%) rotate(25deg); }
+      20%, 100% { transform: translateY(100%) rotate(25deg); }
+    }
+
+    /* Responsiveness for Festive Components */
+    @media (max-width: 768px) {
+      .festive-header-banner {
+        padding: 8px 12px 16px;
+      }
+
+      .festive-ribbon-wing {
+        max-width: 170px;
+        height: 32px;
+      }
+
+      .ribbon-strip {
+        font-size: 11px;
+        padding: 0 10px;
+        letter-spacing: 1px;
+      }
+
+      .ribbon-swallowtail {
+        width: 14px;
+        height: 32px;
+      }
+
+      .festive-ornamental-badge {
+        width: 98px;
+        height: 98px;
+      }
+
+      .badge-diya-symbol {
+        width: 28px;
+        height: 28px;
+      }
+
+      .badge-heading {
+        font-size: 10px;
+      }
+
+      .festive-ambient-corner {
+        width: 160px;
+        height: 150px;
+      }
+
+      .corner-diya-svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .festive-center-banner {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .festive-ribbon-wing {
+        display: none;
+      }
+
+      .festive-ornamental-badge {
+        width: 86px;
+        height: 86px;
+      }
+
+      .badge-diya-symbol {
+        width: 24px;
+        height: 24px;
+      }
+
+      .festive-ambient-corner {
+        width: 120px;
+        height: 120px;
+      }
+
+      .corner-diya-svg {
+        width: 42px;
+        height: 42px;
+      }
+
+      .corner-left .corner-diya-unit { left: 8px; bottom: 8px; }
+      .corner-right .corner-diya-unit { right: 8px; bottom: 8px; }
+    }
   </style>
 </head>
 
@@ -1738,6 +2603,25 @@
         <ellipse cx="50" cy="50" rx="35" ry="12" fill="#d97a38" />
         <ellipse cx="50" cy="50" rx="25" ry="6" fill="#8c4212" />
       </g>
+      <filter id="festive-shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="2.5" stdDeviation="2" flood-color="#000" flood-opacity="0.32"/>
+      </filter>
+      <!-- Target Silhouette Contour & Glowing Filter inspired by reference image -->
+      <filter id="target-neon-glow" x="-40%" y="-40%" width="180%" height="180%">
+        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#FF9800" flood-opacity="0.9"/>
+        <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#FFD54F" flood-opacity="0.6"/>
+      </filter>
+      <g id="target-diya-silhouette">
+        <path d="M 50 15 Q 65 40 50 55 Q 35 40 50 15 Z" fill="rgba(255, 215, 0, 0.22)" stroke="#FFB300" stroke-width="2.5" stroke-dasharray="4,2"/>
+        <path d="M 15 50 Q 50 90 85 50 Z" fill="rgba(184, 92, 42, 0.2)" stroke="#FF9800" stroke-width="2.5" stroke-dasharray="4,2"/>
+        <ellipse cx="50" cy="50" rx="35" ry="12" fill="rgba(255, 179, 0, 0.2)" stroke="#FFB300" stroke-width="2"/>
+        <ellipse cx="50" cy="50" rx="25" ry="6" fill="rgba(0, 0, 0, 0.25)" stroke="#FFE082" stroke-width="1.5" stroke-dasharray="2,2"/>
+      </g>
+      <linearGradient id="goldString" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#C59B27"/>
+        <stop offset="50%" stop-color="#FFEB78"/>
+        <stop offset="100%" stop-color="#C59B27"/>
+      </linearGradient>
     </defs>
   </svg>
 
@@ -1749,10 +2633,161 @@
     <div class="modal" id="modal-content"></div>
   </div>
 
+  <!-- Festive Confetti Particle Canvas -->
+  <canvas id="festive-confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Bottom Corner Lighting -->
+  <div class="festive-ambient-lighting" id="festive-ambient-lighting" aria-hidden="true">
+    <!-- Bottom Left Ambient Diya & Glow -->
+    <div class="festive-ambient-corner corner-left">
+      <svg class="corner-mandala-watermark" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="0" cy="100" r="90" fill="none" stroke="#FFA000" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <circle cx="0" cy="100" r="70" fill="none" stroke="#FFD700" stroke-width="1.5"/>
+        <circle cx="0" cy="100" r="50" fill="none" stroke="#FF6F00" stroke-width="1"/>
+        <path d="M 0,100 L 90,10 M 0,100 L 70,30 M 0,100 L 85,55 M 0,100 L 40,85" stroke="#FFE082" stroke-width="1"/>
+      </svg>
+      <div class="corner-diya-unit">
+        <div class="corner-sparks">
+          <div class="corner-spark"></div>
+          <div class="corner-spark"></div>
+          <div class="corner-spark"></div>
+        </div>
+        <svg class="corner-diya-svg" viewBox="0 0 100 100" aria-label="Festive corner diya lamp">
+          <use href="#shared-diya" />
+        </svg>
+      </div>
+    </div>
+    <!-- Bottom Right Ambient Diya & Glow -->
+    <div class="festive-ambient-corner corner-right">
+      <svg class="corner-mandala-watermark" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="0" cy="100" r="90" fill="none" stroke="#FFA000" stroke-width="1.5" stroke-dasharray="4,4"/>
+        <circle cx="0" cy="100" r="70" fill="none" stroke="#FFD700" stroke-width="1.5"/>
+        <circle cx="0" cy="100" r="50" fill="none" stroke="#FF6F00" stroke-width="1"/>
+        <path d="M 0,100 L 90,10 M 0,100 L 70,30 M 0,100 L 85,55 M 0,100 L 40,85" stroke="#FFE082" stroke-width="1"/>
+      </svg>
+      <div class="corner-diya-unit">
+        <div class="corner-sparks">
+          <div class="corner-spark"></div>
+          <div class="corner-spark"></div>
+          <div class="corner-spark"></div>
+        </div>
+        <svg class="corner-diya-svg" viewBox="0 0 100 100" aria-label="Festive corner diya lamp">
+          <use href="#shared-diya" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
   <!-- ============================================
      SCREEN 1: Registration
      ============================================ -->
   <div class="screen active" id="screen-register">
+    <!-- Festive Header Banner -->
+    <div class="festive-header-banner" role="banner" aria-label="Grand Festival Play Arena">
+      <!-- Bunting Swag Track -->
+      <div class="festive-bunting-track">
+        <svg class="festive-bunting-svg" viewBox="0 0 1200 95" preserveAspectRatio="none" aria-hidden="true">
+          <!-- Left Swag Cord -->
+          <path d="M 0,15 Q 260,75 530,30" fill="none" stroke="url(#goldString)" stroke-width="2.5" filter="url(#festive-shadow)"/>
+          <!-- Right Swag Cord -->
+          <path d="M 670,30 Q 940,75 1200,15" fill="none" stroke="url(#goldString)" stroke-width="2.5" filter="url(#festive-shadow)"/>
+
+          <!-- Left Pennants -->
+          <polygon points="50,22 80,26 65,65" fill="#E53935" filter="url(#festive-shadow)"/>
+          <polygon points="110,31 140,36 125,75" fill="#FFB300" filter="url(#festive-shadow)"/>
+          <polygon points="170,41 200,47 185,85" fill="#00897B" filter="url(#festive-shadow)"/>
+          <polygon points="230,51 260,56 245,92" fill="#E65100" filter="url(#festive-shadow)"/>
+          <polygon points="290,56 320,58 305,94" fill="#8E24AA" filter="url(#festive-shadow)"/>
+          <polygon points="350,56 380,53 365,90" fill="#FDD835" filter="url(#festive-shadow)"/>
+          <polygon points="410,50 440,44 425,80" fill="#D81B60" filter="url(#festive-shadow)"/>
+          <polygon points="470,41 500,34 485,68" fill="#FB8C00" filter="url(#festive-shadow)"/>
+
+          <!-- Right Pennants -->
+          <polygon points="700,34 730,41 715,68" fill="#FB8C00" filter="url(#festive-shadow)"/>
+          <polygon points="760,44 790,50 775,80" fill="#D81B60" filter="url(#festive-shadow)"/>
+          <polygon points="820,53 850,56 835,90" fill="#FDD835" filter="url(#festive-shadow)"/>
+          <polygon points="880,58 910,56 895,94" fill="#8E24AA" filter="url(#festive-shadow)"/>
+          <polygon points="940,56 970,51 955,92" fill="#E65100" filter="url(#festive-shadow)"/>
+          <polygon points="1000,47 1030,41 1015,85" fill="#00897B" filter="url(#festive-shadow)"/>
+          <polygon points="1060,36 1090,31 1075,75" fill="#FFB300" filter="url(#festive-shadow)"/>
+          <polygon points="1120,26 1150,22 1135,65" fill="#E53935" filter="url(#festive-shadow)"/>
+
+          <!-- Hanging Golden Beads -->
+          <circle cx="65" cy="67" r="3" fill="#FFE082" />
+          <circle cx="125" cy="77" r="3" fill="#FFE082" />
+          <circle cx="185" cy="87" r="3" fill="#FFE082" />
+          <circle cx="245" cy="94" r="3" fill="#FFE082" />
+          <circle cx="305" cy="96" r="3" fill="#FFE082" />
+          <circle cx="365" cy="92" r="3" fill="#FFE082" />
+          <circle cx="425" cy="82" r="3" fill="#FFE082" />
+          <circle cx="485" cy="70" r="3" fill="#FFE082" />
+
+          <circle cx="715" cy="70" r="3" fill="#FFE082" />
+          <circle cx="775" cy="82" r="3" fill="#FFE082" />
+          <circle cx="835" cy="92" r="3" fill="#FFE082" />
+          <circle cx="895" cy="96" r="3" fill="#FFE082" />
+          <circle cx="955" cy="94" r="3" fill="#FFE082" />
+          <circle cx="1015" cy="87" r="3" fill="#FFE082" />
+          <circle cx="1075" cy="77" r="3" fill="#FFE082" />
+          <circle cx="1135" cy="67" r="3" fill="#FFE082" />
+        </svg>
+      </div>
+
+      <!-- Banner Center with Flanking Ribbons & Central Badge -->
+      <div class="festive-center-banner">
+        <!-- Left Flanking Ribbon -->
+        <div class="festive-ribbon-wing ribbon-left" aria-hidden="true">
+          <div class="ribbon-swallowtail tail-left"></div>
+          <div class="ribbon-strip">
+            <span class="ribbon-star">★</span>
+            <span class="ribbon-caption">FESTIVE DHAMAKA</span>
+          </div>
+        </div>
+
+        <!-- Glowing Ornamental Circular Badge -->
+        <div class="festive-badge-wrapper">
+          <div class="festive-badge-glow" aria-hidden="true"></div>
+          <div class="festive-ornamental-badge">
+            <svg class="badge-filigree-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="56" fill="none" stroke="#FFD700" stroke-width="2" stroke-dasharray="3,3" opacity="0.95"/>
+              <circle cx="60" cy="60" r="51" fill="none" stroke="#FFA000" stroke-width="1.2"/>
+              <g stroke="#FFE082" stroke-width="1.2" opacity="0.8">
+                <line x1="60" y1="4" x2="60" y2="8"/>
+                <line x1="60" y1="112" x2="60" y2="116"/>
+                <line x1="4" y1="60" x2="8" y2="60"/>
+                <line x1="112" y1="60" x2="116" y2="60"/>
+                <line x1="20" y1="20" x2="23" y2="23"/>
+                <line x1="100" y1="100" x2="97" y2="97"/>
+                <line x1="20" y1="100" x2="23" y2="97"/>
+                <line x1="100" y1="20" x2="97" y2="23"/>
+              </g>
+            </svg>
+            <div class="badge-core">
+              <div class="badge-eyebrow">GRAND FESTIVAL</div>
+              <div class="badge-diya-symbol">
+                <svg viewBox="0 0 100 100">
+                  <use href="#shared-diya" />
+                </svg>
+              </div>
+              <div class="badge-heading">PLAY ARENA</div>
+              <div class="badge-stars">★ ★ ★</div>
+              <div class="badge-tag">MEGA SALE EVENT</div>
+            </div>
+            <div class="badge-shimmer-sweep" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Right Flanking Ribbon -->
+        <div class="festive-ribbon-wing ribbon-right" aria-hidden="true">
+          <div class="ribbon-strip">
+            <span class="ribbon-caption">PLAY &amp; WIN BIG</span>
+            <span class="ribbon-star">★</span>
+          </div>
+          <div class="ribbon-swallowtail tail-right"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="register-container animate-fade-in">
       <div class="register-header">
         <div class="brand-icon">
@@ -1822,6 +2857,112 @@
      SCREEN 2: Dashboard
      ============================================ -->
   <div class="screen" id="screen-dashboard">
+    <!-- Festive Header Banner -->
+    <div class="festive-header-banner" role="banner" aria-label="Grand Festival Play Arena">
+      <!-- Bunting Swag Track -->
+      <div class="festive-bunting-track">
+        <svg class="festive-bunting-svg" viewBox="0 0 1200 95" preserveAspectRatio="none" aria-hidden="true">
+          <!-- Left Swag Cord -->
+          <path d="M 0,15 Q 260,75 530,30" fill="none" stroke="url(#goldString)" stroke-width="2.5" filter="url(#festive-shadow)"/>
+          <!-- Right Swag Cord -->
+          <path d="M 670,30 Q 940,75 1200,15" fill="none" stroke="url(#goldString)" stroke-width="2.5" filter="url(#festive-shadow)"/>
+
+          <!-- Left Pennants -->
+          <polygon points="50,22 80,26 65,65" fill="#E53935" filter="url(#festive-shadow)"/>
+          <polygon points="110,31 140,36 125,75" fill="#FFB300" filter="url(#festive-shadow)"/>
+          <polygon points="170,41 200,47 185,85" fill="#00897B" filter="url(#festive-shadow)"/>
+          <polygon points="230,51 260,56 245,92" fill="#E65100" filter="url(#festive-shadow)"/>
+          <polygon points="290,56 320,58 305,94" fill="#8E24AA" filter="url(#festive-shadow)"/>
+          <polygon points="350,56 380,53 365,90" fill="#FDD835" filter="url(#festive-shadow)"/>
+          <polygon points="410,50 440,44 425,80" fill="#D81B60" filter="url(#festive-shadow)"/>
+          <polygon points="470,41 500,34 485,68" fill="#FB8C00" filter="url(#festive-shadow)"/>
+
+          <!-- Right Pennants -->
+          <polygon points="700,34 730,41 715,68" fill="#FB8C00" filter="url(#festive-shadow)"/>
+          <polygon points="760,44 790,50 775,80" fill="#D81B60" filter="url(#festive-shadow)"/>
+          <polygon points="820,53 850,56 835,90" fill="#FDD835" filter="url(#festive-shadow)"/>
+          <polygon points="880,58 910,56 895,94" fill="#8E24AA" filter="url(#festive-shadow)"/>
+          <polygon points="940,56 970,51 955,92" fill="#E65100" filter="url(#festive-shadow)"/>
+          <polygon points="1000,47 1030,41 1015,85" fill="#00897B" filter="url(#festive-shadow)"/>
+          <polygon points="1060,36 1090,31 1075,75" fill="#FFB300" filter="url(#festive-shadow)"/>
+          <polygon points="1120,26 1150,22 1135,65" fill="#E53935" filter="url(#festive-shadow)"/>
+
+          <!-- Hanging Golden Beads -->
+          <circle cx="65" cy="67" r="3" fill="#FFE082" />
+          <circle cx="125" cy="77" r="3" fill="#FFE082" />
+          <circle cx="185" cy="87" r="3" fill="#FFE082" />
+          <circle cx="245" cy="94" r="3" fill="#FFE082" />
+          <circle cx="305" cy="96" r="3" fill="#FFE082" />
+          <circle cx="365" cy="92" r="3" fill="#FFE082" />
+          <circle cx="425" cy="82" r="3" fill="#FFE082" />
+          <circle cx="485" cy="70" r="3" fill="#FFE082" />
+
+          <circle cx="715" cy="70" r="3" fill="#FFE082" />
+          <circle cx="775" cy="82" r="3" fill="#FFE082" />
+          <circle cx="835" cy="92" r="3" fill="#FFE082" />
+          <circle cx="895" cy="96" r="3" fill="#FFE082" />
+          <circle cx="955" cy="94" r="3" fill="#FFE082" />
+          <circle cx="1015" cy="87" r="3" fill="#FFE082" />
+          <circle cx="1075" cy="77" r="3" fill="#FFE082" />
+          <circle cx="1135" cy="67" r="3" fill="#FFE082" />
+        </svg>
+      </div>
+
+      <!-- Banner Center with Flanking Ribbons & Central Badge -->
+      <div class="festive-center-banner">
+        <!-- Left Flanking Ribbon -->
+        <div class="festive-ribbon-wing ribbon-left" aria-hidden="true">
+          <div class="ribbon-swallowtail tail-left"></div>
+          <div class="ribbon-strip">
+            <span class="ribbon-star">★</span>
+            <span class="ribbon-caption">FESTIVE DHAMAKA</span>
+          </div>
+        </div>
+
+        <!-- Glowing Ornamental Circular Badge -->
+        <div class="festive-badge-wrapper">
+          <div class="festive-badge-glow" aria-hidden="true"></div>
+          <div class="festive-ornamental-badge">
+            <svg class="badge-filigree-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="56" fill="none" stroke="#FFD700" stroke-width="2" stroke-dasharray="3,3" opacity="0.95"/>
+              <circle cx="60" cy="60" r="51" fill="none" stroke="#FFA000" stroke-width="1.2"/>
+              <g stroke="#FFE082" stroke-width="1.2" opacity="0.8">
+                <line x1="60" y1="4" x2="60" y2="8"/>
+                <line x1="60" y1="112" x2="60" y2="116"/>
+                <line x1="4" y1="60" x2="8" y2="60"/>
+                <line x1="112" y1="60" x2="116" y2="60"/>
+                <line x1="20" y1="20" x2="23" y2="23"/>
+                <line x1="100" y1="100" x2="97" y2="97"/>
+                <line x1="20" y1="100" x2="23" y2="97"/>
+                <line x1="100" y1="20" x2="97" y2="23"/>
+              </g>
+            </svg>
+            <div class="badge-core">
+              <div class="badge-eyebrow">GRAND FESTIVAL</div>
+              <div class="badge-diya-symbol">
+                <svg viewBox="0 0 100 100">
+                  <use href="#shared-diya" />
+                </svg>
+              </div>
+              <div class="badge-heading">PLAY ARENA</div>
+              <div class="badge-stars">★ ★ ★</div>
+              <div class="badge-tag">MEGA SALE EVENT</div>
+            </div>
+            <div class="badge-shimmer-sweep" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Right Flanking Ribbon -->
+        <div class="festive-ribbon-wing ribbon-right" aria-hidden="true">
+          <div class="ribbon-strip">
+            <span class="ribbon-caption">PLAY &amp; WIN BIG</span>
+            <span class="ribbon-star">★</span>
+          </div>
+          <div class="ribbon-swallowtail tail-right"></div>
+        </div>
+      </div>
+    </div>
+
     <div class="dashboard-header">
       <div class="dashboard-header-inner">
         <div class="dashboard-brand">
@@ -1845,16 +2986,16 @@
       <p>Select a game and start playing. Your best scores are tracked for this session.</p>
       <div class="games-grid">
         <!-- Game 1 Card -->
-        <div class="card game-card" id="card-precision" tabindex="0" role="button" aria-label="Play Precision Stop">
+        <div class="card game-card" id="card-precision" tabindex="0" role="button" aria-label="Play Diya Stop Challenge">
           <div class="game-card-illustration game1-illust">
             <div class="diya-track">
-              <div class="diya-target"></div>
-              <div class="diya-light">
-                <svg class="diya-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                  <use href="#shared-diya" />
+              <!-- Target Silhouette in center -->
+              <div class="diya-target-preview">
+                <svg class="diya-svg target-preview-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                  <use href="#target-diya-silhouette" />
                 </svg>
               </div>
-              <div class="diya-light" style="animation-delay: -1.2s; animation-direction: alternate-reverse;">
+              <div class="diya-light">
                 <svg class="diya-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
                   <use href="#shared-diya" />
                 </svg>
@@ -1863,10 +3004,10 @@
           </div>
           <div class="game-card-body">
             <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-              <h3>Precision Stop</h3>
-              <span class="badge badge-medium">Medium</span>
+              <h3>Diya Stop Challenge</h3>
+              <span class="badge badge-medium">Target Match</span>
             </div>
-            <p>Stop the moving lights at the perfect moment to achieve maximum alignment accuracy.</p>
+            <p>Stop the moving diya to match the target silhouette with pinpoint accuracy.</p>
             <div class="game-card-meta">
               <div class="game-card-best">Best: <span id="dash-best-precision">—</span></div>
             </div>
@@ -1932,70 +3073,144 @@
   </div>
 
   <!-- ============================================
-     SCREEN 3: Precision Stop Game
+     SCREEN 3: Diya Stop Challenge Game
      ============================================ -->
   <div class="screen" id="screen-precision-stop">
     <div class="game-top-bar">
-      <h2>⏱ Precision Stop</h2>
+      <h2>🎯 Diya Stop Challenge</h2>
       <button class="btn btn-outline btn-sm" id="btn-precision-back">← Back to Games</button>
     </div>
-    <!-- Start sub-screen -->
+
+    <!-- Start / Attract sub-screen -->
     <div class="precision-start" id="precision-start-view">
-      <h2>Precision Stop</h2>
-      <p>Stop the moving lights when they align perfectly with the target marker. The closer, the better your score!</p>
-      <div>
-        <div style="font-size:14px;color:var(--text-secondary);margin-bottom:8px;text-align:center;">Select Difficulty
+      <div class="precision-start-card animate-fade-in">
+        <span class="precision-badge-tag">★ ARCADE PRECISION CHALLENGE ★</span>
+        <h2>Diya Stop Challenge</h2>
+        <div class="precision-start-subtitle">Stop the diya. Match the target. Score big.</div>
+
+        <!-- Demonstration Showcase Preview -->
+        <div class="precision-showcase-box" aria-hidden="true">
+          <div class="showcase-track-line"></div>
+          <div class="showcase-target-slot">
+            <svg class="target-diya-svg" viewBox="0 0 100 100">
+              <use href="#target-diya-silhouette" />
+            </svg>
+          </div>
+          <div class="showcase-moving-diya">
+            <svg class="diya-svg" viewBox="0 0 100 100">
+              <use href="#shared-diya" />
+            </svg>
+          </div>
         </div>
-        <div class="difficulty-selector" id="precision-difficulty">
-          <button class="difficulty-btn" data-diff="easy">🟢 Easy</button>
-          <button class="difficulty-btn selected" data-diff="medium">🟡 Medium</button>
-          <button class="difficulty-btn" data-diff="hard">🔴 Hard</button>
+
+        <!-- Instructions -->
+        <div class="precision-instructions">
+          <div class="instruction-row">
+            <span class="instruction-icon">👁️</span>
+            <span>Watch the moving Diya glide across the track.</span>
+          </div>
+          <div class="instruction-row">
+            <span class="instruction-icon">🎯</span>
+            <span>Press <strong>STOP</strong> when it overlaps perfectly with the target silhouette.</span>
+          </div>
+          <div class="instruction-row">
+            <span class="instruction-icon">⭐</span>
+            <span>Closer alignment awards up to <strong>1,000 points</strong> per round (5 rounds total).</span>
+          </div>
+        </div>
+
+        <!-- Difficulty Selector -->
+        <div style="width: 100%;">
+          <div style="font-size:13px;font-weight:700;color:var(--text-secondary);margin-bottom:8px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;">Select Difficulty</div>
+          <div class="difficulty-selector" id="precision-difficulty">
+            <button class="difficulty-btn" data-diff="easy">🟢 Easy</button>
+            <button class="difficulty-btn selected" data-diff="medium">🟡 Medium</button>
+            <button class="difficulty-btn" data-diff="hard">🔴 Hard</button>
+          </div>
+        </div>
+
+        <div style="font-size:14px;color:var(--text-secondary);">
+          Current Session Best: <strong id="precision-start-best" style="color:#D97706;">—</strong>
+        </div>
+
+        <div style="display:flex;gap:12px;width:100%;max-width:360px;">
+          <button class="btn btn-primary btn-lg" id="btn-precision-start" style="flex:1;">START CHALLENGE ▶</button>
+          <button class="btn btn-outline" id="btn-precision-back2">Back</button>
         </div>
       </div>
-      <div style="font-size:14px;color:var(--text-secondary);">Best Score: <strong id="precision-start-best">—</strong>
-      </div>
-      <button class="btn btn-primary btn-lg" id="btn-precision-start">Start Game</button>
-      <button class="btn btn-outline" id="btn-precision-back2">Back to Games</button>
     </div>
-    <!-- Game sub-screen -->
+
+    <!-- Active Game Arena sub-screen -->
     <div class="precision-container" id="precision-game-view" style="display:none;">
+      <!-- Countdown Overlay -->
+      <div class="diya-countdown-overlay" id="prec-countdown-overlay">
+        <div class="diya-countdown-text" id="prec-countdown-num">3</div>
+        <div class="diya-countdown-tip">Get ready to match the target!</div>
+      </div>
+
+      <!-- HUD Top Bar -->
       <div class="precision-info-bar">
         <div class="precision-info-item">
           <div class="info-value" id="prec-round">1/5</div>
-          <div class="info-label">Round</div>
+          <div class="info-label">Current Round</div>
         </div>
         <div class="precision-info-item">
-          <div class="info-value" id="prec-score">0</div>
-          <div class="info-label">Score</div>
+          <div class="info-value" id="prec-score" style="color:#D97706;">0</div>
+          <div class="info-label">Total Score</div>
         </div>
         <div class="precision-info-item">
           <div class="info-value" id="prec-accuracy">—</div>
           <div class="info-label">Last Accuracy</div>
         </div>
       </div>
-      <div class="precision-round-dots" id="prec-round-dots"></div>
+
+      <!-- 5-Round Progress Indicators -->
+      <div class="prec-round-pills" id="prec-round-pills"></div>
+
+      <!-- Track Arena -->
       <div class="precision-track-container" id="prec-track-container">
+        <div class="track-top-indicator">▼ TARGET ZONE ▼</div>
         <div class="precision-track" id="prec-track">
-          <div class="precision-target" id="prec-target"></div>
-          <div class="precision-target-zone" id="prec-target-zone"></div>
-          <div class="precision-light" id="prec-light1">
-            <svg class="diya-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-              <use href="#shared-diya" />
+          <!-- Fixed Target Silhouette Slot (Exact Center) -->
+          <div class="precision-target-slot" id="prec-target-slot" aria-label="Target alignment silhouette">
+            <svg class="target-diya-svg" viewBox="0 0 100 100">
+              <use href="#target-diya-silhouette" />
             </svg>
+            <div class="celebrate-sparkle-box" id="prec-sparkle-box">✨ 🎯 ✨</div>
           </div>
-          <div class="precision-light" id="prec-light2">
-            <svg class="diya-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+
+          <!-- Single Moving Diya Travelling Horizontally -->
+          <div class="precision-moving-diya" id="prec-moving-diya" aria-label="Moving diya">
+            <svg class="moving-diya-svg" viewBox="0 0 100 100">
               <use href="#shared-diya" />
             </svg>
           </div>
         </div>
+        <div class="track-ticks">
+          <span>0%</span>
+          <span>25%</span>
+          <span>50% TARGET</span>
+          <span>75%</span>
+          <span>100%</span>
+        </div>
       </div>
-      <div class="precision-feedback" id="prec-feedback"></div>
-      <button class="precision-stop-btn" id="btn-precision-stop">STOP</button>
-      <div style="font-size:13px;color:var(--text-secondary);text-align:center;">Press <strong>Spacebar</strong>,
-        <strong>Enter</strong>, or tap the button</div>
+
+      <!-- Live Feedback Panel -->
+      <div class="precision-feedback-panel" id="prec-feedback-panel">
+        <div class="feedback-badge" id="prec-feedback-badge" style="color:var(--text-secondary);font-size:16px;">
+          Press STOP when the diya lands in the target!
+        </div>
+        <div class="feedback-details" id="prec-feedback-details"></div>
+      </div>
+
+      <!-- STOP Control -->
+      <div class="precision-controls-box">
+        <button class="precision-stop-btn" id="btn-precision-stop" aria-label="Stop moving diya">STOP</button>
+        <div class="stop-keyboard-hint">Press <strong>Spacebar</strong>, <strong>Enter</strong>, or tap the button</div>
+      </div>
     </div>
-    <!-- Result sub-screen -->
+
+    <!-- Result Celebration sub-screen -->
     <div style="flex:1;display:none;align-items:center;justify-content:center;padding:24px;" id="precision-result-view">
       <div class="result-panel animate-fade-in" id="precision-result-panel"></div>
     </div>
@@ -2218,6 +3433,11 @@
         screen.classList.add('active');
         App.currentScreen = screenId;
       }
+      if (screenId === 'precision-stop' || screenId === 'light-pong' || screenId === 'jigsaw') {
+        document.body.classList.add('game-active');
+      } else {
+        document.body.classList.remove('game-active');
+      }
     }
 
     function cleanupGame(game) {
@@ -2429,34 +3649,66 @@
     }
 
     /* =============================================
-       GAME 1: PRECISION STOP
+       GAME 1: DIYA STOP CHALLENGE (TARGET MATCH ARCADE)
        ============================================= */
+    const DIYA_MATCH_CONFIG = {
+      easy: {
+        name: 'Easy',
+        baseSpeed: 2.2,
+        speedInc: 0.35,
+        zoneWidth: 80,
+        perfectPct: 3.5,   // within 3.5% of track width
+        excellentPct: 7.5, // within 7.5%
+        goodPct: 13.0,     // within 13.0%
+        nearMissPct: 22.0  // within 22.0%
+      },
+      medium: {
+        name: 'Medium',
+        baseSpeed: 3.6,
+        speedInc: 0.45,
+        zoneWidth: 60,
+        perfectPct: 3.0,   // within 3.0% of track width
+        excellentPct: 7.0, // within 7.0%
+        goodPct: 12.0,     // within 12.0%
+        nearMissPct: 20.0  // within 20.0%
+      },
+      hard: {
+        name: 'Hard',
+        baseSpeed: 5.2,
+        speedInc: 0.65,
+        zoneWidth: 45,
+        perfectPct: 2.2,   // within 2.2% of track width
+        excellentPct: 5.5, // within 5.5%
+        goodPct: 10.0,     // within 10.0%
+        nearMissPct: 16.0  // within 16.0%
+      }
+    };
+
     const PrecisionState = {
+      state: 'ready', // 'ready', 'countdown', 'playing', 'round-result', 'completed'
       difficulty: 'medium',
       totalRounds: 5,
       currentRound: 0,
-      currentStop: 0,
-      scores: [],
-      roundScores: [],
       totalScore: 0,
+      roundScores: [],
+      roundAccuracies: [],
+      roundDistances: [],
+      roundTiers: [],
+      perfectCount: 0,
+      excellentCount: 0,
       animFrame: null,
-      running: false,
-      lights: [],
-      speed: 3,
-      zoneWidth: 60,
+      countdownTimer: null,
       keyHandler: null,
-      lightPositions: [0, 0],
-      lightDirections: [1, -1],
-      lightsStopped: [false, false]
-    };
-
-    const PRECISION_CONFIG = {
-      easy: { speed: 2, zone: 80, speedInc: 0.3 },
-      medium: { speed: 3.5, zone: 55, speedInc: 0.5 },
-      hard: { speed: 5.5, zone: 35, speedInc: 0.8 }
+      movingDiyaX: 0,
+      movingDiyaDirection: 1,
+      currentSpeed: 3.6,
+      diyaWidth: 56,
+      isStopLocked: false
     };
 
     function precisionInit() {
+      precisionCleanup();
+      PrecisionState.state = 'ready';
       document.getElementById('precision-start-view').style.display = 'flex';
       document.getElementById('precision-game-view').style.display = 'none';
       document.getElementById('precision-result-view').style.display = 'none';
@@ -2465,9 +3717,22 @@
     }
 
     function precisionCleanup() {
-      PrecisionState.running = false;
-      if (PrecisionState.animFrame) { cancelAnimationFrame(PrecisionState.animFrame); PrecisionState.animFrame = null; }
-      if (PrecisionState.keyHandler) { document.removeEventListener('keydown', PrecisionState.keyHandler); PrecisionState.keyHandler = null; }
+      PrecisionState.state = 'ready';
+      PrecisionState.isStopLocked = false;
+      if (PrecisionState.animFrame) {
+        cancelAnimationFrame(PrecisionState.animFrame);
+        PrecisionState.animFrame = null;
+      }
+      if (PrecisionState.countdownTimer) {
+        clearInterval(PrecisionState.countdownTimer);
+        PrecisionState.countdownTimer = null;
+      }
+      if (PrecisionState.keyHandler) {
+        document.removeEventListener('keydown', PrecisionState.keyHandler);
+        PrecisionState.keyHandler = null;
+      }
+      const overlay = document.getElementById('prec-countdown-overlay');
+      if (overlay) overlay.style.display = 'none';
     }
 
     // Difficulty buttons
@@ -2484,231 +3749,396 @@
     document.getElementById('btn-precision-back2').addEventListener('click', () => { precisionCleanup(); openDashboard(); });
 
     function precisionStartGame() {
-      const cfg = PRECISION_CONFIG[PrecisionState.difficulty];
+      precisionCleanup();
       PrecisionState.totalRounds = 5;
       PrecisionState.currentRound = 0;
-      PrecisionState.scores = [];
-      PrecisionState.roundScores = [];
       PrecisionState.totalScore = 0;
-      PrecisionState.speed = cfg.speed;
-      PrecisionState.zoneWidth = cfg.zone;
+      PrecisionState.roundScores = [];
+      PrecisionState.roundAccuracies = [];
+      PrecisionState.roundDistances = [];
+      PrecisionState.roundTiers = [];
+      PrecisionState.perfectCount = 0;
+      PrecisionState.excellentCount = 0;
+      PrecisionState.isStopLocked = false;
 
       document.getElementById('precision-start-view').style.display = 'none';
       document.getElementById('precision-game-view').style.display = 'flex';
       document.getElementById('precision-result-view').style.display = 'none';
 
-      // Build round dots
-      const dotsContainer = document.getElementById('prec-round-dots');
-      dotsContainer.innerHTML = '';
+      // Build 5-round progress pills
+      const pillsContainer = document.getElementById('prec-round-pills');
+      pillsContainer.innerHTML = '';
       for (let i = 0; i < PrecisionState.totalRounds; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'round-dot';
-        dotsContainer.appendChild(dot);
+        const pill = document.createElement('div');
+        pill.className = 'round-pill';
+        pill.id = `round-pill-${i}`;
+        pill.textContent = `Round ${i + 1}`;
+        pillsContainer.appendChild(pill);
       }
 
       precisionStartRound();
     }
 
     function precisionStartRound() {
-      PrecisionState.currentStop = 0;
-      PrecisionState.lightPositions = [10, 90];
-      PrecisionState.lightDirections = [1, -1];
-      PrecisionState.lightsStopped = [false, false];
+      PrecisionState.state = 'countdown';
+      PrecisionState.isStopLocked = false;
+      const cfg = DIYA_MATCH_CONFIG[PrecisionState.difficulty];
+      PrecisionState.currentSpeed = cfg.baseSpeed + (PrecisionState.currentRound * cfg.speedInc);
 
-      const cfg = PRECISION_CONFIG[PrecisionState.difficulty];
-      const roundSpeed = cfg.speed + PrecisionState.currentRound * cfg.speedInc;
-      PrecisionState.speed = roundSpeed;
-
-      // Update target zone width
-      const zoneWidth = Math.max(20, cfg.zone - PrecisionState.currentRound * 4);
-      PrecisionState.zoneWidth = zoneWidth;
-      document.getElementById('prec-target-zone').style.width = zoneWidth + 'px';
-
+      // Update HUD values
       document.getElementById('prec-round').textContent = `${PrecisionState.currentRound + 1}/${PrecisionState.totalRounds}`;
-      document.getElementById('prec-score').textContent = PrecisionState.totalScore;
-      document.getElementById('prec-feedback').textContent = '';
+      document.getElementById('prec-score').textContent = `${PrecisionState.totalScore} pts`;
+      const lastAcc = PrecisionState.roundAccuracies.length > 0 
+        ? PrecisionState.roundAccuracies[PrecisionState.roundAccuracies.length - 1] + '%' 
+        : '—';
+      document.getElementById('prec-accuracy').textContent = lastAcc;
 
-      // Mark current round dot
-      const dots = document.querySelectorAll('#prec-round-dots .round-dot');
-      dots.forEach((d, i) => { if (i === PrecisionState.currentRound) d.classList.add('active'); });
-
-      // Reset light visuals
-      const light1 = document.getElementById('prec-light1');
-      const light2 = document.getElementById('prec-light2');
-      light1.classList.remove('stopped', 'perfect');
-      light2.classList.remove('stopped', 'perfect');
-      light1.style.display = 'block';
-      light2.style.display = 'block';
-
-      const stopBtn = document.getElementById('btn-precision-stop');
-      stopBtn.disabled = false;
-      stopBtn.textContent = 'STOP';
-
-      PrecisionState.running = true;
-
-      // Key handler
-      if (PrecisionState.keyHandler) document.removeEventListener('keydown', PrecisionState.keyHandler);
-      PrecisionState.keyHandler = function (e) {
-        if (e.key === ' ' || e.key === 'Enter') {
-          e.preventDefault();
-          if (!e.repeat) precisionStopLight();
-        }
-      };
-      document.addEventListener('keydown', PrecisionState.keyHandler);
-
-      precisionAnimate();
-    }
-
-    function precisionAnimate() {
-      if (!PrecisionState.running) return;
-
-      const track = document.getElementById('prec-track');
-      const trackWidth = track.offsetWidth;
-      const lightSize = 44;
-      const maxPos = trackWidth - lightSize;
-
-      for (let i = 0; i < 2; i++) {
-        if (!PrecisionState.lightsStopped[i]) {
-          PrecisionState.lightPositions[i] += PrecisionState.speed * PrecisionState.lightDirections[i];
-          if (PrecisionState.lightPositions[i] >= maxPos) { PrecisionState.lightPositions[i] = maxPos; PrecisionState.lightDirections[i] = -1; }
-          if (PrecisionState.lightPositions[i] <= 0) { PrecisionState.lightPositions[i] = 0; PrecisionState.lightDirections[i] = 1; }
+      // Update round pills
+      for (let i = 0; i < PrecisionState.totalRounds; i++) {
+        const pill = document.getElementById(`round-pill-${i}`);
+        if (!pill) continue;
+        if (i === PrecisionState.currentRound) {
+          pill.className = 'round-pill active';
+          pill.textContent = `Round ${i + 1} ⏱`;
+        } else if (i < PrecisionState.currentRound) {
+          const tier = PrecisionState.roundTiers[i] || 'good';
+          const score = PrecisionState.roundScores[i] || 0;
+          pill.className = `round-pill done-${tier}`;
+          pill.textContent = `R${i + 1}: +${score}`;
+        } else {
+          pill.className = 'round-pill';
+          pill.textContent = `Round ${i + 1}`;
         }
       }
 
-      document.getElementById('prec-light1').style.left = PrecisionState.lightPositions[0] + 'px';
-      document.getElementById('prec-light2').style.left = PrecisionState.lightPositions[1] + 'px';
+      // Reset Diya position to starting edge
+      const track = document.getElementById('prec-track');
+      const trackWidth = track.clientWidth || 580;
+      const diyaEl = document.getElementById('prec-moving-diya');
+      diyaEl.className = 'precision-moving-diya';
+      
+      const startFromLeft = (PrecisionState.currentRound % 2 === 0);
+      PrecisionState.movingDiyaDirection = startFromLeft ? 1 : -1;
+      PrecisionState.movingDiyaX = startFromLeft ? 10 : Math.max(0, trackWidth - PrecisionState.diyaWidth - 10);
+      diyaEl.style.left = PrecisionState.movingDiyaX + 'px';
 
-      PrecisionState.animFrame = requestAnimationFrame(precisionAnimate);
+      // Reset feedback
+      const badge = document.getElementById('prec-feedback-badge');
+      badge.style.color = 'var(--text-secondary)';
+      badge.textContent = 'Get ready to match the target silhouette!';
+      document.getElementById('prec-feedback-details').textContent = '';
+
+      // Reset stop button to ready state
+      const stopBtn = document.getElementById('btn-precision-stop');
+      stopBtn.className = 'precision-stop-btn';
+      stopBtn.disabled = true;
+      stopBtn.textContent = 'READY';
+
+      // Run 3-2-1-MATCH Countdown
+      const overlay = document.getElementById('prec-countdown-overlay');
+      const countNum = document.getElementById('prec-countdown-num');
+      overlay.style.display = 'flex';
+      let count = 3;
+      countNum.textContent = count;
+
+      if (PrecisionState.countdownTimer) clearInterval(PrecisionState.countdownTimer);
+      PrecisionState.countdownTimer = setInterval(() => {
+        count--;
+        if (count > 0) {
+          countNum.textContent = count;
+        } else if (count === 0) {
+          countNum.textContent = 'MATCH!';
+        } else {
+          clearInterval(PrecisionState.countdownTimer);
+          PrecisionState.countdownTimer = null;
+          overlay.style.display = 'none';
+
+          // Activate Gameplay
+          PrecisionState.state = 'playing';
+          stopBtn.disabled = false;
+          stopBtn.textContent = 'STOP';
+
+          // Key listeners
+          if (PrecisionState.keyHandler) document.removeEventListener('keydown', PrecisionState.keyHandler);
+          PrecisionState.keyHandler = function (e) {
+            if (e.key === ' ' || e.key === 'Enter') {
+              e.preventDefault();
+              if (e.repeat) return;
+              if (PrecisionState.state === 'playing') {
+                precisionTriggerStop();
+              } else if (PrecisionState.state === 'round-result') {
+                precisionContinueNext();
+              }
+            }
+          };
+          document.addEventListener('keydown', PrecisionState.keyHandler);
+
+          // Launch animation loop
+          precisionLoop();
+        }
+      }, 700);
     }
 
-    document.getElementById('btn-precision-stop').addEventListener('click', precisionStopLight);
+    function precisionLoop() {
+      if (PrecisionState.state !== 'playing') return;
 
-    function precisionStopLight() {
-      if (!PrecisionState.running) return;
-
-      const stopIndex = PrecisionState.currentStop;
-      if (stopIndex >= 2) return;
-
-      PrecisionState.lightsStopped[stopIndex] = true;
-      const lightEl = document.getElementById(`prec-light${stopIndex + 1}`);
-      lightEl.classList.add('stopped');
-
-      // Calculate distance from center
       const track = document.getElementById('prec-track');
-      const trackWidth = track.offsetWidth;
-      const targetCenter = trackWidth / 2;
-      const lightCenter = PrecisionState.lightPositions[stopIndex] + 12;
-      const distance = Math.abs(lightCenter - targetCenter);
-      const maxDist = trackWidth / 2;
-      const accuracyPct = Math.max(0, Math.round((1 - distance / maxDist) * 100));
+      if (!track) return;
+      const trackWidth = track.clientWidth;
+      const maxPos = Math.max(0, trackWidth - PrecisionState.diyaWidth);
 
+      PrecisionState.movingDiyaX += PrecisionState.currentSpeed * PrecisionState.movingDiyaDirection;
+
+      if (PrecisionState.movingDiyaX >= maxPos) {
+        PrecisionState.movingDiyaX = maxPos;
+        PrecisionState.movingDiyaDirection = -1;
+      } else if (PrecisionState.movingDiyaX <= 0) {
+        PrecisionState.movingDiyaX = 0;
+        PrecisionState.movingDiyaDirection = 1;
+      }
+
+      const diyaEl = document.getElementById('prec-moving-diya');
+      if (diyaEl) {
+        diyaEl.style.left = PrecisionState.movingDiyaX + 'px';
+      }
+
+      PrecisionState.animFrame = requestAnimationFrame(precisionLoop);
+    }
+
+    // Trigger STOP on button click
+    document.getElementById('btn-precision-stop').addEventListener('click', () => {
+      if (PrecisionState.state === 'playing') {
+        precisionTriggerStop();
+      } else if (PrecisionState.state === 'round-result') {
+        precisionContinueNext();
+      }
+    });
+
+    function precisionTriggerStop() {
+      if (PrecisionState.state !== 'playing' || PrecisionState.isStopLocked) return;
+      PrecisionState.isStopLocked = true;
+      PrecisionState.state = 'round-result';
+
+      if (PrecisionState.animFrame) {
+        cancelAnimationFrame(PrecisionState.animFrame);
+        PrecisionState.animFrame = null;
+      }
+
+      const track = document.getElementById('prec-track');
+      const trackWidth = track.clientWidth || 580;
+      const targetCenterX = trackWidth / 2;
+      const movingDiyaCenterX = PrecisionState.movingDiyaX + (PrecisionState.diyaWidth / 2);
+      const distance = Math.abs(movingDiyaCenterX - targetCenterX);
+      const distancePercent = (distance / trackWidth) * 100;
+
+      const cfg = DIYA_MATCH_CONFIG[PrecisionState.difficulty];
+      let tier = 'miss';
       let points = 0;
       let label = '';
       let color = '';
-      if (distance <= 5) { points = 1000; label = '🎯 PERFECT!'; color = 'var(--success)'; lightEl.classList.add('perfect'); }
-      else if (distance <= 20) { points = 750; label = '🌟 Excellent!'; color = 'var(--success)'; }
-      else if (distance <= 45) { points = 500; label = '👍 Good!'; color = 'var(--primary)'; }
-      else if (distance <= 80) { points = 250; label = '🔵 Near miss'; color = 'var(--warning)'; }
-      else { points = 0; label = '❌ Missed'; color = 'var(--error)'; lightEl.style.animation = ''; lightEl.classList.add('animate-shake'); }
 
-      PrecisionState.scores.push({ distance, accuracy: accuracyPct, points });
-
-      const feedback = document.getElementById('prec-feedback');
-      feedback.style.color = color;
-      feedback.textContent = `${label} — ${accuracyPct}% accuracy (+${points} pts)`;
-
-      PrecisionState.currentStop++;
-
-      if (PrecisionState.currentStop >= 2) {
-        // Round complete
-        PrecisionState.running = false;
-        if (PrecisionState.animFrame) { cancelAnimationFrame(PrecisionState.animFrame); PrecisionState.animFrame = null; }
-        if (PrecisionState.keyHandler) { document.removeEventListener('keydown', PrecisionState.keyHandler); PrecisionState.keyHandler = null; }
-
-        const roundTotal = PrecisionState.scores.slice(-2).reduce((a, s) => a + s.points, 0);
-        PrecisionState.roundScores.push(roundTotal);
-        PrecisionState.totalScore += roundTotal;
-        document.getElementById('prec-score').textContent = PrecisionState.totalScore;
-        document.getElementById('prec-accuracy').textContent = accuracyPct + '%';
-
-        // Update dot
-        const dots = document.querySelectorAll('#prec-round-dots .round-dot');
-        const dot = dots[PrecisionState.currentRound];
-        dot.classList.remove('active');
-        if (roundTotal >= 1500) dot.classList.add('done');
-        else if (roundTotal >= 500) dot.classList.add('poor');
-        else dot.classList.add('miss');
-
-        const stopBtn = document.getElementById('btn-precision-stop');
-        stopBtn.disabled = true;
-
-        PrecisionState.currentRound++;
-
-        if (PrecisionState.currentRound >= PrecisionState.totalRounds) {
-          setTimeout(precisionShowResults, 1200);
-        } else {
-          stopBtn.textContent = 'NEXT ▶';
-          stopBtn.disabled = false;
-          stopBtn.onclick = function () {
-            stopBtn.onclick = null;
-            stopBtn.removeEventListener('click', precisionStopLight);
-            document.getElementById('btn-precision-stop').addEventListener('click', precisionStopLight);
-            precisionStartRound();
-          };
-        }
+      if (distancePercent <= cfg.perfectPct) {
+        tier = 'perfect';
+        points = 1000;
+        label = '🎯 PERFECT MATCH!';
+        color = '#D97706';
+        PrecisionState.perfectCount++;
+      } else if (distancePercent <= cfg.excellentPct) {
+        tier = 'excellent';
+        points = 750;
+        label = '🌟 EXCELLENT MATCH!';
+        color = '#16A34A';
+        PrecisionState.excellentCount++;
+      } else if (distancePercent <= cfg.goodPct) {
+        tier = 'good';
+        points = 500;
+        label = '👍 GOOD MATCH!';
+        color = '#0284C7';
+      } else if (distancePercent <= cfg.nearMissPct) {
+        tier = 'near';
+        points = 250;
+        label = '🔵 NEAR MISS!';
+        color = '#F59E0B';
       } else {
-        const stopBtn = document.getElementById('btn-precision-stop');
-        stopBtn.textContent = 'STOP #2';
+        tier = 'miss';
+        points = 0;
+        label = '❌ MISSED TARGET';
+        color = '#DC2626';
+      }
+
+      // Calculate transparent normalized accuracy percentage
+      const maxScoringPercent = cfg.nearMissPct * 1.25;
+      const accuracyPct = Math.max(0, Math.min(100, Math.round((1 - (distancePercent / maxScoringPercent)) * 100)));
+
+      PrecisionState.totalScore += points;
+      PrecisionState.roundScores.push(points);
+      PrecisionState.roundAccuracies.push(accuracyPct);
+      PrecisionState.roundDistances.push(Math.round(distance));
+      PrecisionState.roundTiers.push(tier);
+
+      // Apply outcome visual state to moving Diya
+      const diyaEl = document.getElementById('prec-moving-diya');
+      diyaEl.className = `precision-moving-diya matched-${tier}`;
+
+      // Trigger sparkle burst if Perfect
+      if (tier === 'perfect') {
+        const sparkle = document.getElementById('prec-sparkle-box');
+        if (sparkle) {
+          sparkle.style.animation = 'none';
+          void sparkle.offsetWidth; // retrigger
+          sparkle.style.animation = 'sparkleBurst 1.2s forwards ease-out';
+        }
+      }
+
+      // Update Feedback Panel
+      const feedbackBadge = document.getElementById('prec-feedback-badge');
+      feedbackBadge.style.color = color;
+      feedbackBadge.innerHTML = `${label} <span style="font-size:17px;font-weight:800;">(+${points} pts)</span>`;
+
+      const feedbackDetails = document.getElementById('prec-feedback-details');
+      feedbackDetails.innerHTML = `Alignment Accuracy: <strong>${accuracyPct}%</strong> &bull; Distance from center: <strong>${Math.round(distance)}px</strong> (${distancePercent.toFixed(1)}%)`;
+
+      // Update HUD
+      document.getElementById('prec-score').textContent = `${PrecisionState.totalScore} pts`;
+      document.getElementById('prec-accuracy').textContent = `${accuracyPct}%`;
+
+      // Update current round pill
+      const pill = document.getElementById(`round-pill-${PrecisionState.currentRound}`);
+      if (pill) {
+        pill.className = `round-pill done-${tier}`;
+        pill.textContent = `R${PrecisionState.currentRound + 1}: +${points}`;
+      }
+
+      // Transform STOP button into CONTINUE button
+      const stopBtn = document.getElementById('btn-precision-stop');
+      stopBtn.className = 'precision-stop-btn btn-continue';
+      stopBtn.disabled = false;
+      if (PrecisionState.currentRound < PrecisionState.totalRounds - 1) {
+        stopBtn.textContent = `CONTINUE TO ROUND ${PrecisionState.currentRound + 2} ▶`;
+      } else {
+        stopBtn.textContent = `VIEW FINAL RESULTS 🏆`;
+      }
+    }
+
+    function precisionContinueNext() {
+      if (PrecisionState.state !== 'round-result') return;
+      PrecisionState.currentRound++;
+
+      if (PrecisionState.currentRound < PrecisionState.totalRounds) {
+        precisionStartRound();
+      } else {
+        PrecisionState.state = 'completed';
+        precisionShowResults();
       }
     }
 
     function precisionShowResults() {
+      precisionCleanup();
+      PrecisionState.state = 'completed';
       document.getElementById('precision-game-view').style.display = 'none';
       document.getElementById('precision-result-view').style.display = 'flex';
 
       const total = PrecisionState.totalScore;
-      const maxPossible = PrecisionState.totalRounds * 2000;
-      const avgAccuracy = Math.round(PrecisionState.scores.reduce((a, s) => a + s.accuracy, 0) / PrecisionState.scores.length);
-      const bestRound = Math.max(...PrecisionState.roundScores);
+      const maxPossible = PrecisionState.totalRounds * 1000;
+      const avgAccuracy = PrecisionState.roundAccuracies.length > 0
+        ? Math.round(PrecisionState.roundAccuracies.reduce((a, b) => a + b, 0) / PrecisionState.totalRounds)
+        : 0;
+      const bestRoundScore = PrecisionState.roundScores.length > 0
+        ? Math.max(...PrecisionState.roundScores)
+        : 0;
 
-      let icon = '🎯', msg = 'Incredible precision!';
-      if (total < maxPossible * 0.3) { icon = '🔄'; msg = 'Keep practicing! You\'ll get better.'; }
-      else if (total < maxPossible * 0.5) { icon = '👍'; msg = 'Good effort! Room for improvement.'; }
-      else if (total < maxPossible * 0.75) { icon = '🌟'; msg = 'Great performance!'; }
+      let icon = '🏆';
+      let praise = 'Diya Master! Flawless Timing!';
+      if (total >= 4500) {
+        icon = '🏆';
+        praise = 'Diya Master! Flawless Reflexes & Pinpoint Timing!';
+      } else if (total >= 3500) {
+        icon = '🌟';
+        praise = 'Outstanding Precision! Superb Reflexes!';
+      } else if (total >= 2500) {
+        icon = '👍';
+        praise = 'Great Match Timing! Impressive Focus!';
+      } else {
+        icon = '⚡';
+        praise = 'Good Effort! Keep practicing to master the target!';
+      }
 
-      // Update best
+      // Update session best score
       if (total > App.sessionScores.precision.best) {
         App.sessionScores.precision.best = total;
         saveSession();
       }
       App.sessionScores.precision.games.push({
-        score: total, difficulty: PrecisionState.difficulty,
-        rounds: PrecisionState.totalRounds, timestamp: new Date().toISOString()
+        score: total,
+        difficulty: PrecisionState.difficulty,
+        rounds: PrecisionState.totalRounds,
+        accuracy: avgAccuracy,
+        timestamp: new Date().toISOString()
       });
 
+      // Update Dashboard badge
+      const dashBest = document.getElementById('dash-best-precision');
+      if (dashBest) dashBest.textContent = App.sessionScores.precision.best + ' pts';
+
+      // Render Final Results Panel
       document.getElementById('precision-result-panel').innerHTML = `
-    <div class="result-icon">${icon}</div>
-    <h2>Game Complete!</h2>
-    <div class="result-message">${msg}</div>
-    <div class="result-stats">
-      <div class="result-stat"><div class="stat-value">${total}</div><div class="stat-label">Total Score</div></div>
-      <div class="result-stat"><div class="stat-value">${avgAccuracy}%</div><div class="stat-label">Avg Accuracy</div></div>
-      <div class="result-stat"><div class="stat-value">${bestRound}</div><div class="stat-label">Best Round</div></div>
-      <div class="result-stat"><div class="stat-value">${PrecisionState.difficulty}</div><div class="stat-label">Difficulty</div></div>
-    </div>
-    <div style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;">Session Best: <strong>${App.sessionScores.precision.best} pts</strong></div>
-    <div class="result-actions">
-      <button class="btn btn-primary btn-game" onclick="precisionReplay()">Play Again</button>
-      <button class="btn btn-outline btn-game" onclick="openDashboard()">Back to Games</button>
-    </div>
-  `;
+        <div class="result-icon">${icon}</div>
+        <h2>Challenge Complete!</h2>
+        <div class="result-message" style="color:#D97706;font-size:16px;font-weight:700;">${praise}</div>
+        
+        <div style="margin: 16px 0 20px; font-size:32px; font-weight:900; color:var(--navy);">
+          ${total} <span style="font-size:16px; font-weight:600; color:var(--text-secondary);">/ ${maxPossible} pts</span>
+        </div>
+
+        <div class="result-stats">
+          <div class="result-stat">
+            <div class="stat-value">${avgAccuracy}%</div>
+            <div class="stat-label">Avg Accuracy</div>
+          </div>
+          <div class="result-stat">
+            <div class="stat-value">${PrecisionState.perfectCount}</div>
+            <div class="stat-label">Perfect Stops</div>
+          </div>
+          <div class="result-stat">
+            <div class="stat-value">${PrecisionState.excellentCount}</div>
+            <div class="stat-label">Excellent Stops</div>
+          </div>
+          <div class="result-stat">
+            <div class="stat-value">${bestRoundScore}</div>
+            <div class="stat-label">Best Round</div>
+          </div>
+          <div class="result-stat">
+            <div class="stat-value" style="text-transform:capitalize;">${PrecisionState.difficulty}</div>
+            <div class="stat-label">Difficulty</div>
+          </div>
+          <div class="result-stat">
+            <div class="stat-value">${PrecisionState.totalRounds}/${PrecisionState.totalRounds}</div>
+            <div class="stat-label">Rounds Done</div>
+          </div>
+        </div>
+
+        <div style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;">
+          Session Best: <strong style="color:#D97706;">${App.sessionScores.precision.best} pts</strong>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn btn-primary btn-game" onclick="precisionReplay()">Play Again</button>
+          <button class="btn btn-secondary btn-game" onclick="precisionChangeDifficulty()">Change Difficulty</button>
+          <button class="btn btn-outline btn-game" onclick="openDashboard()">Back to Games</button>
+        </div>
+      `;
     }
 
     window.precisionReplay = function () {
       precisionCleanup();
       App.activeGame = 'precision';
-      precisionInit();
       precisionStartGame();
+    };
+
+    window.precisionChangeDifficulty = function () {
+      precisionCleanup();
+      App.activeGame = 'precision';
+      precisionInit();
     };
 
     /* =============================================
@@ -3722,6 +5152,151 @@
     };
 
     /* =============================================
+       FESTIVE CONFETTI & ATMOSPHERE ENGINE
+       ============================================= */
+    function initFestiveAtmosphere() {
+      const canvas = document.getElementById('festive-confetti-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let width = window.innerWidth;
+      let height = window.innerHeight;
+      let animId = null;
+      let particles = [];
+      const PARTICLE_COUNT = 55;
+
+      const festiveColors = [
+        '#FFD700', '#FFB300', '#FF8F00', '#FF5722',
+        '#E53935', '#D81B60', '#8E24AA', '#00B0FF',
+        '#00C853', '#FFF176'
+      ];
+
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+      }
+
+      function createParticle(randomY) {
+        const rand = Math.random();
+        const type = rand < 0.60 ? 'confetti' : (rand < 0.85 ? 'sparkle' : 'orb');
+        return {
+          type: type,
+          x: Math.random() * width,
+          y: randomY ? Math.random() * height : -20 - Math.random() * 30,
+          w: 6 + Math.random() * 6,
+          h: 8 + Math.random() * 7,
+          size: 6 + Math.random() * 6,
+          color: festiveColors[Math.floor(Math.random() * festiveColors.length)],
+          vy: 1.1 + Math.random() * 1.8,
+          vx: (Math.random() - 0.5) * 0.7,
+          tilt: Math.random() * Math.PI * 2,
+          tiltSpeed: 0.03 + Math.random() * 0.05,
+          sway: Math.random() * Math.PI * 2,
+          swaySpeed: 0.015 + Math.random() * 0.025,
+          swayRadius: 0.8 + Math.random() * 1.2,
+          alpha: 0.7 + Math.random() * 0.3,
+          twinkle: Math.random() * Math.PI * 2,
+          twinkleSpeed: 0.04 + Math.random() * 0.05
+        };
+      }
+
+      function initParticles() {
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+          particles.push(createParticle(true));
+        }
+      }
+
+      function drawSparkle(p, x, y, size, alpha) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        for (let i = 0; i < 4; i++) {
+          const a = (i * Math.PI) / 2;
+          ctx.lineTo(Math.cos(a) * size, Math.sin(a) * size);
+          const na = a + Math.PI / 4;
+          ctx.lineTo(Math.cos(na) * (size * 0.24), Math.sin(na) * (size * 0.24));
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function render() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.y += p.vy;
+          p.sway += p.swaySpeed;
+          p.x += Math.sin(p.sway) * p.swayRadius + p.vx;
+          p.tilt += p.tiltSpeed;
+          p.twinkle += p.twinkleSpeed;
+
+          // Recycle when out of bounds
+          if (p.y > height + 25 || p.x < -30 || p.x > width + 30) {
+            particles[i] = createParticle(false);
+            continue;
+          }
+
+          if (p.type === 'confetti') {
+            ctx.save();
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.sway * 0.6);
+            ctx.scale(1, Math.cos(p.tilt));
+            ctx.globalAlpha = p.alpha;
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+            ctx.restore();
+          } else if (p.type === 'sparkle') {
+            const sparkleAlpha = Math.max(0.25, (Math.sin(p.twinkle) + 1) / 2 * p.alpha);
+            drawSparkle(p, p.x, p.y, p.size, sparkleAlpha);
+          } else {
+            // Golden warm orb
+            ctx.save();
+            ctx.globalAlpha = p.alpha * 0.6;
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+
+        animId = requestAnimationFrame(render);
+      }
+
+      // Check motion preference
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      resize();
+      initParticles();
+      animId = requestAnimationFrame(render);
+
+      window.addEventListener('resize', () => {
+        resize();
+      });
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (animId) cancelAnimationFrame(animId);
+        } else {
+          animId = requestAnimationFrame(render);
+        }
+      });
+    }
+
+    /* =============================================
        INITIALIZATION
        ============================================= */
     (function init() {
@@ -3732,6 +5307,9 @@
 
       // Generate puzzle images early
       generatePuzzleImages();
+
+      // Launch festive atmosphere
+      initFestiveAtmosphere();
     })();
   </script>
 </body>
