@@ -1,0 +1,3739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description"
+    content="PLAY ARENA - Interactive promotional gaming platform with three exciting mini-games. Register and compete!">
+  <title>PLAY ARENA — Promotional Gaming Platform</title>
+  <style>
+    /* ===== CSS Custom Properties ===== */
+    :root {
+      --primary: #0866D5;
+      --primary-hover: #0654B0;
+      --primary-light: #E8F2FF;
+      --navy: #10264D;
+      --navy-dark: #0A1A35;
+      --bg: #F5F8FC;
+      --surface: #FFFFFF;
+      --text: #17233C;
+      --text-secondary: #667085;
+      --success: #16A34A;
+      --success-light: #DCFCE7;
+      --warning: #F59E0B;
+      --warning-light: #FEF3C7;
+      --error: #DC2626;
+      --error-light: #FEE2E2;
+      --border: #E2E8F0;
+      --border-focus: #0866D5;
+      --pong-bg: #07111F;
+      --pong-glow: #38BDF8;
+      --precision-light: #F5C451;
+      --precision-glow: #FFD97A;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+      --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --transition: 0.25s ease;
+    }
+
+    /* ===== Reset & Base ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ===== Screen Management ===== */
+    .screen {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== Buttons ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      user-select: none;
+      white-space: nowrap;
+      outline: none;
+      position: relative;
+    }
+
+    .btn:focus-visible {
+      box-shadow: 0 0 0 3px rgba(8, 102, 213, 0.3);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:disabled {
+      background: #94A3B8;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-secondary {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: #D4E6FF;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-success {
+      background: var(--success);
+      color: #fff;
+    }
+
+    .btn-success:hover {
+      background: #15803D;
+    }
+
+    .btn-danger {
+      background: var(--error);
+      color: #fff;
+    }
+
+    .btn-danger:hover {
+      background: #B91C1C;
+    }
+
+    .btn-lg {
+      padding: 16px 32px;
+      font-size: 17px;
+      border-radius: var(--radius-lg);
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+
+    .btn-icon {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .btn-game {
+      padding: 14px 28px;
+      font-size: 16px;
+      border-radius: var(--radius-lg);
+      letter-spacing: 0.3px;
+    }
+
+    /* ===== Form Elements ===== */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .form-label .required {
+      color: var(--error);
+      margin-left: 2px;
+    }
+
+    .form-input,
+    .form-select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-family: var(--font);
+      color: var(--text);
+      background: var(--surface);
+      transition: border-color var(--transition);
+      outline: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--border-focus);
+    }
+
+    .form-input.valid {
+      border-color: var(--success);
+    }
+
+    .form-input.invalid {
+      border-color: var(--error);
+    }
+
+    .form-error {
+      color: var(--error);
+      font-size: 13px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .form-error.visible {
+      display: block;
+    }
+
+    .form-success-text {
+      color: var(--success);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .phone-input-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .phone-input-group .form-select {
+      width: 130px;
+      flex-shrink: 0;
+    }
+
+    .phone-input-group .form-input {
+      flex: 1;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      cursor: pointer;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .checkbox-group label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    /* ===== Cards ===== */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+      overflow: hidden;
+    }
+
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    /* ===== Badges ===== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-easy {
+      background: var(--success-light);
+      color: var(--success);
+    }
+
+    .badge-medium {
+      background: var(--warning-light);
+      color: #B45309;
+    }
+
+    .badge-hard {
+      background: var(--error-light);
+      color: var(--error);
+    }
+
+    /* ===== Progress Bar ===== */
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--primary), var(--pong-glow));
+      transition: width 0.4s ease;
+    }
+
+    /* ===== Notification Toast ===== */
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast {
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: var(--shadow-lg);
+      transform: translateX(120%);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      max-width: 360px;
+    }
+
+    .toast.show {
+      transform: translateX(0);
+    }
+
+    .toast-success {
+      background: var(--success);
+    }
+
+    .toast-error {
+      background: var(--error);
+    }
+
+    .toast-info {
+      background: var(--primary);
+    }
+
+    /* ===== Modal ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 9000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: var(--shadow-xl);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal h3 {
+      font-size: 20px;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .modal-detail {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    .modal-detail:last-child {
+      border-bottom: none;
+    }
+
+    .modal-detail .label {
+      color: var(--text-secondary);
+    }
+
+    .modal-detail .value {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ===== Timer Display ===== */
+    .timer-display {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--navy);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ===== Score Panel ===== */
+    .score-panel {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 16px;
+      background: var(--primary-light);
+      border-radius: var(--radius-lg);
+    }
+
+    .score-item {
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .score-item .score-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .score-item .score-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== Result Panel ===== */
+    .result-panel {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .result-panel .result-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    .result-panel h2 {
+      font-size: 28px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .result-panel .result-message {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .result-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+      padding: 20px;
+      background: var(--bg);
+      border-radius: var(--radius-lg);
+    }
+
+    .result-stat {
+      text-align: center;
+    }
+
+    .result-stat .stat-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .result-stat .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================
+   SCREEN: REGISTRATION
+   ============================================ */
+    #screen-register {
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      background: linear-gradient(135deg, var(--bg) 0%, #E0ECFA 100%);
+    }
+
+    .register-container {
+      max-width: 460px;
+      width: 100%;
+    }
+
+    .register-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .register-header .brand-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .register-header .brand-icon svg {
+      width: 36px;
+      height: 36px;
+      fill: #fff;
+    }
+
+    .register-header h1 {
+      font-size: 28px;
+      color: var(--navy);
+      letter-spacing: 1px;
+    }
+
+    .register-header p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    .register-card {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .privacy-notice {
+      margin-top: 16px;
+      padding: 12px;
+      background: var(--primary-light);
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .privacy-notice strong {
+      color: var(--text);
+    }
+
+    /* ============================================
+   SCREEN: DASHBOARD
+   ============================================ */
+    #screen-dashboard {
+      background: var(--bg);
+    }
+
+    .dashboard-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      padding: 28px 24px 24px;
+      color: #fff;
+    }
+
+    .dashboard-header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .dashboard-brand h1 {
+      font-size: 26px;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
+    .dashboard-brand p {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
+    .dashboard-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dashboard-user-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .dashboard-user-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dashboard-user-name {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .dashboard-user-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .dashboard-user-actions button {
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: rgba(255, 255, 255, 0.8);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .dashboard-user-actions button:hover {
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
+
+    .dashboard-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    .dashboard-content h2 {
+      font-size: 22px;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .dashboard-content>p {
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .game-card {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .game-card-illustration {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-card-body {
+      padding: 20px;
+    }
+
+    .game-card-body h3 {
+      font-size: 18px;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .game-card-body p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .game-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .game-card-best {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .game-card-best span {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Game 1 illustration */
+    .game1-illust {
+      background: linear-gradient(135deg, #FFF7E6 0%, #FFECC0 100%);
+    }
+
+    .game1-illust .diya-track {
+      width: 80%;
+      height: 4px;
+      background: rgba(16, 38, 77, 0.15);
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .game1-illust .diya-target {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 3px;
+      height: 40px;
+      background: var(--navy);
+      opacity: 0.3;
+    }
+
+    .game1-illust .diya-light {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 32px;
+      height: 32px;
+      animation: diyaMove 2.5s ease-in-out infinite alternate;
+    }
+
+    .game1-illust .diya-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 10px rgba(245, 196, 81, 0.4));
+    }
+
+    .game1-illust .diya-light:nth-child(4) {
+      animation-delay: -1.2s;
+      animation-direction: alternate-reverse;
+    }
+
+    @keyframes diyaMove {
+      0% {
+        left: 10%;
+      }
+
+      100% {
+        left: calc(90% - 18px);
+      }
+    }
+
+    /* Game 2 illustration */
+    .game2-illust {
+      background: linear-gradient(135deg, var(--pong-bg) 0%, #0D1F38 100%);
+    }
+
+    .game2-illust .pong-field {
+      width: 80%;
+      height: 70%;
+      position: relative;
+      border: 2px solid rgba(56, 189, 248, 0.25);
+      border-radius: 4px;
+    }
+
+    .game2-illust .pong-center {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: repeating-linear-gradient(to bottom, rgba(56, 189, 248, 0.3) 0px, rgba(56, 189, 248, 0.3) 6px, transparent 6px, transparent 12px);
+    }
+
+    .game2-illust .pong-paddle {
+      position: absolute;
+      width: 6px;
+      height: 30px;
+      background: var(--pong-glow);
+      border-radius: 3px;
+      box-shadow: 0 0 10px var(--pong-glow);
+    }
+
+    .game2-illust .pong-paddle-l {
+      left: 8px;
+      top: 35%;
+    }
+
+    .game2-illust .pong-paddle-r {
+      right: 8px;
+      top: 50%;
+    }
+
+    .game2-illust .pong-ball {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #fff;
+      top: 45%;
+      left: 55%;
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.7);
+      animation: pongBallBounce 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pongBallBounce {
+      0% {
+        top: 20%;
+        left: 30%;
+      }
+
+      100% {
+        top: 65%;
+        left: 65%;
+      }
+    }
+
+    /* Game 3 illustration */
+    .game3-illust {
+      background: linear-gradient(135deg, #EEF4FF 0%, #DBEAFE 100%);
+    }
+
+    .game3-illust .jig-piece {
+      stroke: rgba(255, 255, 255, 0.6);
+      stroke-width: 1px;
+      filter: drop-shadow(1px 2px 3px rgba(16, 38, 77, 0.25));
+      transition: all 0.4s ease;
+    }
+
+    .game-card:hover .jig-tl { transform: translate(-3px, -3px); }
+    .game-card:hover .jig-bl { transform: translate(-3px, 3px); }
+    .game-card:hover .jig-tr { transform: translate(3px, -3px); }
+
+    @keyframes puzzleAssemble {
+      0%, 15% { transform: translate(18px, 18px) rotate(12deg); filter: drop-shadow(6px 10px 8px rgba(16, 38, 77, 0.3)); }
+      40%, 75% { transform: translate(0, 0) rotate(0deg); filter: drop-shadow(1px 1px 1px rgba(16, 38, 77, 0.3)); }
+      100% { transform: translate(18px, 18px) rotate(12deg); filter: drop-shadow(6px 10px 8px rgba(16, 38, 77, 0.3)); }
+    }
+
+    @keyframes puzzleFloat {
+      0%, 100% { transform: translate(18px, 18px) rotate(12deg); }
+      50% { transform: translate(15px, 14px) rotate(9deg); }
+    }
+
+    @keyframes puzzleGlow {
+      0%, 35% { filter: drop-shadow(0 0 0px rgba(22, 163, 74, 0)); }
+      45%, 70% { filter: drop-shadow(0 0 15px rgba(22, 163, 74, 0.6)); }
+      80%, 100% { filter: drop-shadow(0 0 0px rgba(22, 163, 74, 0)); }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .game3-illust .jig-br {
+        animation: puzzleAssemble 5s infinite cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .game-card:hover .game3-illust .jig-br {
+        animation: puzzleFloat 2.5s infinite ease-in-out;
+      }
+      .game3-illust svg {
+        animation: puzzleGlow 5s infinite ease-in-out;
+      }
+      .game-card:hover .game3-illust svg {
+        animation: none;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .game3-illust .jig-br {
+        transform: translate(10px, 10px) rotate(5deg);
+      }
+    }
+
+    /* ============================================
+   SCREEN: PRECISION STOP GAME
+   ============================================ */
+    #screen-precision-stop {
+      background: linear-gradient(180deg, #FFF9ED 0%, #FFF3D6 50%, #FFF9ED 100%);
+    }
+
+    .game-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .game-top-bar h2 {
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .precision-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 24px;
+    }
+
+    .precision-info-bar {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .precision-info-item {
+      text-align: center;
+    }
+
+    .precision-info-item .info-value {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .precision-info-item .info-label {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .precision-track-container {
+      width: 100%;
+      max-width: 600px;
+      position: relative;
+      padding: 40px 0;
+    }
+
+    .precision-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(16, 38, 77, 0.12);
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .precision-target {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 4px;
+      height: 60px;
+      background: var(--navy);
+      border-radius: 2px;
+      z-index: 2;
+    }
+
+    .precision-target::before {
+      content: '▼';
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+      color: var(--navy);
+    }
+
+    .precision-target-zone {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 50px;
+      background: rgba(22, 163, 74, 0.1);
+      border: 2px dashed rgba(22, 163, 74, 0.3);
+      border-radius: 4px;
+      z-index: 1;
+    }
+
+    .precision-light {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      z-index: 3;
+      cursor: default;
+    }
+
+    .diya-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 10px rgba(245, 196, 81, 0.4));
+      transition: filter 0.3s ease;
+    }
+
+    .precision-light.stopped .diya-svg {
+      filter: drop-shadow(0 0 5px rgba(245, 196, 81, 0.2));
+    }
+
+    .precision-light.perfect .diya-svg {
+      filter: drop-shadow(0 0 20px var(--success));
+    }
+
+    .precision-stop-btn {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--error), #B91C1C);
+      border: 4px solid #fff;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(220, 38, 38, 0.35);
+      transition: all 0.15s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+
+    .precision-stop-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(220, 38, 38, 0.45);
+    }
+
+    .precision-stop-btn:active {
+      transform: scale(0.95);
+    }
+
+    .precision-stop-btn:disabled {
+      background: #94A3B8;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+      border-color: #CBD5E1;
+    }
+
+    .precision-feedback {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      min-height: 30px;
+      transition: opacity 0.3s ease;
+    }
+
+    .precision-round-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .round-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background 0.3s ease;
+    }
+
+    .round-dot.active {
+      background: var(--primary);
+    }
+
+    .round-dot.done {
+      background: var(--success);
+    }
+
+    .round-dot.poor {
+      background: var(--warning);
+    }
+
+    .round-dot.miss {
+      background: var(--error);
+    }
+
+    /* Precision Stop Start Screen */
+    .precision-start {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 20px;
+    }
+
+    .precision-start h2 {
+      font-size: 32px;
+      color: var(--navy);
+    }
+
+    .precision-start p {
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 400px;
+    }
+
+    .difficulty-selector {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .difficulty-btn {
+      padding: 10px 24px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      color: var(--text);
+    }
+
+    .difficulty-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .difficulty-btn:hover {
+      border-color: var(--primary);
+    }
+
+    /* ============================================
+   SCREEN: LIGHT PONG GAME
+   ============================================ */
+    #screen-light-pong {
+      background: var(--pong-bg);
+    }
+
+    .pong-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .pong-top-bar h2 {
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .pong-top-bar .btn {
+      color: rgba(255, 255, 255, 0.7);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .pong-top-bar .btn:hover {
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .pong-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      gap: 12px;
+    }
+
+    .pong-hud {
+      display: flex;
+      gap: 32px;
+      color: #fff;
+      text-align: center;
+    }
+
+    .pong-hud-item .hud-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--pong-glow);
+    }
+
+    .pong-hud-item .hud-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pong-canvas-wrapper {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.1);
+    }
+
+    .pong-status {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7, 17, 31, 0.85);
+      color: #fff;
+      z-index: 5;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .pong-status h3 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .pong-status p {
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 20px;
+    }
+
+    .pong-status.hidden {
+      display: none;
+    }
+
+    .pong-controls-mobile {
+      display: none;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .pong-mobile-btn {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.15);
+      border: 2px solid rgba(56, 189, 248, 0.3);
+      color: var(--pong-glow);
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .pong-mobile-btn:active {
+      background: rgba(56, 189, 248, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .pong-controls-mobile {
+        display: flex;
+      }
+    }
+
+    /* Pong start/ready screen */
+    .pong-start-overlay {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 16px;
+      color: #fff;
+    }
+
+    .pong-start-overlay h2 {
+      font-size: 36px;
+      color: var(--pong-glow);
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .pong-start-overlay p {
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      max-width: 360px;
+    }
+
+    .pong-start-overlay .btn-primary {
+      background: var(--pong-glow);
+      color: var(--pong-bg);
+    }
+
+    .pong-start-overlay .btn-primary:hover {
+      background: #7DD3FC;
+    }
+
+    /* ============================================
+   SCREEN: JIGSAW PUZZLE
+   ============================================ */
+    #screen-jigsaw {
+      background: var(--bg);
+    }
+
+    .jigsaw-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+
+    .jigsaw-toolbar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 12px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+
+    .jigsaw-toolbar .toolbar-group {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .jigsaw-toolbar .toolbar-sep {
+      width: 1px;
+      height: 24px;
+      background: var(--border);
+      margin: 0 8px;
+    }
+
+    .jigsaw-stats-bar {
+      display: flex;
+      gap: 20px;
+      padding: 10px 24px;
+      background: var(--primary-light);
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .jigsaw-stat {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .jigsaw-stat span {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .jigsaw-main {
+      flex: 1;
+      display: flex;
+      gap: 16px;
+      padding: 16px 24px;
+      overflow: hidden;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .jigsaw-board-area {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .jigsaw-canvas-container {
+      position: relative;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #fff;
+      box-shadow: var(--shadow-md);
+    }
+
+    .jigsaw-pieces-tray {
+      width: 200px;
+      min-width: 160px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      overflow-y: auto;
+      max-height: 500px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .jigsaw-pieces-tray h4 {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .jigsaw-tray-pieces {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .jigsaw-piece-thumb {
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      cursor: grab;
+      transition: all var(--transition);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .jigsaw-piece-thumb:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: scale(1.05);
+    }
+
+    .jigsaw-piece-thumb.dragging {
+      opacity: 0.5;
+      cursor: grabbing;
+    }
+
+    .jigsaw-piece-thumb.highlighted {
+      border-color: var(--warning);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+    }
+
+    .jigsaw-piece-thumb.edge-piece {
+      border-color: var(--primary);
+    }
+
+    .jigsaw-preview-container {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      padding: 8px;
+      box-shadow: var(--shadow-lg);
+      z-index: 10;
+      display: none;
+      border: 1px solid var(--border);
+    }
+
+    .jigsaw-preview-container.visible {
+      display: block;
+    }
+
+    .jigsaw-preview-container img,
+    .jigsaw-preview-container canvas {
+      border-radius: 4px;
+      max-width: 180px;
+      max-height: 180px;
+    }
+
+    /* Jigsaw start screen */
+    .jigsaw-start {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 20px;
+    }
+
+    .jigsaw-start h2 {
+      font-size: 32px;
+      color: var(--navy);
+    }
+
+    .jigsaw-start p {
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 420px;
+    }
+
+    .image-selector {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .image-option {
+      width: 100px;
+      height: 100px;
+      border: 3px solid var(--border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-option canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-option.selected {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(8, 102, 213, 0.2);
+    }
+
+    .image-option:hover {
+      border-color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .jigsaw-main {
+        flex-direction: column;
+      }
+
+      .jigsaw-pieces-tray {
+        width: 100%;
+        max-height: 200px;
+      }
+
+      .phone-input-group {
+        flex-direction: column;
+      }
+
+      .phone-input-group .form-select {
+        width: 100%;
+      }
+
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dashboard-header-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .dashboard-user {
+        justify-content: center;
+      }
+
+      .precision-stop-btn {
+        width: 100px;
+        height: 100px;
+        font-size: 14px;
+      }
+
+      .score-panel {
+        gap: 12px;
+      }
+
+      .score-item .score-value {
+        font-size: 22px;
+      }
+
+      .result-panel {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .register-card {
+        padding: 20px;
+      }
+
+      .pong-hud {
+        gap: 16px;
+      }
+
+      .pong-hud-item .hud-value {
+        font-size: 22px;
+      }
+
+      .jigsaw-toolbar {
+        padding: 8px 12px;
+      }
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20%,
+      60% {
+        transform: translateX(-4px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(4px);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 20px var(--precision-glow);
+      }
+
+      50% {
+        box-shadow: 0 0 40px var(--precision-glow), 0 0 60px rgba(245, 196, 81, 0.2);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .animate-shake {
+      animation: shake 0.4s ease;
+    }
+
+    .animate-pulse {
+      animation: pulse 0.6s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <svg style="width:0; height:0; position:absolute; pointer-events:none;">
+    <defs>
+      <radialGradient id="flameGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fffbea" />
+        <stop offset="30%" stop-color="#ffdc5e" />
+        <stop offset="70%" stop-color="#fd8a04" />
+        <stop offset="100%" stop-color="#d93800" />
+      </radialGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+      <g id="shared-diya">
+        <path d="M 50 15 Q 65 40 50 55 Q 35 40 50 15 Z" fill="url(#flameGrad)" filter="url(#glow)"/>
+        <path d="M 15 50 Q 50 90 85 50 Z" fill="#b05c24" />
+        <ellipse cx="50" cy="50" rx="35" ry="12" fill="#d97a38" />
+        <ellipse cx="50" cy="50" rx="25" ry="6" fill="#8c4212" />
+      </g>
+    </defs>
+  </svg>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" id="modal-content"></div>
+  </div>
+
+  <!-- ============================================
+     SCREEN 1: Registration
+     ============================================ -->
+  <div class="screen active" id="screen-register">
+    <div class="register-container animate-fade-in">
+      <div class="register-header">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12l-9-9-9 9h3v8h5v-5h2v5h5v-8h3z" />
+          </svg>
+        </div>
+        <h1>PLAY ARENA</h1>
+        <p>Register to access the gaming challenges</p>
+      </div>
+      <div class="register-card">
+        <form id="registration-form" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Full Name <span class="required">*</span></label>
+            <input class="form-input" type="text" id="reg-name" name="fullName" placeholder="Enter your full name"
+              autocomplete="name" required>
+            <div class="form-error" id="error-name"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Mobile Number <span class="required">*</span></label>
+            <div class="phone-input-group">
+              <select class="form-select" id="reg-country-code" name="countryCode">
+                <option value="+91" data-digits="10">🇮🇳 +91</option>
+                <option value="+1" data-digits="10">🇺🇸 +1</option>
+                <option value="+44" data-digits="10">🇬🇧 +44</option>
+                <option value="+61" data-digits="9">🇦🇺 +61</option>
+                <option value="+81" data-digits="10">🇯🇵 +81</option>
+                <option value="+971" data-digits="9">🇦🇪 +971</option>
+                <option value="+65" data-digits="8">🇸🇬 +65</option>
+                <option value="+49" data-digits="11">🇩🇪 +49</option>
+              </select>
+              <input class="form-input" type="tel" id="reg-phone" name="phone" placeholder="Enter mobile number"
+                autocomplete="tel" required>
+            </div>
+            <div class="form-error" id="error-phone"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address <span class="required">*</span></label>
+            <input class="form-input" type="email" id="reg-email" name="email" placeholder="you@example.com"
+              autocomplete="email" required>
+            <div class="form-error" id="error-email"></div>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="reg-consent" name="consent" required>
+            <label for="reg-consent">I consent to participate in this event. I understand my information will be used
+              for event participation and results management during this session.</label>
+          </div>
+          <div class="form-error" id="error-consent" style="margin-left: 30px;"></div>
+
+          <div class="privacy-notice">
+            <strong>Privacy Notice:</strong> Your information is stored only in your browser for this session. No data
+            is transmitted to external servers. You can clear your session at any time.
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" id="btn-register" style="width: 100%; margin-top: 20px;">
+            Register &amp; Play
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+     SCREEN 2: Dashboard
+     ============================================ -->
+  <div class="screen" id="screen-dashboard">
+    <div class="dashboard-header">
+      <div class="dashboard-header-inner">
+        <div class="dashboard-brand">
+          <h1>PLAY ARENA</h1>
+          <p>Choose your challenge and win</p>
+        </div>
+        <div class="dashboard-user">
+          <div class="dashboard-user-avatar" id="dash-avatar"></div>
+          <div class="dashboard-user-info">
+            <span class="dashboard-user-name" id="dash-username"></span>
+            <div class="dashboard-user-actions">
+              <button id="btn-view-profile" title="View registration details">Profile</button>
+              <button id="btn-end-session" title="End session and return to registration">End Session</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-content animate-fade-in">
+      <h2>Available Games</h2>
+      <p>Select a game and start playing. Your best scores are tracked for this session.</p>
+      <div class="games-grid">
+        <!-- Game 1 Card -->
+        <div class="card game-card" id="card-precision" tabindex="0" role="button" aria-label="Play Precision Stop">
+          <div class="game-card-illustration game1-illust">
+            <div class="diya-track">
+              <div class="diya-target"></div>
+              <div class="diya-light">
+                <svg class="diya-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                  <use href="#shared-diya" />
+                </svg>
+              </div>
+              <div class="diya-light" style="animation-delay: -1.2s; animation-direction: alternate-reverse;">
+                <svg class="diya-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                  <use href="#shared-diya" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="game-card-body">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <h3>Precision Stop</h3>
+              <span class="badge badge-medium">Medium</span>
+            </div>
+            <p>Stop the moving lights at the perfect moment to achieve maximum alignment accuracy.</p>
+            <div class="game-card-meta">
+              <div class="game-card-best">Best: <span id="dash-best-precision">—</span></div>
+            </div>
+            <button class="btn btn-primary btn-game" style="width: 100%;">Play Now</button>
+          </div>
+        </div>
+        <!-- Game 2 Card -->
+        <div class="card game-card" id="card-pong" tabindex="0" role="button" aria-label="Play Light Pong">
+          <div class="game-card-illustration game2-illust">
+            <div class="pong-field">
+              <div class="pong-center"></div>
+              <div class="pong-paddle pong-paddle-l"></div>
+              <div class="pong-paddle pong-paddle-r"></div>
+              <div class="pong-ball"></div>
+            </div>
+          </div>
+          <div class="game-card-body">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <h3>Light Pong</h3>
+              <span class="badge badge-hard">Hard</span>
+            </div>
+            <p>Test your reflexes in a fast-paced, single-player Pong challenge as the ball gets faster.</p>
+            <div class="game-card-meta">
+              <div class="game-card-best">Best: <span id="dash-best-pong">—</span></div>
+            </div>
+            <button class="btn btn-primary btn-game" style="width: 100%;">Play Now</button>
+          </div>
+        </div>
+        <!-- Game 3 Card -->
+        <div class="card game-card" id="card-jigsaw" tabindex="0" role="button" aria-label="Play Jigsaw Puzzle">
+          <div class="game-card-illustration game3-illust">
+            <svg class="jigsaw-preview-svg" viewBox="0 0 120 120" width="130" height="130" style="overflow:visible">
+              <defs>
+                <pattern id="jig-img" patternUnits="userSpaceOnUse" viewBox="0 0 100 100" width="100" height="100">
+                  <rect width="100" height="100" fill="#87CEEB"/>
+                  <circle cx="75" cy="30" r="14" fill="#FFD700"/>
+                  <path d="M -10 100 L 30 50 L 70 100 Z" fill="#2D6A4F"/>
+                  <path d="M 40 100 L 75 60 L 110 100 Z" fill="#1B4332"/>
+                </pattern>
+              </defs>
+              <g transform="translate(10, 10)">
+                <path class="jig-piece jig-tl" d="M 0 0 L 50 0 L 50 20 C 35 20, 35 40, 50 40 L 50 50 L 40 50 C 40 65, 20 65, 20 50 L 0 50 Z" fill="url(#jig-img)"/>
+                <path class="jig-piece jig-tr" d="M 50 0 L 100 0 L 100 50 L 80 50 C 80 35, 60 35, 60 50 L 50 50 L 50 40 C 35 40, 35 20, 50 20 L 50 0 Z" fill="url(#jig-img)"/>
+                <path class="jig-piece jig-bl" d="M 0 50 L 20 50 C 20 65, 40 65, 40 50 L 50 50 L 50 80 C 65 80, 65 100, 50 100 L 0 100 Z" fill="url(#jig-img)"/>
+                <path class="jig-piece jig-br" d="M 50 50 L 60 50 C 60 35, 80 35, 80 50 L 100 50 L 100 100 L 50 100 C 65 100, 65 80, 50 80 Z" fill="url(#jig-img)"/>
+              </g>
+            </svg>
+          </div>
+          <div class="game-card-body">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <h3>Jigsaw Puzzle</h3>
+              <span class="badge badge-easy">Easy-Hard</span>
+            </div>
+            <p>Assemble the image by placing every puzzle piece in its correct position before time runs out.</p>
+            <div class="game-card-meta">
+              <div class="game-card-best">Best: <span id="dash-best-jigsaw">—</span></div>
+            </div>
+            <button class="btn btn-primary btn-game" style="width: 100%;">Play Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+     SCREEN 3: Precision Stop Game
+     ============================================ -->
+  <div class="screen" id="screen-precision-stop">
+    <div class="game-top-bar">
+      <h2>⏱ Precision Stop</h2>
+      <button class="btn btn-outline btn-sm" id="btn-precision-back">← Back to Games</button>
+    </div>
+    <!-- Start sub-screen -->
+    <div class="precision-start" id="precision-start-view">
+      <h2>Precision Stop</h2>
+      <p>Stop the moving lights when they align perfectly with the target marker. The closer, the better your score!</p>
+      <div>
+        <div style="font-size:14px;color:var(--text-secondary);margin-bottom:8px;text-align:center;">Select Difficulty
+        </div>
+        <div class="difficulty-selector" id="precision-difficulty">
+          <button class="difficulty-btn" data-diff="easy">🟢 Easy</button>
+          <button class="difficulty-btn selected" data-diff="medium">🟡 Medium</button>
+          <button class="difficulty-btn" data-diff="hard">🔴 Hard</button>
+        </div>
+      </div>
+      <div style="font-size:14px;color:var(--text-secondary);">Best Score: <strong id="precision-start-best">—</strong>
+      </div>
+      <button class="btn btn-primary btn-lg" id="btn-precision-start">Start Game</button>
+      <button class="btn btn-outline" id="btn-precision-back2">Back to Games</button>
+    </div>
+    <!-- Game sub-screen -->
+    <div class="precision-container" id="precision-game-view" style="display:none;">
+      <div class="precision-info-bar">
+        <div class="precision-info-item">
+          <div class="info-value" id="prec-round">1/5</div>
+          <div class="info-label">Round</div>
+        </div>
+        <div class="precision-info-item">
+          <div class="info-value" id="prec-score">0</div>
+          <div class="info-label">Score</div>
+        </div>
+        <div class="precision-info-item">
+          <div class="info-value" id="prec-accuracy">—</div>
+          <div class="info-label">Last Accuracy</div>
+        </div>
+      </div>
+      <div class="precision-round-dots" id="prec-round-dots"></div>
+      <div class="precision-track-container" id="prec-track-container">
+        <div class="precision-track" id="prec-track">
+          <div class="precision-target" id="prec-target"></div>
+          <div class="precision-target-zone" id="prec-target-zone"></div>
+          <div class="precision-light" id="prec-light1">
+            <svg class="diya-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+              <use href="#shared-diya" />
+            </svg>
+          </div>
+          <div class="precision-light" id="prec-light2">
+            <svg class="diya-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+              <use href="#shared-diya" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="precision-feedback" id="prec-feedback"></div>
+      <button class="precision-stop-btn" id="btn-precision-stop">STOP</button>
+      <div style="font-size:13px;color:var(--text-secondary);text-align:center;">Press <strong>Spacebar</strong>,
+        <strong>Enter</strong>, or tap the button</div>
+    </div>
+    <!-- Result sub-screen -->
+    <div style="flex:1;display:none;align-items:center;justify-content:center;padding:24px;" id="precision-result-view">
+      <div class="result-panel animate-fade-in" id="precision-result-panel"></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+     SCREEN 4: Light Pong Game
+     ============================================ -->
+  <div class="screen" id="screen-light-pong">
+    <div class="pong-top-bar">
+      <h2>🏓 Light Pong</h2>
+      <div style="display:flex;gap:8px;">
+        <button class="btn btn-outline btn-sm" id="btn-pong-pause">⏸ Pause</button>
+        <button class="btn btn-outline btn-sm" id="btn-pong-back">← Back</button>
+      </div>
+    </div>
+    <!-- Start sub-screen -->
+    <div class="pong-start-overlay" id="pong-start-view">
+      <h2>LIGHT PONG</h2>
+      <p>Use ↑↓ arrows, W/S keys, or touch controls to move your paddle. Keep the ball in play as it gets faster!</p>
+      <div style="text-align:center;">
+        <div style="font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:8px;">Target Returns</div>
+        <div class="difficulty-selector" id="pong-target-selector">
+          <button class="difficulty-btn selected" data-target="15"
+            style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.2);">15</button>
+          <button class="difficulty-btn" data-target="25"
+            style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.2);">25</button>
+          <button class="difficulty-btn" data-target="50"
+            style="background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.2);">50</button>
+        </div>
+      </div>
+      <div style="font-size:14px;color:rgba(255,255,255,0.5);">Best Score: <strong id="pong-start-best"
+          style="color:var(--pong-glow);">—</strong></div>
+      <button class="btn btn-primary btn-lg" id="btn-pong-start">Start Game</button>
+      <button class="btn btn-outline btn-sm" id="btn-pong-back2"
+        style="color:rgba(255,255,255,0.6);border-color:rgba(255,255,255,0.2);">Back to Games</button>
+    </div>
+    <!-- Game sub-screen -->
+    <div class="pong-container" id="pong-game-view" style="display:none;">
+      <div class="pong-hud">
+        <div class="pong-hud-item">
+          <div class="hud-value" id="pong-returns">0</div>
+          <div class="hud-label">Returns</div>
+        </div>
+        <div class="pong-hud-item">
+          <div class="hud-value" id="pong-score">0</div>
+          <div class="hud-label">Score</div>
+        </div>
+        <div class="pong-hud-item">
+          <div class="hud-value" id="pong-level">1</div>
+          <div class="hud-label">Level</div>
+        </div>
+        <div class="pong-hud-item">
+          <div class="hud-value" id="pong-timer">0:00</div>
+          <div class="hud-label">Time</div>
+        </div>
+      </div>
+      <div class="pong-canvas-wrapper" id="pong-canvas-wrapper">
+        <canvas id="pong-canvas" width="700" height="420"></canvas>
+        <div class="pong-status hidden" id="pong-status-overlay">
+          <h3 id="pong-status-title">PAUSED</h3>
+          <p id="pong-status-msg">Press Space or click Resume to continue</p>
+          <button class="btn btn-primary" id="btn-pong-resume">Resume</button>
+        </div>
+      </div>
+      <div class="pong-controls-mobile">
+        <button class="pong-mobile-btn" id="btn-pong-up" aria-label="Move paddle up">▲</button>
+        <button class="pong-mobile-btn" id="btn-pong-down" aria-label="Move paddle down">▼</button>
+      </div>
+    </div>
+    <!-- Result sub-screen -->
+    <div style="flex:1;display:none;align-items:center;justify-content:center;padding:24px;" id="pong-result-view">
+      <div class="result-panel animate-fade-in" id="pong-result-panel"></div>
+    </div>
+  </div>
+
+  <!-- ============================================
+     SCREEN 5: Jigsaw Puzzle Game
+     ============================================ -->
+  <div class="screen" id="screen-jigsaw">
+    <div class="game-top-bar">
+      <h2>🧩 Jigsaw Puzzle</h2>
+      <button class="btn btn-outline btn-sm" id="btn-jigsaw-back">← Back to Games</button>
+    </div>
+    <!-- Start sub-screen -->
+    <div class="jigsaw-start" id="jigsaw-start-view">
+      <h2>Jigsaw Puzzle</h2>
+      <p>Choose an image and difficulty, then assemble the puzzle by dragging pieces to their correct positions.</p>
+      <div>
+        <div style="font-size:14px;color:var(--text-secondary);margin-bottom:8px;text-align:center;">Select Image</div>
+        <div class="image-selector" id="jigsaw-image-selector"></div>
+      </div>
+      <div>
+        <div style="font-size:14px;color:var(--text-secondary);margin-bottom:8px;text-align:center;">Select Difficulty
+        </div>
+        <div class="difficulty-selector" id="jigsaw-difficulty">
+          <button class="difficulty-btn selected" data-diff="easy">Easy (3×3)</button>
+          <button class="difficulty-btn" data-diff="medium">Medium (4×4)</button>
+          <button class="difficulty-btn" data-diff="hard">Hard (5×5)</button>
+          <button class="difficulty-btn" data-diff="expert">Expert (6×6)</button>
+        </div>
+      </div>
+      <div style="font-size:14px;color:var(--text-secondary);">Best Time: <strong id="jigsaw-start-best">—</strong>
+      </div>
+      <button class="btn btn-primary btn-lg" id="btn-jigsaw-start">Start Puzzle</button>
+      <button class="btn btn-outline" id="btn-jigsaw-back2">Back to Games</button>
+    </div>
+    <!-- Game sub-screen -->
+    <div class="jigsaw-container" id="jigsaw-game-view" style="display:none;">
+      <div class="jigsaw-toolbar">
+        <div class="toolbar-group">
+          <button class="btn btn-sm btn-secondary" id="btn-jigsaw-arrange" title="Arrange unplaced pieces neatly">📐
+            Arrange</button>
+          <button class="btn btn-sm btn-secondary" id="btn-jigsaw-edges" title="Show only edge pieces">🔲 Edges</button>
+          <button class="btn btn-sm btn-secondary" id="btn-jigsaw-preview" title="Show/hide reference image">👁
+            Preview</button>
+          <button class="btn btn-sm btn-secondary" id="btn-jigsaw-hint" title="Get a hint">💡 Hint (<span
+              id="jigsaw-hints-left">3</span>)</button>
+        </div>
+        <div class="toolbar-sep"></div>
+        <div class="toolbar-group">
+          <button class="btn btn-sm btn-outline" id="btn-jigsaw-restart">🔄 Restart</button>
+        </div>
+      </div>
+      <div class="jigsaw-stats-bar">
+        <div class="jigsaw-stat">⏱ Time: <span id="jigsaw-time">0:00</span></div>
+        <div class="jigsaw-stat">✅ Placed: <span id="jigsaw-placed">0</span> / <span id="jigsaw-total">9</span></div>
+        <div class="jigsaw-stat">📊 Progress: <span id="jigsaw-progress">0%</span></div>
+        <div class="jigsaw-stat">💡 Hints: <span id="jigsaw-hints-used">0</span></div>
+      </div>
+      <div class="jigsaw-main">
+        <div class="jigsaw-board-area">
+          <div class="jigsaw-canvas-container" id="jigsaw-canvas-container">
+            <canvas id="jigsaw-canvas"></canvas>
+          </div>
+          <div class="jigsaw-preview-container" id="jigsaw-preview-box">
+            <canvas id="jigsaw-preview-canvas"></canvas>
+          </div>
+        </div>
+        <div class="jigsaw-pieces-tray" id="jigsaw-tray">
+          <h4>Pieces (<span id="jigsaw-tray-count">0</span>)</h4>
+          <div class="jigsaw-tray-pieces" id="jigsaw-tray-pieces"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Result sub-screen -->
+    <div style="flex:1;display:none;align-items:center;justify-content:center;padding:24px;" id="jigsaw-result-view">
+      <div class="result-panel animate-fade-in" id="jigsaw-result-panel"></div>
+    </div>
+  </div>
+
+  <script>
+    'use strict';
+
+    /* =============================================
+       APPLICATION STATE
+       ============================================= */
+    const App = {
+      participant: null,
+      currentScreen: 'register',
+      activeGame: null,
+      sessionScores: {
+        precision: { best: 0, games: [] },
+        pong: { best: 0, games: [] },
+        jigsaw: { bestTimes: {}, games: [] }
+      }
+    };
+
+    /* =============================================
+       UTILITY FUNCTIONS
+       ============================================= */
+    function generateId() {
+      return 'sess_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 8);
+    }
+
+    function showToast(msg, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.textContent = msg;
+      container.appendChild(toast);
+      requestAnimationFrame(() => toast.classList.add('show'));
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3000);
+    }
+
+    function showModal(html) {
+      const overlay = document.getElementById('modal-overlay');
+      document.getElementById('modal-content').innerHTML = html;
+      overlay.classList.add('active');
+      overlay.addEventListener('click', function handler(e) {
+        if (e.target === overlay) { overlay.classList.remove('active'); overlay.removeEventListener('click', handler); }
+      });
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('active');
+    }
+
+    function formatTime(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return `${m}:${s.toString().padStart(2, '0')}`;
+    }
+
+    /* =============================================
+       SCREEN NAVIGATION
+       ============================================= */
+    function showScreen(screenId) {
+      // Clean up active game
+      if (App.activeGame) {
+        cleanupGame(App.activeGame);
+        App.activeGame = null;
+      }
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      const screen = document.getElementById('screen-' + screenId);
+      if (screen) {
+        screen.classList.add('active');
+        App.currentScreen = screenId;
+      }
+    }
+
+    function cleanupGame(game) {
+      if (game === 'precision') { precisionCleanup(); }
+      else if (game === 'pong') { pongCleanup(); }
+      else if (game === 'jigsaw') { jigsawCleanup(); }
+    }
+
+    /* =============================================
+       SESSION STORAGE
+       ============================================= */
+    function saveSession() {
+      try {
+        sessionStorage.setItem('playArenaSession', JSON.stringify({
+          participant: App.participant,
+          sessionScores: App.sessionScores
+        }));
+      } catch (e) { /* sessionStorage may not be available */ }
+    }
+
+    function loadSession() {
+      try {
+        const data = sessionStorage.getItem('playArenaSession');
+        if (data) {
+          const parsed = JSON.parse(data);
+          App.participant = parsed.participant;
+          App.sessionScores = parsed.sessionScores || App.sessionScores;
+          return true;
+        }
+      } catch (e) { /* ignore */ }
+      return false;
+    }
+
+    function clearSession() {
+      App.participant = null;
+      App.sessionScores = { precision: { best: 0, games: [] }, pong: { best: 0, games: [] }, jigsaw: { bestTimes: {}, games: [] } };
+      try { sessionStorage.removeItem('playArenaSession'); } catch (e) { /* ignore */ }
+    }
+
+    /* =============================================
+       REGISTRATION
+       ============================================= */
+    const regForm = document.getElementById('registration-form');
+    const regFields = { name: null, phone: null, email: null, consent: null };
+    const touched = { name: false, phone: false, email: false, consent: false };
+
+    function validateName(val) {
+      const v = val.trim();
+      if (!v) return 'Full name is required.';
+      if (v.length < 2) return 'Name must be at least 2 characters.';
+      if (/^[0-9\s\W]+$/.test(v)) return 'Name cannot contain only numbers or symbols.';
+      if (!/^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF' \-]+$/.test(v)) return 'Name contains invalid characters.';
+      return '';
+    }
+
+    function validatePhone(val, countryCode) {
+      const v = val.replace(/[\s\-()]/g, '');
+      if (!v) return 'Mobile number is required.';
+      if (!/^\d+$/.test(v)) return 'Mobile number must contain only digits.';
+      const sel = document.getElementById('reg-country-code');
+      const digits = parseInt(sel.selectedOptions[0].dataset.digits) || 10;
+      if (v.length !== digits) return `Enter a valid ${digits}-digit number for ${countryCode}.`;
+      if (countryCode === '+91' && !/^[6-9]\d{9}$/.test(v)) return 'Enter a valid Indian mobile number.';
+      return '';
+    }
+
+    function validateEmail(val) {
+      const v = val.trim().toLowerCase();
+      if (!v) return 'Email address is required.';
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!re.test(v)) return 'Enter a valid email address.';
+      return '';
+    }
+
+    function showFieldError(fieldName, msg) {
+      const errEl = document.getElementById('error-' + fieldName);
+      const inputEl = document.getElementById('reg-' + fieldName);
+      if (msg) {
+        errEl.textContent = msg;
+        errEl.classList.add('visible');
+        if (inputEl) { inputEl.classList.remove('valid'); inputEl.classList.add('invalid'); }
+      } else {
+        errEl.textContent = '';
+        errEl.classList.remove('visible');
+        if (inputEl) { inputEl.classList.remove('invalid'); inputEl.classList.add('valid'); }
+      }
+    }
+
+    function validateField(fieldName) {
+      if (!touched[fieldName]) return true;
+      let err = '';
+      if (fieldName === 'name') err = validateName(document.getElementById('reg-name').value);
+      else if (fieldName === 'phone') err = validatePhone(document.getElementById('reg-phone').value, document.getElementById('reg-country-code').value);
+      else if (fieldName === 'email') err = validateEmail(document.getElementById('reg-email').value);
+      else if (fieldName === 'consent') {
+        if (!document.getElementById('reg-consent').checked) err = 'You must consent to participate.';
+      }
+      showFieldError(fieldName, err);
+      return !err;
+    }
+
+    // Event listeners for real-time validation
+    ['name', 'phone', 'email'].forEach(f => {
+      const el = document.getElementById('reg-' + f);
+      el.addEventListener('blur', () => { touched[f] = true; validateField(f); });
+      el.addEventListener('input', () => { if (touched[f]) validateField(f); });
+    });
+    document.getElementById('reg-consent').addEventListener('change', () => { touched.consent = true; validateField('consent'); });
+
+    regForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Touch all
+      Object.keys(touched).forEach(k => touched[k] = true);
+      const valid = ['name', 'phone', 'email', 'consent'].every(f => validateField(f));
+      if (!valid) { showToast('Please fix the errors above.', 'error'); return; }
+
+      const btn = document.getElementById('btn-register');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+
+      setTimeout(() => {
+        const fullName = document.getElementById('reg-name').value.trim();
+        const countryCode = document.getElementById('reg-country-code').value;
+        const phone = document.getElementById('reg-phone').value.replace(/[\s\-()]/g, '');
+        const email = document.getElementById('reg-email').value.trim().toLowerCase();
+
+        App.participant = {
+          fullName,
+          firstName: fullName.split(/\s+/)[0],
+          countryCode,
+          phone,
+          email,
+          registeredAt: new Date().toISOString(),
+          sessionId: generateId()
+        };
+
+        saveSession();
+        showToast(`Welcome, ${App.participant.firstName}! 🎮`, 'success');
+        btn.disabled = false;
+        btn.textContent = 'Register & Play';
+        openDashboard();
+      }, 600);
+    });
+
+    /* =============================================
+       DASHBOARD
+       ============================================= */
+    function openDashboard() {
+      if (!App.participant) { showScreen('register'); return; }
+      updateDashboardUI();
+      showScreen('dashboard');
+    }
+
+    function updateDashboardUI() {
+      const p = App.participant;
+      document.getElementById('dash-avatar').textContent = p.firstName.charAt(0).toUpperCase();
+      document.getElementById('dash-username').textContent = `Welcome, ${p.firstName}`;
+      document.getElementById('dash-best-precision').textContent = App.sessionScores.precision.best > 0 ? App.sessionScores.precision.best + ' pts' : '—';
+      document.getElementById('dash-best-pong').textContent = App.sessionScores.pong.best > 0 ? App.sessionScores.pong.best + ' pts' : '—';
+      const bestJigsaw = Object.values(App.sessionScores.jigsaw.bestTimes);
+      document.getElementById('dash-best-jigsaw').textContent = bestJigsaw.length > 0 ? formatTime(Math.min(...bestJigsaw)) : '—';
+    }
+
+    document.getElementById('btn-view-profile').addEventListener('click', () => {
+      const p = App.participant;
+      showModal(`
+    <h3>Participant Profile</h3>
+    <div class="modal-detail"><span class="label">Name</span><span class="value">${p.fullName}</span></div>
+    <div class="modal-detail"><span class="label">Email</span><span class="value">${p.email}</span></div>
+    <div class="modal-detail"><span class="label">Phone</span><span class="value">${p.countryCode} ${p.phone}</span></div>
+    <div class="modal-detail"><span class="label">Session ID</span><span class="value" style="font-size:12px;">${p.sessionId}</span></div>
+    <div class="modal-detail"><span class="label">Registered</span><span class="value">${new Date(p.registeredAt).toLocaleString()}</span></div>
+    <div style="margin-top:20px;text-align:center;"><button class="btn btn-primary" onclick="closeModal()">Close</button></div>
+  `);
+    });
+
+    document.getElementById('btn-end-session').addEventListener('click', () => {
+      showModal(`
+    <h3>End Session?</h3>
+    <p style="color:var(--text-secondary);margin-bottom:20px;">This will clear your registration and all session scores. This action cannot be undone.</p>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button class="btn btn-danger" onclick="endSession()">End Session</button>
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+    </div>
+  `);
+    });
+
+    window.endSession = function () {
+      closeModal();
+      clearSession();
+      regForm.reset();
+      document.querySelectorAll('.form-input').forEach(i => { i.classList.remove('valid', 'invalid'); });
+      document.querySelectorAll('.form-error').forEach(e => { e.classList.remove('visible'); e.textContent = ''; });
+      Object.keys(touched).forEach(k => touched[k] = false);
+      showScreen('register');
+      showToast('Session ended. See you next time!', 'info');
+    };
+
+    // Game card clicks
+    document.getElementById('card-precision').addEventListener('click', () => { if (App.participant) openGame('precision'); });
+    document.getElementById('card-pong').addEventListener('click', () => { if (App.participant) openGame('pong'); });
+    document.getElementById('card-jigsaw').addEventListener('click', () => { if (App.participant) openGame('jigsaw'); });
+
+    function openGame(game) {
+      App.activeGame = game;
+      if (game === 'precision') { showScreen('precision-stop'); precisionInit(); }
+      else if (game === 'pong') { showScreen('light-pong'); pongInit(); }
+      else if (game === 'jigsaw') { showScreen('jigsaw'); jigsawInit(); }
+    }
+
+    /* =============================================
+       GAME 1: PRECISION STOP
+       ============================================= */
+    const PrecisionState = {
+      difficulty: 'medium',
+      totalRounds: 5,
+      currentRound: 0,
+      currentStop: 0,
+      scores: [],
+      roundScores: [],
+      totalScore: 0,
+      animFrame: null,
+      running: false,
+      lights: [],
+      speed: 3,
+      zoneWidth: 60,
+      keyHandler: null,
+      lightPositions: [0, 0],
+      lightDirections: [1, -1],
+      lightsStopped: [false, false]
+    };
+
+    const PRECISION_CONFIG = {
+      easy: { speed: 2, zone: 80, speedInc: 0.3 },
+      medium: { speed: 3.5, zone: 55, speedInc: 0.5 },
+      hard: { speed: 5.5, zone: 35, speedInc: 0.8 }
+    };
+
+    function precisionInit() {
+      document.getElementById('precision-start-view').style.display = 'flex';
+      document.getElementById('precision-game-view').style.display = 'none';
+      document.getElementById('precision-result-view').style.display = 'none';
+      const best = App.sessionScores.precision.best;
+      document.getElementById('precision-start-best').textContent = best > 0 ? best + ' pts' : '—';
+    }
+
+    function precisionCleanup() {
+      PrecisionState.running = false;
+      if (PrecisionState.animFrame) { cancelAnimationFrame(PrecisionState.animFrame); PrecisionState.animFrame = null; }
+      if (PrecisionState.keyHandler) { document.removeEventListener('keydown', PrecisionState.keyHandler); PrecisionState.keyHandler = null; }
+    }
+
+    // Difficulty buttons
+    document.getElementById('precision-difficulty').addEventListener('click', (e) => {
+      const btn = e.target.closest('.difficulty-btn');
+      if (!btn) return;
+      document.querySelectorAll('#precision-difficulty .difficulty-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      PrecisionState.difficulty = btn.dataset.diff;
+    });
+
+    document.getElementById('btn-precision-start').addEventListener('click', precisionStartGame);
+    document.getElementById('btn-precision-back').addEventListener('click', () => { precisionCleanup(); openDashboard(); });
+    document.getElementById('btn-precision-back2').addEventListener('click', () => { precisionCleanup(); openDashboard(); });
+
+    function precisionStartGame() {
+      const cfg = PRECISION_CONFIG[PrecisionState.difficulty];
+      PrecisionState.totalRounds = 5;
+      PrecisionState.currentRound = 0;
+      PrecisionState.scores = [];
+      PrecisionState.roundScores = [];
+      PrecisionState.totalScore = 0;
+      PrecisionState.speed = cfg.speed;
+      PrecisionState.zoneWidth = cfg.zone;
+
+      document.getElementById('precision-start-view').style.display = 'none';
+      document.getElementById('precision-game-view').style.display = 'flex';
+      document.getElementById('precision-result-view').style.display = 'none';
+
+      // Build round dots
+      const dotsContainer = document.getElementById('prec-round-dots');
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < PrecisionState.totalRounds; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'round-dot';
+        dotsContainer.appendChild(dot);
+      }
+
+      precisionStartRound();
+    }
+
+    function precisionStartRound() {
+      PrecisionState.currentStop = 0;
+      PrecisionState.lightPositions = [10, 90];
+      PrecisionState.lightDirections = [1, -1];
+      PrecisionState.lightsStopped = [false, false];
+
+      const cfg = PRECISION_CONFIG[PrecisionState.difficulty];
+      const roundSpeed = cfg.speed + PrecisionState.currentRound * cfg.speedInc;
+      PrecisionState.speed = roundSpeed;
+
+      // Update target zone width
+      const zoneWidth = Math.max(20, cfg.zone - PrecisionState.currentRound * 4);
+      PrecisionState.zoneWidth = zoneWidth;
+      document.getElementById('prec-target-zone').style.width = zoneWidth + 'px';
+
+      document.getElementById('prec-round').textContent = `${PrecisionState.currentRound + 1}/${PrecisionState.totalRounds}`;
+      document.getElementById('prec-score').textContent = PrecisionState.totalScore;
+      document.getElementById('prec-feedback').textContent = '';
+
+      // Mark current round dot
+      const dots = document.querySelectorAll('#prec-round-dots .round-dot');
+      dots.forEach((d, i) => { if (i === PrecisionState.currentRound) d.classList.add('active'); });
+
+      // Reset light visuals
+      const light1 = document.getElementById('prec-light1');
+      const light2 = document.getElementById('prec-light2');
+      light1.classList.remove('stopped', 'perfect');
+      light2.classList.remove('stopped', 'perfect');
+      light1.style.display = 'block';
+      light2.style.display = 'block';
+
+      const stopBtn = document.getElementById('btn-precision-stop');
+      stopBtn.disabled = false;
+      stopBtn.textContent = 'STOP';
+
+      PrecisionState.running = true;
+
+      // Key handler
+      if (PrecisionState.keyHandler) document.removeEventListener('keydown', PrecisionState.keyHandler);
+      PrecisionState.keyHandler = function (e) {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          if (!e.repeat) precisionStopLight();
+        }
+      };
+      document.addEventListener('keydown', PrecisionState.keyHandler);
+
+      precisionAnimate();
+    }
+
+    function precisionAnimate() {
+      if (!PrecisionState.running) return;
+
+      const track = document.getElementById('prec-track');
+      const trackWidth = track.offsetWidth;
+      const lightSize = 44;
+      const maxPos = trackWidth - lightSize;
+
+      for (let i = 0; i < 2; i++) {
+        if (!PrecisionState.lightsStopped[i]) {
+          PrecisionState.lightPositions[i] += PrecisionState.speed * PrecisionState.lightDirections[i];
+          if (PrecisionState.lightPositions[i] >= maxPos) { PrecisionState.lightPositions[i] = maxPos; PrecisionState.lightDirections[i] = -1; }
+          if (PrecisionState.lightPositions[i] <= 0) { PrecisionState.lightPositions[i] = 0; PrecisionState.lightDirections[i] = 1; }
+        }
+      }
+
+      document.getElementById('prec-light1').style.left = PrecisionState.lightPositions[0] + 'px';
+      document.getElementById('prec-light2').style.left = PrecisionState.lightPositions[1] + 'px';
+
+      PrecisionState.animFrame = requestAnimationFrame(precisionAnimate);
+    }
+
+    document.getElementById('btn-precision-stop').addEventListener('click', precisionStopLight);
+
+    function precisionStopLight() {
+      if (!PrecisionState.running) return;
+
+      const stopIndex = PrecisionState.currentStop;
+      if (stopIndex >= 2) return;
+
+      PrecisionState.lightsStopped[stopIndex] = true;
+      const lightEl = document.getElementById(`prec-light${stopIndex + 1}`);
+      lightEl.classList.add('stopped');
+
+      // Calculate distance from center
+      const track = document.getElementById('prec-track');
+      const trackWidth = track.offsetWidth;
+      const targetCenter = trackWidth / 2;
+      const lightCenter = PrecisionState.lightPositions[stopIndex] + 12;
+      const distance = Math.abs(lightCenter - targetCenter);
+      const maxDist = trackWidth / 2;
+      const accuracyPct = Math.max(0, Math.round((1 - distance / maxDist) * 100));
+
+      let points = 0;
+      let label = '';
+      let color = '';
+      if (distance <= 5) { points = 1000; label = '🎯 PERFECT!'; color = 'var(--success)'; lightEl.classList.add('perfect'); }
+      else if (distance <= 20) { points = 750; label = '🌟 Excellent!'; color = 'var(--success)'; }
+      else if (distance <= 45) { points = 500; label = '👍 Good!'; color = 'var(--primary)'; }
+      else if (distance <= 80) { points = 250; label = '🔵 Near miss'; color = 'var(--warning)'; }
+      else { points = 0; label = '❌ Missed'; color = 'var(--error)'; lightEl.style.animation = ''; lightEl.classList.add('animate-shake'); }
+
+      PrecisionState.scores.push({ distance, accuracy: accuracyPct, points });
+
+      const feedback = document.getElementById('prec-feedback');
+      feedback.style.color = color;
+      feedback.textContent = `${label} — ${accuracyPct}% accuracy (+${points} pts)`;
+
+      PrecisionState.currentStop++;
+
+      if (PrecisionState.currentStop >= 2) {
+        // Round complete
+        PrecisionState.running = false;
+        if (PrecisionState.animFrame) { cancelAnimationFrame(PrecisionState.animFrame); PrecisionState.animFrame = null; }
+        if (PrecisionState.keyHandler) { document.removeEventListener('keydown', PrecisionState.keyHandler); PrecisionState.keyHandler = null; }
+
+        const roundTotal = PrecisionState.scores.slice(-2).reduce((a, s) => a + s.points, 0);
+        PrecisionState.roundScores.push(roundTotal);
+        PrecisionState.totalScore += roundTotal;
+        document.getElementById('prec-score').textContent = PrecisionState.totalScore;
+        document.getElementById('prec-accuracy').textContent = accuracyPct + '%';
+
+        // Update dot
+        const dots = document.querySelectorAll('#prec-round-dots .round-dot');
+        const dot = dots[PrecisionState.currentRound];
+        dot.classList.remove('active');
+        if (roundTotal >= 1500) dot.classList.add('done');
+        else if (roundTotal >= 500) dot.classList.add('poor');
+        else dot.classList.add('miss');
+
+        const stopBtn = document.getElementById('btn-precision-stop');
+        stopBtn.disabled = true;
+
+        PrecisionState.currentRound++;
+
+        if (PrecisionState.currentRound >= PrecisionState.totalRounds) {
+          setTimeout(precisionShowResults, 1200);
+        } else {
+          stopBtn.textContent = 'NEXT ▶';
+          stopBtn.disabled = false;
+          stopBtn.onclick = function () {
+            stopBtn.onclick = null;
+            stopBtn.removeEventListener('click', precisionStopLight);
+            document.getElementById('btn-precision-stop').addEventListener('click', precisionStopLight);
+            precisionStartRound();
+          };
+        }
+      } else {
+        const stopBtn = document.getElementById('btn-precision-stop');
+        stopBtn.textContent = 'STOP #2';
+      }
+    }
+
+    function precisionShowResults() {
+      document.getElementById('precision-game-view').style.display = 'none';
+      document.getElementById('precision-result-view').style.display = 'flex';
+
+      const total = PrecisionState.totalScore;
+      const maxPossible = PrecisionState.totalRounds * 2000;
+      const avgAccuracy = Math.round(PrecisionState.scores.reduce((a, s) => a + s.accuracy, 0) / PrecisionState.scores.length);
+      const bestRound = Math.max(...PrecisionState.roundScores);
+
+      let icon = '🎯', msg = 'Incredible precision!';
+      if (total < maxPossible * 0.3) { icon = '🔄'; msg = 'Keep practicing! You\'ll get better.'; }
+      else if (total < maxPossible * 0.5) { icon = '👍'; msg = 'Good effort! Room for improvement.'; }
+      else if (total < maxPossible * 0.75) { icon = '🌟'; msg = 'Great performance!'; }
+
+      // Update best
+      if (total > App.sessionScores.precision.best) {
+        App.sessionScores.precision.best = total;
+        saveSession();
+      }
+      App.sessionScores.precision.games.push({
+        score: total, difficulty: PrecisionState.difficulty,
+        rounds: PrecisionState.totalRounds, timestamp: new Date().toISOString()
+      });
+
+      document.getElementById('precision-result-panel').innerHTML = `
+    <div class="result-icon">${icon}</div>
+    <h2>Game Complete!</h2>
+    <div class="result-message">${msg}</div>
+    <div class="result-stats">
+      <div class="result-stat"><div class="stat-value">${total}</div><div class="stat-label">Total Score</div></div>
+      <div class="result-stat"><div class="stat-value">${avgAccuracy}%</div><div class="stat-label">Avg Accuracy</div></div>
+      <div class="result-stat"><div class="stat-value">${bestRound}</div><div class="stat-label">Best Round</div></div>
+      <div class="result-stat"><div class="stat-value">${PrecisionState.difficulty}</div><div class="stat-label">Difficulty</div></div>
+    </div>
+    <div style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;">Session Best: <strong>${App.sessionScores.precision.best} pts</strong></div>
+    <div class="result-actions">
+      <button class="btn btn-primary btn-game" onclick="precisionReplay()">Play Again</button>
+      <button class="btn btn-outline btn-game" onclick="openDashboard()">Back to Games</button>
+    </div>
+  `;
+    }
+
+    window.precisionReplay = function () {
+      precisionCleanup();
+      App.activeGame = 'precision';
+      precisionInit();
+      precisionStartGame();
+    };
+
+    /* =============================================
+       GAME 2: LIGHT PONG
+       ============================================= */
+    const PongState = {
+      canvas: null, ctx: null,
+      animFrame: null,
+      state: 'ready', // ready, playing, paused, gameover, completed
+      targetReturns: 15,
+      ball: { x: 0, y: 0, vx: 0, vy: 0, radius: 8, speed: 4 },
+      playerPaddle: { x: 0, y: 0, width: 12, height: 70, speed: 6 },
+      cpuPaddle: { x: 0, y: 0, width: 12, height: 70, speed: 3.5, targetY: 0 },
+      score: 0,
+      returns: 0,
+      level: 1,
+      startTime: 0,
+      playTime: 0,
+      keys: {},
+      lastTime: 0,
+      keyHandler: null,
+      keyUpHandler: null,
+      mouseHandler: null,
+      touchHandler: null,
+      visibilityHandler: null,
+      mobileUpInterval: null,
+      mobileDownInterval: null,
+      canvasWidth: 700,
+      canvasHeight: 420
+    };
+
+    function pongInit() {
+      document.getElementById('pong-start-view').style.display = 'flex';
+      document.getElementById('pong-game-view').style.display = 'none';
+      document.getElementById('pong-result-view').style.display = 'none';
+      const best = App.sessionScores.pong.best;
+      document.getElementById('pong-start-best').textContent = best > 0 ? best + ' pts' : '—';
+    }
+
+    function pongCleanup() {
+      PongState.state = 'ready';
+      if (PongState.animFrame) { cancelAnimationFrame(PongState.animFrame); PongState.animFrame = null; }
+      if (PongState.keyHandler) document.removeEventListener('keydown', PongState.keyHandler);
+      if (PongState.keyUpHandler) document.removeEventListener('keyup', PongState.keyUpHandler);
+      if (PongState.mouseHandler && PongState.canvas) PongState.canvas.removeEventListener('mousemove', PongState.mouseHandler);
+      if (PongState.touchHandler && PongState.canvas) PongState.canvas.removeEventListener('touchmove', PongState.touchHandler);
+      if (PongState.visibilityHandler) document.removeEventListener('visibilitychange', PongState.visibilityHandler);
+      clearInterval(PongState.mobileUpInterval);
+      clearInterval(PongState.mobileDownInterval);
+      PongState.keyHandler = null;
+      PongState.keyUpHandler = null;
+      PongState.mouseHandler = null;
+      PongState.touchHandler = null;
+      PongState.visibilityHandler = null;
+      PongState.keys = {};
+    }
+
+    // Target selector
+    document.getElementById('pong-target-selector').addEventListener('click', (e) => {
+      const btn = e.target.closest('.difficulty-btn');
+      if (!btn) return;
+      document.querySelectorAll('#pong-target-selector .difficulty-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      PongState.targetReturns = parseInt(btn.dataset.target);
+    });
+
+    document.getElementById('btn-pong-start').addEventListener('click', pongStartGame);
+    document.getElementById('btn-pong-back').addEventListener('click', () => { pongCleanup(); openDashboard(); });
+    document.getElementById('btn-pong-back2').addEventListener('click', () => { pongCleanup(); openDashboard(); });
+    document.getElementById('btn-pong-pause').addEventListener('click', pongTogglePause);
+    document.getElementById('btn-pong-resume').addEventListener('click', pongTogglePause);
+
+    function pongStartGame() {
+      document.getElementById('pong-start-view').style.display = 'none';
+      document.getElementById('pong-game-view').style.display = 'flex';
+      document.getElementById('pong-result-view').style.display = 'none';
+
+      const canvas = document.getElementById('pong-canvas');
+      const wrapper = document.getElementById('pong-canvas-wrapper');
+
+      // Responsive canvas
+      const maxW = Math.min(700, window.innerWidth - 40);
+      const maxH = Math.min(420, window.innerHeight - 220);
+      const aspect = 700 / 420;
+      let w = maxW, h = maxW / aspect;
+      if (h > maxH) { h = maxH; w = maxH * aspect; }
+      canvas.width = Math.round(w);
+      canvas.height = Math.round(h);
+      PongState.canvasWidth = canvas.width;
+      PongState.canvasHeight = canvas.height;
+
+      PongState.canvas = canvas;
+      PongState.ctx = canvas.getContext('2d');
+
+      const cw = canvas.width, ch = canvas.height;
+      const paddleH = Math.round(ch * 0.167);
+
+      PongState.ball = { x: cw / 2, y: ch / 2, vx: 4 * (cw / 700), vy: 3 * (ch / 420), radius: Math.round(8 * (cw / 700)), speed: 4 * (cw / 700) };
+      PongState.playerPaddle = { x: 15, y: ch / 2 - paddleH / 2, width: Math.round(12 * (cw / 700)), height: paddleH, speed: 6 * (ch / 420) };
+      PongState.cpuPaddle = { x: cw - 15 - Math.round(12 * (cw / 700)), y: ch / 2 - paddleH / 2, width: Math.round(12 * (cw / 700)), height: paddleH, speed: 3.5 * (ch / 420), targetY: ch / 2 };
+      PongState.score = 0;
+      PongState.returns = 0;
+      PongState.level = 1;
+      PongState.startTime = Date.now();
+      PongState.playTime = 0;
+      PongState.keys = {};
+      PongState.state = 'playing';
+      PongState.lastTime = performance.now();
+
+      document.getElementById('pong-status-overlay').classList.add('hidden');
+      pongUpdateHUD();
+
+      // Random starting direction
+      const angle = (Math.random() * 0.8 - 0.4);
+      PongState.ball.vx = PongState.ball.speed * Math.cos(angle);
+      PongState.ball.vy = PongState.ball.speed * Math.sin(angle);
+
+      // Input handlers
+      PongState.keyHandler = function (e) {
+        if (['ArrowUp', 'ArrowDown', 'w', 's', 'W', 'S', ' '].includes(e.key)) {
+          e.preventDefault();
+          PongState.keys[e.key] = true;
+        }
+        if (e.key === ' ' && PongState.state === 'paused') pongTogglePause();
+      };
+      PongState.keyUpHandler = function (e) { PongState.keys[e.key] = false; };
+      document.addEventListener('keydown', PongState.keyHandler);
+      document.addEventListener('keyup', PongState.keyUpHandler);
+
+      PongState.mouseHandler = function (e) {
+        if (PongState.state !== 'playing') return;
+        const rect = canvas.getBoundingClientRect();
+        const y = e.clientY - rect.top;
+        const scaleY = canvas.height / rect.height;
+        PongState.playerPaddle.y = Math.max(0, Math.min(canvas.height - PongState.playerPaddle.height, y * scaleY - PongState.playerPaddle.height / 2));
+      };
+      canvas.addEventListener('mousemove', PongState.mouseHandler);
+
+      PongState.touchHandler = function (e) {
+        e.preventDefault();
+        if (PongState.state !== 'playing') return;
+        const rect = canvas.getBoundingClientRect();
+        const y = e.touches[0].clientY - rect.top;
+        const scaleY = canvas.height / rect.height;
+        PongState.playerPaddle.y = Math.max(0, Math.min(canvas.height - PongState.playerPaddle.height, y * scaleY - PongState.playerPaddle.height / 2));
+      };
+      canvas.addEventListener('touchmove', PongState.touchHandler, { passive: false });
+
+      // Visibility handler
+      PongState.visibilityHandler = function () {
+        if (document.hidden && PongState.state === 'playing') { pongTogglePause(); }
+      };
+      document.addEventListener('visibilitychange', PongState.visibilityHandler);
+
+      // Mobile buttons
+      const upBtn = document.getElementById('btn-pong-up');
+      const downBtn = document.getElementById('btn-pong-down');
+      upBtn.onpointerdown = () => { PongState.keys['ArrowUp'] = true; };
+      upBtn.onpointerup = () => { PongState.keys['ArrowUp'] = false; };
+      upBtn.onpointerleave = () => { PongState.keys['ArrowUp'] = false; };
+      downBtn.onpointerdown = () => { PongState.keys['ArrowDown'] = true; };
+      downBtn.onpointerup = () => { PongState.keys['ArrowDown'] = false; };
+      downBtn.onpointerleave = () => { PongState.keys['ArrowDown'] = false; };
+
+      pongLoop(performance.now());
+    }
+
+    function pongTogglePause() {
+      if (PongState.state === 'playing') {
+        PongState.state = 'paused';
+        document.getElementById('pong-status-overlay').classList.remove('hidden');
+        document.getElementById('pong-status-title').textContent = 'PAUSED';
+        document.getElementById('pong-status-msg').textContent = 'Press Space or click Resume to continue';
+        document.getElementById('btn-pong-resume').style.display = '';
+        document.getElementById('btn-pong-pause').textContent = '▶ Resume';
+      } else if (PongState.state === 'paused') {
+        PongState.state = 'playing';
+        PongState.lastTime = performance.now();
+        document.getElementById('pong-status-overlay').classList.add('hidden');
+        document.getElementById('btn-pong-pause').textContent = '⏸ Pause';
+        pongLoop(performance.now());
+      }
+    }
+
+    function pongLoop(now) {
+      if (PongState.state !== 'playing') return;
+
+      const dt = Math.min((now - PongState.lastTime) / 16.667, 3); // Normalized to ~60fps
+      PongState.lastTime = now;
+
+      const { ball, playerPaddle, cpuPaddle, keys } = PongState;
+      const cw = PongState.canvasWidth, ch = PongState.canvasHeight;
+
+      // Player input
+      const pSpeed = playerPaddle.speed * dt;
+      if (keys['ArrowUp'] || keys['w'] || keys['W']) playerPaddle.y -= pSpeed;
+      if (keys['ArrowDown'] || keys['s'] || keys['S']) playerPaddle.y += pSpeed;
+      playerPaddle.y = Math.max(0, Math.min(ch - playerPaddle.height, playerPaddle.y));
+
+      // CPU AI
+      const cpuCenter = cpuPaddle.y + cpuPaddle.height / 2;
+      const delay = 0.06 + Math.random() * 0.02;
+      cpuPaddle.targetY += (ball.y - cpuPaddle.targetY) * delay;
+      if (cpuCenter < cpuPaddle.targetY - 5) cpuPaddle.y += cpuPaddle.speed * dt;
+      else if (cpuCenter > cpuPaddle.targetY + 5) cpuPaddle.y -= cpuPaddle.speed * dt;
+      cpuPaddle.y = Math.max(0, Math.min(ch - cpuPaddle.height, cpuPaddle.y));
+
+      // Ball movement
+      ball.x += ball.vx * dt;
+      ball.y += ball.vy * dt;
+
+      // Top/bottom bounce
+      if (ball.y - ball.radius <= 0) { ball.y = ball.radius; ball.vy = Math.abs(ball.vy); }
+      if (ball.y + ball.radius >= ch) { ball.y = ch - ball.radius; ball.vy = -Math.abs(ball.vy); }
+
+      // Player paddle collision
+      if (ball.vx < 0 && ball.x - ball.radius <= playerPaddle.x + playerPaddle.width &&
+        ball.x - ball.radius >= playerPaddle.x &&
+        ball.y >= playerPaddle.y && ball.y <= playerPaddle.y + playerPaddle.height) {
+        ball.x = playerPaddle.x + playerPaddle.width + ball.radius;
+        const hitPos = (ball.y - playerPaddle.y) / playerPaddle.height - 0.5;
+        const angle = hitPos * Math.PI / 3;
+        const currentSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+        ball.vx = currentSpeed * Math.cos(angle);
+        ball.vy = currentSpeed * Math.sin(angle);
+        if (ball.vx < 0) ball.vx = -ball.vx;
+
+        PongState.returns++;
+        PongState.score += 10 * PongState.level;
+
+        // Level up every 5 returns
+        if (PongState.returns % 5 === 0) {
+          PongState.level++;
+          const speedMult = 1 + PongState.level * 0.08;
+          const baseSpeed = 4 * (cw / 700);
+          ball.speed = baseSpeed * speedMult;
+          const curSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+          const ratio = ball.speed / curSpeed;
+          ball.vx *= ratio;
+          ball.vy *= ratio;
+          cpuPaddle.speed = (3.5 + PongState.level * 0.3) * (ch / 420);
+        }
+
+        pongUpdateHUD();
+      }
+
+      // CPU paddle collision
+      if (ball.vx > 0 && ball.x + ball.radius >= cpuPaddle.x &&
+        ball.x + ball.radius <= cpuPaddle.x + cpuPaddle.width &&
+        ball.y >= cpuPaddle.y && ball.y <= cpuPaddle.y + cpuPaddle.height) {
+        ball.x = cpuPaddle.x - ball.radius;
+        const hitPos = (ball.y - cpuPaddle.y) / cpuPaddle.height - 0.5;
+        const angle = Math.PI - hitPos * Math.PI / 3;
+        const currentSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+        ball.vx = -currentSpeed * Math.abs(Math.cos(angle));
+        ball.vy = currentSpeed * Math.sin(angle);
+      }
+
+      // Ball passed CPU (score point)
+      if (ball.x + ball.radius > cw) {
+        PongState.score += 25;
+        PongState.returns++;
+        pongResetBall(1);
+        pongUpdateHUD();
+      }
+
+      // Ball passed player (game over)
+      if (ball.x - ball.radius < 0) {
+        PongState.state = 'gameover';
+        PongState.playTime = (Date.now() - PongState.startTime) / 1000;
+        pongDraw();
+        setTimeout(pongShowResults, 800);
+        return;
+      }
+
+      // Check win
+      if (PongState.returns >= PongState.targetReturns) {
+        PongState.state = 'completed';
+        PongState.playTime = (Date.now() - PongState.startTime) / 1000;
+        PongState.score += 100; // completion bonus
+        pongDraw();
+        setTimeout(pongShowResults, 800);
+        return;
+      }
+
+      // Update timer
+      PongState.playTime = (Date.now() - PongState.startTime) / 1000;
+      document.getElementById('pong-timer').textContent = formatTime(PongState.playTime);
+
+      pongDraw();
+      PongState.animFrame = requestAnimationFrame(pongLoop);
+    }
+
+    function pongResetBall(dir) {
+      const cw = PongState.canvasWidth, ch = PongState.canvasHeight;
+      PongState.ball.x = cw / 2;
+      PongState.ball.y = ch / 2;
+      const angle = (Math.random() * 0.6 - 0.3);
+      const speed = PongState.ball.speed;
+      PongState.ball.vx = speed * Math.cos(angle) * dir;
+      PongState.ball.vy = speed * Math.sin(angle);
+    }
+
+    function pongUpdateHUD() {
+      document.getElementById('pong-returns').textContent = PongState.returns;
+      document.getElementById('pong-score').textContent = PongState.score;
+      document.getElementById('pong-level').textContent = PongState.level;
+    }
+
+    function pongDraw() {
+      const ctx = PongState.ctx;
+      const cw = PongState.canvasWidth, ch = PongState.canvasHeight;
+      const { ball, playerPaddle, cpuPaddle } = PongState;
+
+      // Background
+      ctx.fillStyle = PongState.state === 'gameover' ? '#0A0F18' : '#07111F';
+      ctx.fillRect(0, 0, cw, ch);
+
+      // Center line
+      ctx.setLineDash([6, 8]);
+      ctx.strokeStyle = 'rgba(56,189,248,0.2)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(cw / 2, 0);
+      ctx.lineTo(cw / 2, ch);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Paddles
+      ctx.shadowColor = 'rgba(56,189,248,0.5)';
+      ctx.shadowBlur = 12;
+      ctx.fillStyle = '#38BDF8';
+      ctx.beginPath();
+      ctx.roundRect(playerPaddle.x, playerPaddle.y, playerPaddle.width, playerPaddle.height, 4);
+      ctx.fill();
+
+      ctx.fillStyle = '#F87171';
+      ctx.shadowColor = 'rgba(248,113,113,0.5)';
+      ctx.beginPath();
+      ctx.roundRect(cpuPaddle.x, cpuPaddle.y, cpuPaddle.width, cpuPaddle.height, 4);
+      ctx.fill();
+
+      // Ball
+      ctx.shadowColor = 'rgba(255,255,255,0.8)';
+      ctx.shadowBlur = 20;
+      ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Ball trail
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = 'rgba(255,255,255,0.1)';
+      ctx.beginPath();
+      ctx.arc(ball.x - ball.vx * 0.5, ball.y - ball.vy * 0.5, ball.radius * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.shadowBlur = 0;
+    }
+
+    function pongShowResults() {
+      if (PongState.animFrame) { cancelAnimationFrame(PongState.animFrame); PongState.animFrame = null; }
+
+      document.getElementById('pong-game-view').style.display = 'none';
+      document.getElementById('pong-result-view').style.display = 'flex';
+
+      const completed = PongState.state === 'completed';
+      const icon = completed ? '🏆' : '🏓';
+      const msg = completed ? 'Challenge completed! Amazing reflexes!' : `You reached ${PongState.returns} returns before missing.`;
+
+      if (PongState.score > App.sessionScores.pong.best) {
+        App.sessionScores.pong.best = PongState.score;
+        saveSession();
+      }
+      App.sessionScores.pong.games.push({
+        score: PongState.score, returns: PongState.returns, level: PongState.level,
+        completed, duration: Math.round(PongState.playTime), timestamp: new Date().toISOString()
+      });
+
+      document.getElementById('pong-result-panel').innerHTML = `
+    <div class="result-icon">${icon}</div>
+    <h2>${completed ? 'Challenge Complete!' : 'Game Over'}</h2>
+    <div class="result-message">${msg}</div>
+    <div class="result-stats">
+      <div class="result-stat"><div class="stat-value">${PongState.score}</div><div class="stat-label">Score</div></div>
+      <div class="result-stat"><div class="stat-value">${PongState.returns}</div><div class="stat-label">Returns</div></div>
+      <div class="result-stat"><div class="stat-value">${PongState.level}</div><div class="stat-label">Level</div></div>
+      <div class="result-stat"><div class="stat-value">${formatTime(PongState.playTime)}</div><div class="stat-label">Duration</div></div>
+    </div>
+    <div style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;">Session Best: <strong>${App.sessionScores.pong.best} pts</strong></div>
+    <div class="result-actions">
+      <button class="btn btn-primary btn-game" onclick="pongReplay()">Play Again</button>
+      <button class="btn btn-outline btn-game" onclick="openDashboard()">Back to Games</button>
+    </div>
+  `;
+    }
+
+    window.pongReplay = function () {
+      pongCleanup();
+      App.activeGame = 'pong';
+      pongStartGame();
+    };
+
+    /* =============================================
+       GAME 3: JIGSAW PUZZLE
+       ============================================= */
+    const JigsawState = {
+      difficulty: 'easy',
+      rows: 3, cols: 3,
+      imageIndex: 0,
+      pieces: [],
+      placedCount: 0,
+      totalPieces: 9,
+      startTime: 0,
+      elapsedTime: 0,
+      timerInterval: null,
+      hintsUsed: 0,
+      maxHints: 3,
+      showEdgesOnly: false,
+      showPreview: false,
+      sourceCanvas: null,
+      boardCanvas: null,
+      boardCtx: null,
+      pieceSize: 0,
+      draggingPiece: null,
+      dragOffsetX: 0, dragOffsetY: 0,
+      completed: false,
+      pointerDownHandler: null,
+      pointerMoveHandler: null,
+      pointerUpHandler: null,
+      images: []
+    };
+
+    const JIGSAW_CONFIGS = {
+      easy: { rows: 3, cols: 3 },
+      medium: { rows: 4, cols: 4 },
+      hard: { rows: 5, cols: 5 },
+      expert: { rows: 6, cols: 6 }
+    };
+
+    // Generate puzzle images using canvas
+    function generatePuzzleImages() {
+      const images = [];
+      const patterns = [
+        // Sunset landscape
+        function (ctx, w, h) {
+          const grad = ctx.createLinearGradient(0, 0, 0, h);
+          grad.addColorStop(0, '#FF6B35'); grad.addColorStop(0.3, '#F7C948');
+          grad.addColorStop(0.5, '#FFA62F'); grad.addColorStop(0.7, '#2D6A4F');
+          grad.addColorStop(1, '#1B4332');
+          ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
+          // Sun
+          ctx.fillStyle = '#FFF3B0';
+          ctx.beginPath(); ctx.arc(w * 0.5, h * 0.35, w * 0.12, 0, Math.PI * 2); ctx.fill();
+          // Mountains
+          ctx.fillStyle = '#2D6A4F';
+          ctx.beginPath(); ctx.moveTo(0, h * 0.6); ctx.lineTo(w * 0.3, h * 0.35); ctx.lineTo(w * 0.6, h * 0.55); ctx.lineTo(w * 0.85, h * 0.38); ctx.lineTo(w, h * 0.5); ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.fill();
+          ctx.fillStyle = '#1B4332';
+          ctx.beginPath(); ctx.moveTo(0, h * 0.7); ctx.lineTo(w * 0.2, h * 0.5); ctx.lineTo(w * 0.5, h * 0.65); ctx.lineTo(w * 0.75, h * 0.48); ctx.lineTo(w, h * 0.6); ctx.lineTo(w, h); ctx.lineTo(0, h); ctx.fill();
+        },
+        // Ocean waves
+        function (ctx, w, h) {
+          const grad = ctx.createLinearGradient(0, 0, 0, h);
+          grad.addColorStop(0, '#87CEEB'); grad.addColorStop(0.4, '#4682B4');
+          grad.addColorStop(0.6, '#1E90FF'); grad.addColorStop(1, '#0C2D6B');
+          ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
+          // Waves
+          for (let i = 0; i < 6; i++) {
+            const y = h * (0.3 + i * 0.12);
+            ctx.strokeStyle = `rgba(255,255,255,${0.15 - i * 0.02})`;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            for (let x = 0; x <= w; x += 5) {
+              ctx.lineTo(x, y + Math.sin(x / 30 + i * 1.5) * 12);
+            }
+            ctx.stroke();
+          }
+          // Birds
+          ctx.strokeStyle = '#333'; ctx.lineWidth = 2;
+          [[w * 0.3, h * 0.15], [w * 0.5, h * 0.1], [w * 0.7, h * 0.18]].forEach(([bx, by]) => {
+            ctx.beginPath(); ctx.moveTo(bx - 8, by + 4); ctx.quadraticCurveTo(bx - 2, by - 4, bx, by);
+            ctx.quadraticCurveTo(bx + 2, by - 4, bx + 8, by + 4); ctx.stroke();
+          });
+        },
+        // Geometric abstract
+        function (ctx, w, h) {
+          ctx.fillStyle = '#1a1a2e'; ctx.fillRect(0, 0, w, h);
+          const colors = ['#e94560', '#0f3460', '#16213e', '#533483', '#e94560', '#0f3460'];
+          for (let i = 0; i < 20; i++) {
+            ctx.fillStyle = colors[i % colors.length];
+            ctx.globalAlpha = 0.4 + Math.random() * 0.4;
+            const x = Math.random() * w;
+            const y = Math.random() * h;
+            const size = 20 + Math.random() * 80;
+            if (i % 3 === 0) {
+              ctx.beginPath(); ctx.arc(x, y, size / 2, 0, Math.PI * 2); ctx.fill();
+            } else if (i % 3 === 1) {
+              ctx.fillRect(x, y, size, size * 0.6);
+            } else {
+              ctx.beginPath(); ctx.moveTo(x, y - size / 2); ctx.lineTo(x + size / 2, y + size / 2); ctx.lineTo(x - size / 2, y + size / 2); ctx.closePath(); ctx.fill();
+            }
+          }
+          ctx.globalAlpha = 1;
+        },
+        // Flower garden
+        function (ctx, w, h) {
+          ctx.fillStyle = '#90EE90'; ctx.fillRect(0, 0, w, h);
+          const grad = ctx.createLinearGradient(0, 0, 0, h);
+          grad.addColorStop(0, '#87CEEB'); grad.addColorStop(0.5, '#98FB98'); grad.addColorStop(1, '#228B22');
+          ctx.fillStyle = grad; ctx.fillRect(0, 0, w, h);
+          // Flowers
+          const flowerColors = ['#FF69B4', '#FF6347', '#FFD700', '#FF4500', '#DA70D6', '#FF1493'];
+          for (let i = 0; i < 12; i++) {
+            const fx = 30 + Math.random() * (w - 60);
+            const fy = h * 0.3 + Math.random() * (h * 0.6);
+            const fs = 8 + Math.random() * 14;
+            // Stem
+            ctx.strokeStyle = '#228B22'; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(fx, fy); ctx.lineTo(fx, fy + fs * 2.5); ctx.stroke();
+            // Petals
+            ctx.fillStyle = flowerColors[i % flowerColors.length];
+            for (let p = 0; p < 5; p++) {
+              const angle = (p / 5) * Math.PI * 2;
+              ctx.beginPath();
+              ctx.arc(fx + Math.cos(angle) * fs * 0.5, fy + Math.sin(angle) * fs * 0.5, fs * 0.4, 0, Math.PI * 2);
+              ctx.fill();
+            }
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath(); ctx.arc(fx, fy, fs * 0.25, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+      ];
+
+      patterns.forEach((drawFn, idx) => {
+        const c = document.createElement('canvas');
+        c.width = 400; c.height = 400;
+        const ctx = c.getContext('2d');
+        drawFn(ctx, 400, 400);
+        images.push(c);
+      });
+
+      JigsawState.images = images;
+    }
+
+    function jigsawInit() {
+      if (JigsawState.images.length === 0) generatePuzzleImages();
+
+      document.getElementById('jigsaw-start-view').style.display = 'flex';
+      document.getElementById('jigsaw-game-view').style.display = 'none';
+      document.getElementById('jigsaw-result-view').style.display = 'none';
+
+      // Build image selector
+      const selector = document.getElementById('jigsaw-image-selector');
+      selector.innerHTML = '';
+      JigsawState.images.forEach((img, idx) => {
+        const opt = document.createElement('div');
+        opt.className = 'image-option' + (idx === JigsawState.imageIndex ? ' selected' : '');
+        const thumbCanvas = document.createElement('canvas');
+        thumbCanvas.width = 100; thumbCanvas.height = 100;
+        const tctx = thumbCanvas.getContext('2d');
+        tctx.drawImage(img, 0, 0, 100, 100);
+        opt.appendChild(thumbCanvas);
+        opt.addEventListener('click', () => {
+          selector.querySelectorAll('.image-option').forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          JigsawState.imageIndex = idx;
+        });
+        selector.appendChild(opt);
+      });
+
+      // Best time
+      const bestTimes = App.sessionScores.jigsaw.bestTimes;
+      const bestKeys = Object.keys(bestTimes);
+      document.getElementById('jigsaw-start-best').textContent = bestKeys.length > 0 ? formatTime(Math.min(...Object.values(bestTimes))) : '—';
+    }
+
+    function jigsawCleanup() {
+      if (JigsawState.timerInterval) { clearInterval(JigsawState.timerInterval); JigsawState.timerInterval = null; }
+      const canvas = document.getElementById('jigsaw-canvas');
+      if (canvas && JigsawState.pointerDownHandler) {
+        canvas.removeEventListener('pointerdown', JigsawState.pointerDownHandler);
+        canvas.removeEventListener('pointermove', JigsawState.pointerMoveHandler);
+        canvas.removeEventListener('pointerup', JigsawState.pointerUpHandler);
+      }
+      JigsawState.completed = false;
+    }
+
+    // Difficulty
+    document.getElementById('jigsaw-difficulty').addEventListener('click', (e) => {
+      const btn = e.target.closest('.difficulty-btn');
+      if (!btn) return;
+      document.querySelectorAll('#jigsaw-difficulty .difficulty-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      JigsawState.difficulty = btn.dataset.diff;
+    });
+
+    document.getElementById('btn-jigsaw-start').addEventListener('click', jigsawStartGame);
+    document.getElementById('btn-jigsaw-back').addEventListener('click', () => { jigsawCleanup(); openDashboard(); });
+    document.getElementById('btn-jigsaw-back2').addEventListener('click', () => { jigsawCleanup(); openDashboard(); });
+    document.getElementById('btn-jigsaw-arrange').addEventListener('click', jigsawArrangePieces);
+    document.getElementById('btn-jigsaw-edges').addEventListener('click', jigsawToggleEdges);
+    document.getElementById('btn-jigsaw-preview').addEventListener('click', jigsawTogglePreview);
+    document.getElementById('btn-jigsaw-hint').addEventListener('click', jigsawUseHint);
+    document.getElementById('btn-jigsaw-restart').addEventListener('click', () => { jigsawCleanup(); jigsawStartGame(); });
+
+    function jigsawStartGame() {
+      jigsawCleanup();
+
+      const cfg = JIGSAW_CONFIGS[JigsawState.difficulty];
+      JigsawState.rows = cfg.rows;
+      JigsawState.cols = cfg.cols;
+      JigsawState.totalPieces = cfg.rows * cfg.cols;
+      JigsawState.placedCount = 0;
+      JigsawState.hintsUsed = 0;
+      JigsawState.maxHints = 3;
+      JigsawState.showEdgesOnly = false;
+      JigsawState.showPreview = false;
+      JigsawState.completed = false;
+      JigsawState.elapsedTime = 0;
+      JigsawState.draggingPiece = null;
+
+      document.getElementById('jigsaw-start-view').style.display = 'none';
+      document.getElementById('jigsaw-game-view').style.display = 'flex';
+      document.getElementById('jigsaw-result-view').style.display = 'none';
+      document.getElementById('jigsaw-preview-box').classList.remove('visible');
+
+      const sourceImg = JigsawState.images[JigsawState.imageIndex];
+      JigsawState.sourceCanvas = sourceImg;
+
+      // Determine board size
+      const boardArea = document.querySelector('.jigsaw-board-area');
+      const maxBoardSize = Math.min(boardArea.offsetWidth - 40, 450);
+      const boardSize = Math.max(240, maxBoardSize);
+      JigsawState.pieceSize = Math.floor(boardSize / JigsawState.cols);
+      const actualBoardW = JigsawState.pieceSize * JigsawState.cols;
+      const actualBoardH = JigsawState.pieceSize * JigsawState.rows;
+
+      const canvas = document.getElementById('jigsaw-canvas');
+      canvas.width = actualBoardW;
+      canvas.height = actualBoardH;
+      canvas.style.width = actualBoardW + 'px';
+      canvas.style.height = actualBoardH + 'px';
+      JigsawState.boardCanvas = canvas;
+      JigsawState.boardCtx = canvas.getContext('2d');
+
+      // Preview
+      const previewCanvas = document.getElementById('jigsaw-preview-canvas');
+      previewCanvas.width = 160;
+      previewCanvas.height = 160;
+      previewCanvas.getContext('2d').drawImage(sourceImg, 0, 0, 160, 160);
+
+      // Generate pieces
+      JigsawState.pieces = [];
+      for (let r = 0; r < JigsawState.rows; r++) {
+        for (let c = 0; c < JigsawState.cols; c++) {
+          JigsawState.pieces.push({
+            id: r * JigsawState.cols + c,
+            row: r, col: c,
+            placed: false,
+            isEdge: r === 0 || r === JigsawState.rows - 1 || c === 0 || c === JigsawState.cols - 1
+          });
+        }
+      }
+
+      // Shuffle
+      for (let i = JigsawState.pieces.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [JigsawState.pieces[i], JigsawState.pieces[j]] = [JigsawState.pieces[j], JigsawState.pieces[i]];
+      }
+
+      jigsawRenderTray();
+      jigsawDrawBoard();
+      jigsawUpdateStats();
+
+      // Setup drag on canvas
+      JigsawState.pointerDownHandler = jigsawPointerDown;
+      JigsawState.pointerMoveHandler = jigsawPointerMove;
+      JigsawState.pointerUpHandler = jigsawPointerUp;
+      canvas.addEventListener('pointerdown', JigsawState.pointerDownHandler);
+      canvas.addEventListener('pointermove', JigsawState.pointerMoveHandler);
+      canvas.addEventListener('pointerup', JigsawState.pointerUpHandler);
+      canvas.style.touchAction = 'none';
+
+      // Start timer
+      JigsawState.startTime = Date.now();
+      JigsawState.timerInterval = setInterval(() => {
+        if (!JigsawState.completed) {
+          JigsawState.elapsedTime = (Date.now() - JigsawState.startTime) / 1000;
+          document.getElementById('jigsaw-time').textContent = formatTime(JigsawState.elapsedTime);
+        }
+      }, 500);
+
+      document.getElementById('jigsaw-hints-left').textContent = JigsawState.maxHints;
+      document.getElementById('jigsaw-hints-used').textContent = '0';
+    }
+
+    function jigsawDrawBoard() {
+      const ctx = JigsawState.boardCtx;
+      const ps = JigsawState.pieceSize;
+      const w = JigsawState.boardCanvas.width;
+      const h = JigsawState.boardCanvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      // Draw grid background
+      ctx.fillStyle = '#F1F5F9';
+      ctx.fillRect(0, 0, w, h);
+
+      // Draw target slots
+      for (let r = 0; r < JigsawState.rows; r++) {
+        for (let c = 0; c < JigsawState.cols; c++) {
+          const x = c * ps, y = r * ps;
+          ctx.strokeStyle = '#CBD5E1';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(x, y, ps, ps);
+
+          // Subtle image hint
+          ctx.globalAlpha = 0.08;
+          ctx.drawImage(JigsawState.sourceCanvas, c * (400 / JigsawState.cols), r * (400 / JigsawState.rows),
+            400 / JigsawState.cols, 400 / JigsawState.rows, x, y, ps, ps);
+          ctx.globalAlpha = 1;
+        }
+      }
+
+      // Draw placed pieces
+      JigsawState.pieces.filter(p => p.placed).forEach(p => {
+        const x = p.col * ps, y = p.row * ps;
+        ctx.drawImage(JigsawState.sourceCanvas,
+          p.col * (400 / JigsawState.cols), p.row * (400 / JigsawState.rows),
+          400 / JigsawState.cols, 400 / JigsawState.rows,
+          x, y, ps, ps);
+        ctx.strokeStyle = '#94A3B8';
+        ctx.lineWidth = 0.5;
+        ctx.strokeRect(x, y, ps, ps);
+      });
+
+      // Highlight for dragging piece target
+      if (JigsawState.draggingPiece) {
+        const dp = JigsawState.draggingPiece;
+        const tx = dp.col * ps, ty = dp.row * ps;
+        ctx.strokeStyle = 'rgba(8,102,213,0.5)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([4, 4]);
+        ctx.strokeRect(tx, ty, ps, ps);
+        ctx.setLineDash([]);
+      }
+    }
+
+    function jigsawRenderTray() {
+      const tray = document.getElementById('jigsaw-tray-pieces');
+      tray.innerHTML = '';
+      const ps = JigsawState.pieceSize;
+      const thumbSize = Math.max(36, Math.min(56, ps * 0.7));
+
+      const unplaced = JigsawState.pieces.filter(p => !p.placed);
+      const filtered = JigsawState.showEdgesOnly ? unplaced.filter(p => p.isEdge) : unplaced;
+
+      filtered.forEach(p => {
+        const thumb = document.createElement('canvas');
+        thumb.width = thumbSize;
+        thumb.height = thumbSize;
+        thumb.className = 'jigsaw-piece-thumb' + (p.isEdge && JigsawState.showEdgesOnly ? ' edge-piece' : '');
+        thumb.dataset.pieceId = p.id;
+        thumb.style.width = thumbSize + 'px';
+        thumb.style.height = thumbSize + 'px';
+
+        const tctx = thumb.getContext('2d');
+        tctx.drawImage(JigsawState.sourceCanvas,
+          p.col * (400 / JigsawState.cols), p.row * (400 / JigsawState.rows),
+          400 / JigsawState.cols, 400 / JigsawState.rows,
+          0, 0, thumbSize, thumbSize);
+
+        // Drag from tray
+        thumb.addEventListener('pointerdown', (e) => {
+          e.preventDefault();
+          if (p.placed || JigsawState.completed) return;
+          JigsawState.draggingPiece = p;
+          thumb.classList.add('dragging');
+          thumb.setPointerCapture(e.pointerId);
+
+          // We need to track so the user can drop on canvas
+          const upHandler = (ue) => {
+            thumb.classList.remove('dragging');
+            thumb.releasePointerCapture(ue.pointerId);
+            thumb.removeEventListener('pointerup', upHandler);
+
+            // Check if dropped on canvas area
+            const canvas = JigsawState.boardCanvas;
+            const rect = canvas.getBoundingClientRect();
+            const cx = ue.clientX, cy = ue.clientY;
+
+            if (cx >= rect.left && cx <= rect.right && cy >= rect.top && cy <= rect.bottom) {
+              const scaleX = canvas.width / rect.width;
+              const scaleY = canvas.height / rect.height;
+              const boardX = (cx - rect.left) * scaleX;
+              const boardY = (cy - rect.top) * scaleY;
+              const dropCol = Math.floor(boardX / JigsawState.pieceSize);
+              const dropRow = Math.floor(boardY / JigsawState.pieceSize);
+
+              if (dropRow === p.row && dropCol === p.col) {
+                // Correct placement!
+                p.placed = true;
+                JigsawState.placedCount++;
+                showToast('✅ Correct placement!', 'success');
+                jigsawDrawBoard();
+                jigsawRenderTray();
+                jigsawUpdateStats();
+                jigsawCheckCompletion();
+              } else {
+                showToast('❌ Wrong position, try again.', 'error');
+                jigsawDrawBoard();
+              }
+            }
+            JigsawState.draggingPiece = null;
+            jigsawDrawBoard();
+          };
+          thumb.addEventListener('pointerup', upHandler);
+        });
+
+        tray.appendChild(thumb);
+      });
+
+      document.getElementById('jigsaw-tray-count').textContent = filtered.length;
+    }
+
+    function jigsawPointerDown(e) {
+      if (JigsawState.completed) return;
+      // Check if clicking on a placed piece — do nothing for now
+    }
+
+    function jigsawPointerMove(e) {
+      if (JigsawState.draggingPiece) {
+        jigsawDrawBoard();
+        // Draw ghost piece
+        const canvas = JigsawState.boardCanvas;
+        const rect = canvas.getBoundingClientRect();
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        const mx = (e.clientX - rect.left) * scaleX;
+        const my = (e.clientY - rect.top) * scaleY;
+        const ps = JigsawState.pieceSize;
+        const p = JigsawState.draggingPiece;
+        const ctx = JigsawState.boardCtx;
+
+        ctx.globalAlpha = 0.6;
+        ctx.drawImage(JigsawState.sourceCanvas,
+          p.col * (400 / JigsawState.cols), p.row * (400 / JigsawState.rows),
+          400 / JigsawState.cols, 400 / JigsawState.rows,
+          mx - ps / 2, my - ps / 2, ps, ps);
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function jigsawPointerUp(e) {
+      if (!JigsawState.draggingPiece) return;
+      const canvas = JigsawState.boardCanvas;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      const mx = (e.clientX - rect.left) * scaleX;
+      const my = (e.clientY - rect.top) * scaleY;
+      const ps = JigsawState.pieceSize;
+      const p = JigsawState.draggingPiece;
+
+      const dropCol = Math.floor(mx / ps);
+      const dropRow = Math.floor(my / ps);
+
+      if (dropRow === p.row && dropCol === p.col) {
+        p.placed = true;
+        JigsawState.placedCount++;
+        showToast('✅ Correct placement!', 'success');
+        jigsawUpdateStats();
+        jigsawCheckCompletion();
+      } else {
+        showToast('❌ Wrong position, try again.', 'error');
+      }
+
+      JigsawState.draggingPiece = null;
+      jigsawDrawBoard();
+      jigsawRenderTray();
+    }
+
+    function jigsawUpdateStats() {
+      document.getElementById('jigsaw-placed').textContent = JigsawState.placedCount;
+      document.getElementById('jigsaw-total').textContent = JigsawState.totalPieces;
+      document.getElementById('jigsaw-progress').textContent = Math.round((JigsawState.placedCount / JigsawState.totalPieces) * 100) + '%';
+      document.getElementById('jigsaw-hints-used').textContent = JigsawState.hintsUsed;
+    }
+
+    function jigsawCheckCompletion() {
+      if (JigsawState.placedCount >= JigsawState.totalPieces) {
+        JigsawState.completed = true;
+        if (JigsawState.timerInterval) { clearInterval(JigsawState.timerInterval); JigsawState.timerInterval = null; }
+        JigsawState.elapsedTime = (Date.now() - JigsawState.startTime) / 1000;
+        setTimeout(jigsawShowResults, 1000);
+      }
+    }
+
+    function jigsawArrangePieces() {
+      // Just re-sort unplaced pieces for display — not solving
+      const unplaced = JigsawState.pieces.filter(p => !p.placed);
+      unplaced.sort((a, b) => a.id - b.id);
+      // Re-render tray with sorted pieces
+      jigsawRenderTray();
+      showToast('📐 Pieces arranged neatly.', 'info');
+    }
+
+    function jigsawToggleEdges() {
+      JigsawState.showEdgesOnly = !JigsawState.showEdgesOnly;
+      const btn = document.getElementById('btn-jigsaw-edges');
+      btn.textContent = JigsawState.showEdgesOnly ? '🔲 All Pieces' : '🔲 Edges';
+      jigsawRenderTray();
+    }
+
+    function jigsawTogglePreview() {
+      JigsawState.showPreview = !JigsawState.showPreview;
+      document.getElementById('jigsaw-preview-box').classList.toggle('visible', JigsawState.showPreview);
+    }
+
+    function jigsawUseHint() {
+      if (JigsawState.hintsUsed >= JigsawState.maxHints) {
+        showToast('No hints remaining!', 'error');
+        return;
+      }
+
+      const unplaced = JigsawState.pieces.filter(p => !p.placed);
+      if (unplaced.length === 0) return;
+
+      const hintPiece = unplaced[Math.floor(Math.random() * unplaced.length)];
+      JigsawState.hintsUsed++;
+      document.getElementById('jigsaw-hints-left').textContent = JigsawState.maxHints - JigsawState.hintsUsed;
+      jigsawUpdateStats();
+
+      // Highlight the piece in tray
+      const trayPieces = document.querySelectorAll('.jigsaw-piece-thumb');
+      trayPieces.forEach(tp => {
+        tp.classList.remove('highlighted');
+        if (parseInt(tp.dataset.pieceId) === hintPiece.id) {
+          tp.classList.add('highlighted');
+        }
+      });
+
+      // Highlight target on board
+      const ctx = JigsawState.boardCtx;
+      const ps = JigsawState.pieceSize;
+      jigsawDrawBoard();
+      ctx.strokeStyle = 'rgba(245,158,11,0.8)';
+      ctx.lineWidth = 3;
+      ctx.setLineDash([6, 4]);
+      ctx.strokeRect(hintPiece.col * ps + 2, hintPiece.row * ps + 2, ps - 4, ps - 4);
+      ctx.setLineDash([]);
+
+      showToast(`💡 Hint: Look for the highlighted piece! (${JigsawState.maxHints - JigsawState.hintsUsed} remaining)`, 'info');
+    }
+
+    function jigsawShowResults() {
+      document.getElementById('jigsaw-game-view').style.display = 'none';
+      document.getElementById('jigsaw-result-view').style.display = 'flex';
+
+      const time = JigsawState.elapsedTime;
+      const diff = JigsawState.difficulty;
+      const pieces = JigsawState.totalPieces;
+      const hints = JigsawState.hintsUsed;
+
+      // Score: base on time and difficulty, minus hint penalty
+      const diffMultiplier = { easy: 1, medium: 1.5, hard: 2, expert: 3 }[diff];
+      const timeBonus = Math.max(0, Math.round(1000 - time * 2));
+      const score = Math.round((timeBonus * diffMultiplier) - (hints * 50));
+
+      // Best time
+      const key = diff;
+      if (!App.sessionScores.jigsaw.bestTimes[key] || time < App.sessionScores.jigsaw.bestTimes[key]) {
+        App.sessionScores.jigsaw.bestTimes[key] = Math.round(time);
+        saveSession();
+      }
+      App.sessionScores.jigsaw.games.push({
+        difficulty: diff, pieces, time: Math.round(time), hints, score,
+        timestamp: new Date().toISOString()
+      });
+
+      document.getElementById('jigsaw-result-panel').innerHTML = `
+    <div class="result-icon">🧩</div>
+    <h2>Puzzle Completed!</h2>
+    <div class="result-message">Great job assembling the ${pieces}-piece puzzle!</div>
+    <div class="result-stats">
+      <div class="result-stat"><div class="stat-value">${formatTime(time)}</div><div class="stat-label">Time</div></div>
+      <div class="result-stat"><div class="stat-value">${Math.max(0, score)}</div><div class="stat-label">Score</div></div>
+      <div class="result-stat"><div class="stat-value">${diff}</div><div class="stat-label">Difficulty</div></div>
+      <div class="result-stat"><div class="stat-value">${pieces}</div><div class="stat-label">Pieces</div></div>
+      <div class="result-stat"><div class="stat-value">${hints}</div><div class="stat-label">Hints Used</div></div>
+    </div>
+    <div style="font-size:14px;color:var(--text-secondary);margin-bottom:16px;">Best Time (${diff}): <strong>${formatTime(App.sessionScores.jigsaw.bestTimes[key])}</strong></div>
+    <div class="result-actions">
+      <button class="btn btn-primary btn-game" onclick="jigsawReplay()">Play Again</button>
+      <button class="btn btn-secondary btn-game" onclick="jigsawChangeDifficulty()">Change Difficulty</button>
+      <button class="btn btn-outline btn-game" onclick="openDashboard()">Back to Games</button>
+    </div>
+  `;
+    }
+
+    window.jigsawReplay = function () {
+      jigsawCleanup();
+      App.activeGame = 'jigsaw';
+      jigsawStartGame();
+    };
+
+    window.jigsawChangeDifficulty = function () {
+      jigsawCleanup();
+      App.activeGame = 'jigsaw';
+      jigsawInit();
+    };
+
+    /* =============================================
+       INITIALIZATION
+       ============================================= */
+    (function init() {
+      // Check for existing session
+      if (loadSession() && App.participant) {
+        openDashboard();
+      }
+
+      // Generate puzzle images early
+      generatePuzzleImages();
+    })();
+  </script>
+</body>
+
+</html>
