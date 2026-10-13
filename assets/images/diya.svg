@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- Base Flame Radial Gradient -->
+    <radialGradient id="diyaSvgFlameGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fffbea" />
+      <stop offset="25%" stop-color="#ffdc5e" />
+      <stop offset="65%" stop-color="#fd8a04" />
+      <stop offset="100%" stop-color="#d93800" />
+    </radialGradient>
+
+    <!-- Ambient Bloom Filter -->
+    <filter id="diyaSvgGlow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 3D Metallic Brass & Gold Gradients for Ornate Diya -->
+    <linearGradient id="diyaSvgPedestal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5E3300" />
+      <stop offset="22%" stop-color="#B87B14" />
+      <stop offset="48%" stop-color="#FFE885" />
+      <stop offset="72%" stop-color="#C98616" />
+      <stop offset="90%" stop-color="#804900" />
+      <stop offset="100%" stop-color="#4A2600" />
+    </linearGradient>
+
+    <linearGradient id="diyaSvgBowl3D" x1="12%" y1="0%" x2="88%" y2="100%">
+      <stop offset="0%" stop-color="#9C5B08" />
+      <stop offset="18%" stop-color="#E09A1E" />
+      <stop offset="38%" stop-color="#FFF099" />
+      <stop offset="58%" stop-color="#F5A823" />
+      <stop offset="78%" stop-color="#B86B06" />
+      <stop offset="100%" stop-color="#5E2E00" />
+    </linearGradient>
+
+    <radialGradient id="diyaSvgRim3D" cx="50%" cy="50%" r="50%" fx="35%" fy="30%">
+      <stop offset="0%" stop-color="#FFFBE6" />
+      <stop offset="40%" stop-color="#FFDA66" />
+      <stop offset="75%" stop-color="#E59812" />
+      <stop offset="100%" stop-color="#8A4E00" />
+    </radialGradient>
+
+    <radialGradient id="diyaSvgOilPool" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#FFF3B0" />
+      <stop offset="25%" stop-color="#DE7209" />
+      <stop offset="65%" stop-color="#6E2200" />
+      <stop offset="100%" stop-color="#260B00" />
+    </radialGradient>
+
+    <radialGradient id="diyaSvgFlameOuter" cx="50%" cy="70%" r="65%">
+      <stop offset="0%" stop-color="rgba(255, 235, 59, 0.95)" />
+      <stop offset="35%" stop-color="rgba(255, 112, 67, 0.85)" />
+      <stop offset="70%" stop-color="rgba(216, 27, 96, 0.4)" />
+      <stop offset="100%" stop-color="rgba(255, 61, 0, 0)" />
+    </radialGradient>
+
+    <radialGradient id="diyaSvgFlameInner" cx="50%" cy="65%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="25%" stop-color="#FFF9C4" />
+      <stop offset="60%" stop-color="#FFD54F" />
+      <stop offset="100%" stop-color="#FF6D00" />
+    </radialGradient>
+
+    <radialGradient id="diyaSvgFlameBlue" cx="50%" cy="80%" r="50%">
+      <stop offset="0%" stop-color="rgba(96, 165, 250, 0.95)" />
+      <stop offset="60%" stop-color="rgba(37, 99, 235, 0.55)" />
+      <stop offset="100%" stop-color="rgba(29, 78, 216, 0)" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient Ground Shadow -->
+  <ellipse cx="50" cy="94" rx="26" ry="4" fill="rgba(0,0,0,0.24)" filter="url(#diyaSvgGlow)" />
+
+  <!-- 3D Pedestal Base -->
+  <path d="M 33 85 C 33 83 38 82 50 82 C 62 82 67 83 67 85 L 69 91 C 69 93.5 61 95 50 95 C 39 95 31 93.5 31 91 Z" fill="url(#diyaSvgPedestal)" stroke="#804900" stroke-width="0.8"/>
+  <ellipse cx="50" cy="85.5" rx="16.5" ry="2.2" fill="none" stroke="#FFE992" stroke-width="1.2"/>
+  <ellipse cx="50" cy="91.5" rx="18.5" ry="2.5" fill="none" stroke="#FFD700" stroke-width="0.8"/>
+
+  <!-- 3D Ornate Golden Bowl Body -->
+  <path d="M 12 48 C 12 68 28 84 50 84 C 72 84 88 68 88 48 C 72 58 28 58 12 48 Z" fill="url(#diyaSvgBowl3D)" stroke="#733D00" stroke-width="1"/>
+
+  <!-- Intricate Metallic Engravings & Filigree Patterns -->
+  <g stroke="#FFF0A0" stroke-width="1" fill="none" opacity="0.88">
+    <path d="M 24 55 Q 36 68 50 72 Q 64 68 76 55" stroke-dasharray="2,2"/>
+    <path d="M 28 60 Q 38 72 50 76 Q 62 72 72 60"/>
+    <path d="M 34 66 Q 42 76 50 79 Q 58 76 66 66"/>
+    <path d="M 50 56 L 50 82" stroke-width="1.2" stroke="#FFE484"/>
+    <path d="M 38 54 Q 40 70 42 80"/>
+    <path d="M 62 54 Q 60 70 58 80"/>
+  </g>
+  <g fill="#FFF5B8" opacity="0.95">
+    <circle cx="26" cy="55" r="1.3"/>
+    <circle cx="34" cy="62" r="1.4"/>
+    <circle cx="42" cy="67" r="1.5"/>
+    <circle cx="50" cy="69" r="1.7"/>
+    <circle cx="58" cy="67" r="1.5"/>
+    <circle cx="66" cy="62" r="1.4"/>
+    <circle cx="74" cy="55" r="1.3"/>
+  </g>
+
+  <!-- 3D Scalloped Metallic Rim -->
+  <ellipse cx="50" cy="48" rx="38" ry="11" fill="url(#diyaSvgRim3D)" stroke="#9E5D06" stroke-width="1.2"/>
+  <path d="M 14 47 C 22 55 78 55 86 47" fill="none" stroke="#FFFCE6" stroke-width="1.6" opacity="0.9"/>
+
+  <!-- Deep Inner Oil Pool with Golden Reflection -->
+  <ellipse cx="50" cy="48" rx="29" ry="7.2" fill="url(#diyaSvgOilPool)" stroke="#4A1800" stroke-width="0.8"/>
+  <ellipse cx="50" cy="47.5" rx="18" ry="3.5" fill="none" stroke="#FFBF43" stroke-width="0.8" opacity="0.75"/>
+
+  <!-- Brass Spout Tip & Charred Wick -->
+  <path d="M 47 43 Q 50 40 53 43 Z" fill="#FFE27A"/>
+  <path d="M 48.5 45 Q 50 34 51.5 28" stroke="#2B1405" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="51.5" cy="27" r="1.6" fill="#FF5722"/>
+
+  <!-- Combustion Blue Core at Wick Base -->
+  <ellipse cx="50" cy="42" rx="7" ry="3.5" fill="url(#diyaSvgFlameBlue)"/>
+
+  <!-- Vibrant 3D Glowing Multi-Layered Flame -->
+  <path d="M 50 4 C 68 22 66 38 50 46 C 34 38 32 22 50 4 Z" fill="url(#diyaSvgFlameOuter)" filter="url(#diyaSvgGlow)"/>
+  <path d="M 50 7 C 65 24 62 38 50 44 C 38 38 35 24 50 7 Z" fill="url(#diyaSvgFlameGrad)"/>
+  <path d="M 50 14 C 60 26 58 37 50 42 C 42 37 40 26 50 14 Z" fill="url(#diyaSvgFlameInner)"/>
+  <path d="M 50 21 C 55 28 54 35 50 39 C 46 35 45 28 50 21 Z" fill="#FFFFFF" opacity="0.95"/>
+
+  <!-- Floating Golden Ember Sparks -->
+  <circle cx="44" cy="5" r="1.4" fill="#FFF59D" opacity="0.9" />
+  <circle cx="56" cy="3" r="1.1" fill="#FFCC80" opacity="0.85" />
+  <circle cx="50" cy="-2" r="1.3" fill="#FFE082" opacity="0.8" />
+</svg>

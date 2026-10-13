@@ -1,0 +1,745 @@
+    /* ============================================
+       SCREEN: PRECISION STOP / DIYA MATCH GAME
+       ============================================ */
+    #screen-precision-stop {
+      background: radial-gradient(circle at 50% 30%, #FFFDF7 0%, #FFF8EA 45%, #FEEFC3 100%);
+      min-height: 100vh;
+    }
+
+    .game-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .game-top-bar h2 {
+      font-size: 19px;
+      color: var(--navy);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Start / Attract Screen */
+    .precision-start {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      gap: 20px;
+      max-width: 620px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .precision-start-card {
+      background: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+    }
+
+    .precision-badge-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #B45309;
+      background: #FEF3C7;
+      border: 1px solid #FCD34D;
+      padding: 4px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .precision-start-card h2 {
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: 1px;
+      margin-top: -4px;
+    }
+
+    .precision-start-subtitle {
+      font-size: 15px;
+      font-weight: 600;
+      color: #D97706;
+      margin-top: -10px;
+    }
+
+    /* Animated Demonstration Showcase */
+    .precision-showcase-box {
+      width: 100%;
+      max-width: 480px;
+      height: 124px;
+      background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%);
+      border: 2px dashed #FCD34D;
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
+      margin: 8px 0;
+    }
+
+    .showcase-track-line {
+      position: absolute;
+      width: 86%;
+      height: 8px;
+      background: linear-gradient(90deg, #E2E8F0 0%, #FEF08A 50%, #E2E8F0 100%);
+      border-radius: 4px;
+    }
+
+    .showcase-target-slot {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 62px;
+      height: 62px;
+      border-radius: 12px;
+      background: rgba(255, 152, 0, 0.12);
+      border: 2px dashed #FF9800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: targetPulseGlow 2.5s infinite ease-in-out;
+    }
+
+    .showcase-target-slot .target-diya-svg {
+      width: 54px;
+      height: 54px;
+    }
+
+    @keyframes targetPulseGlow {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(255, 152, 0, 0.4)); transform: translate(-50%, -50%) scale(1); }
+      50% { filter: drop-shadow(0 0 14px rgba(255, 179, 0, 0.95)); transform: translate(-50%, -50%) scale(1.05); }
+    }
+
+    .showcase-moving-diya {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 56px;
+      height: 56px;
+      animation: demoDiyaGliding 4s infinite ease-in-out;
+    }
+
+    @keyframes demoDiyaGliding {
+      0% { left: 10%; }
+      40% { left: calc(50% - 28px); filter: drop-shadow(0 0 16px #FFD700); }
+      60% { left: calc(50% - 28px); filter: drop-shadow(0 0 20px #FF9800); }
+      100% { left: calc(90% - 56px); }
+    }
+
+    .precision-instructions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: left;
+      width: 100%;
+      max-width: 480px;
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .instruction-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .instruction-icon {
+      font-size: 16px;
+      width: 22px;
+      text-align: center;
+    }
+
+    /* Active Game Arena */
+    .precision-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px 20px;
+      gap: 12px;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* HUD Top Bar */
+    .precision-info-bar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .precision-info-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 6px 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      min-width: 120px;
+    }
+
+    .precision-info-item .info-value {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .precision-info-item .info-label {
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    /* 5-Round Progress Indicators */
+    .prec-round-pills {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .round-pill {
+      flex: 1;
+      height: 32px;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .round-pill.active {
+      border-color: #F59E0B;
+      background: #FFFBEB;
+      color: #B45309;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+      transform: scale(1.05);
+    }
+
+    .round-pill.done-perfect {
+      background: #FEF3C7;
+      border-color: #F59E0B;
+      color: #92400E;
+    }
+
+    .round-pill.done-excellent {
+      background: #DCFCE7;
+      border-color: #16A34A;
+      color: #166534;
+    }
+
+    .round-pill.done-good {
+      background: #E0F2FE;
+      border-color: #0284C7;
+      color: #075985;
+    }
+
+    .round-pill.done-near {
+      background: #FEF3C7;
+      border-color: #F59E0B;
+      color: #B45309;
+    }
+
+    .round-pill.done-miss {
+      background: #FEE2E2;
+      border-color: #DC2626;
+      color: #991B1B;
+    }
+
+    /* Countdown Overlay */
+    .diya-countdown-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 253, 247, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 40;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-xl);
+    }
+
+    .diya-countdown-text {
+      font-size: 72px;
+      font-weight: 900;
+      color: #D97706;
+      text-shadow: 0 4px 16px rgba(217, 119, 6, 0.5);
+      animation: countdownZoom 0.85s infinite ease-out;
+    }
+
+    .diya-countdown-tip {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.5px;
+      margin-top: 10px;
+    }
+
+    @keyframes countdownZoom {
+      0% { transform: scale(0.6); opacity: 0; }
+      50% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Spacious Square Arcade Arena */
+    .precision-track-container {
+      width: 100%;
+      max-width: min(100%, 420px);
+      aspect-ratio: 1 / 1;
+      height: 420px;
+      max-height: 80vw;
+      background: radial-gradient(circle at 50% 50%, #FFFDF7 0%, #FFF8E6 45%, #FEF0CE 100%);
+      border: 3px solid #E6CD8B;
+      border-radius: 24px;
+      padding: 16px 18px 14px;
+      position: relative;
+      box-shadow: 0 14px 38px rgba(180, 83, 9, 0.16), 0 2px 8px rgba(0,0,0,0.04), inset 0 0 50px rgba(245, 158, 11, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    @supports (aspect-ratio: 1 / 1) {
+      .precision-track-container {
+        height: auto;
+      }
+    }
+
+    /* Ambient Festive Watermark in Square Arena */
+    .arena-mandala-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 88%;
+      height: 88%;
+      pointer-events: none;
+      opacity: 0.16;
+      z-index: 1;
+    }
+
+    .arena-top-banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .track-top-indicator {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      color: #92400E;
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border: 1.5px solid #F59E0B;
+      padding: 4px 14px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+    }
+
+    .arena-subtitle {
+      font-size: 12px;
+      font-weight: 700;
+      color: #B45309;
+      letter-spacing: 0.5px;
+      opacity: 0.9;
+    }
+
+    /* Track Stage in Center of Square Arena */
+    .precision-track-stage {
+      width: 100%;
+      position: relative;
+      margin: auto 0;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Vertical Center Axis Guide Line */
+    .track-center-axis {
+      position: absolute;
+      left: 50%;
+      top: -36px;
+      bottom: -32px;
+      width: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0) 0%, rgba(245, 158, 11, 0.55) 25%, rgba(245, 158, 11, 0.85) 50%, rgba(245, 158, 11, 0.55) 75%, rgba(245, 158, 11, 0) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .precision-track {
+      width: 100%;
+      height: 22px;
+      background: linear-gradient(90deg, #E2E8F0 0%, #FEF08A 25%, #FDE047 50%, #FEF08A 75%, #E2E8F0 100%);
+      border: 2px solid #CBD5E1;
+      border-radius: 11px;
+      position: relative;
+      box-shadow: inset 0 3px 6px rgba(0,0,0,0.2), 0 3px 8px rgba(245, 158, 11, 0.25);
+    }
+
+    /* Scaled-Up Fixed Target Silhouette Slot (Center) */
+    .precision-target-slot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 96px;
+      height: 96px;
+      border-radius: 18px;
+      background: rgba(255, 193, 7, 0.12);
+      border: 2.5px dashed rgba(245, 158, 11, 0.85);
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.4), inset 0 0 16px rgba(255, 215, 0, 0.22);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    /* Target Reticle Corner Brackets */
+    .target-corner {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-color: #D97706;
+      pointer-events: none;
+    }
+    .corner-tl { top: 4px; left: 4px; border-top: 2px solid; border-left: 2px solid; }
+    .corner-tr { top: 4px; right: 4px; border-top: 2px solid; border-right: 2px solid; }
+    .corner-bl { bottom: 4px; left: 4px; border-bottom: 2px solid; border-left: 2px solid; }
+    .corner-br { bottom: 4px; right: 4px; border-bottom: 2px solid; border-right: 2px solid; }
+
+    /* Target Silhouette SVG */
+    .target-diya-svg {
+      width: 88px;
+      height: 88px;
+      filter: drop-shadow(0 0 10px rgba(255, 152, 0, 0.8));
+      animation: targetSilhouettePulse 2.8s infinite ease-in-out;
+    }
+
+    @keyframes targetSilhouettePulse {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 152, 0, 0.65)); opacity: 0.9; }
+      50% { filter: drop-shadow(0 0 18px rgba(255, 215, 0, 1)); opacity: 1; }
+    }
+
+    /* Scaled-Up Moving Diya Element */
+    .precision-moving-diya {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 88px;
+      height: 88px;
+      z-index: 5;
+      cursor: default;
+      will-change: left;
+    }
+
+    .moving-diya-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3)) drop-shadow(0 0 18px rgba(245, 196, 81, 0.7));
+      transition: filter 0.25s ease, transform 0.25s ease;
+    }
+
+    /* Ember Sparks Floating Animations */
+    @keyframes emberFloat {
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      50% { transform: translateY(-4px) translateX(1px) scale(1.2); opacity: 1; }
+      100% { transform: translateY(-9px) translateX(-1px) scale(0.6); opacity: 0.15; }
+    }
+
+    .sparkle-ember-1 { animation: emberFloat 1.4s infinite ease-out; }
+    .sparkle-ember-2 { animation: emberFloat 1.9s infinite ease-out 0.4s; }
+    .sparkle-ember-3 { animation: emberFloat 1.6s infinite ease-out 0.8s; }
+
+    /* Graduation Ticks */
+    .track-ticks {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 4px 0;
+      font-size: 11px;
+      font-weight: 800;
+      color: #92400E;
+      pointer-events: none;
+    }
+
+    .arena-bottom-accent {
+      z-index: 5;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #92400E;
+      text-transform: uppercase;
+      background: rgba(254, 243, 199, 0.8);
+      padding: 4px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    /* Stop Overlap Outcome Styles */
+    .precision-moving-diya.matched-perfect .moving-diya-svg {
+      filter: drop-shadow(0 0 20px #FFD700) drop-shadow(0 0 35px #FF9800);
+      transform: scale(1.12);
+      animation: perfectPulse 0.6s ease;
+    }
+
+    @keyframes perfectPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.22); }
+      100% { transform: scale(1.12); }
+    }
+
+    .precision-moving-diya.matched-excellent .moving-diya-svg {
+      filter: drop-shadow(0 0 16px #10B981) drop-shadow(0 0 25px #34D399);
+      transform: scale(1.06);
+    }
+
+    .precision-moving-diya.matched-good .moving-diya-svg {
+      filter: drop-shadow(0 0 14px #0284C7) drop-shadow(0 0 20px #38BDF8);
+    }
+
+    .precision-moving-diya.matched-near .moving-diya-svg {
+      filter: drop-shadow(0 0 12px #F59E0B);
+    }
+
+    .precision-moving-diya.matched-miss {
+      animation: shakeMiss 0.4s ease;
+    }
+
+    @keyframes shakeMiss {
+      0%, 100% { transform: translateY(-50%) translateX(0); }
+      25% { transform: translateY(-50%) translateX(-6px); }
+      75% { transform: translateY(-50%) translateX(6px); }
+    }
+
+    /* Live Alignment Feedback Bar */
+    .precision-feedback-panel {
+      min-height: 58px;
+      width: 100%;
+      max-width: 660px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .feedback-badge {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .feedback-details {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Celebratory Sparkle Burst */
+    .celebrate-sparkle-box {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      font-size: 20px;
+      animation: sparkleBurst 0.9s forwards ease-out;
+      opacity: 0;
+    }
+
+    @keyframes sparkleBurst {
+      0% { transform: translateX(-50%) translateY(0) scale(0.5); opacity: 1; }
+      100% { transform: translateX(-50%) translateY(-25px) scale(1.3); opacity: 0; }
+    }
+
+    /* Large Arcade STOP Button */
+    .precision-controls-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .precision-stop-btn {
+      width: 124px;
+      height: 124px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #EF4444 0%, #DC2626 50%, #B91C1C 100%);
+      border: 5px solid #FFFFFF;
+      color: #FFFFFF;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 8px 28px rgba(220, 38, 38, 0.45), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+      transition: all 0.15s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      user-select: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .precision-stop-btn:hover:not(:disabled) {
+      transform: scale(1.06);
+      box-shadow: 0 10px 36px rgba(220, 38, 38, 0.55), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    }
+
+    .precision-stop-btn:active:not(:disabled) {
+      transform: scale(0.94);
+      box-shadow: 0 4px 16px rgba(220, 38, 38, 0.4);
+    }
+
+    .precision-stop-btn:disabled {
+      background: #94A3B8;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+      border-color: #CBD5E1;
+      opacity: 0.85;
+    }
+
+    /* Button State: Continue to Next Round */
+    .precision-stop-btn.btn-continue {
+      width: auto;
+      height: auto;
+      min-width: 260px;
+      border-radius: 30px;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      font-size: 16px;
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.45);
+      animation: pulseContinue 1.8s infinite ease-in-out;
+    }
+
+    @keyframes pulseContinue {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); box-shadow: 0 10px 32px rgba(217, 119, 6, 0.6); }
+    }
+
+    .stop-keyboard-hint {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Dashboard Card Preview Specifics */
+    .game1-illust .diya-target-preview {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: rgba(255, 152, 0, 0.12);
+      border: 2px dashed #FF9800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: targetPulseGlow 2.5s infinite ease-in-out;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
+      z-index: 1;
+    }
+
+    .game1-illust .target-preview-svg {
+      width: 52px;
+      height: 52px;
+      filter: drop-shadow(0 0 6px rgba(255, 152, 0, 0.7));
+    }
+
+    .difficulty-selector {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .difficulty-btn {
+      padding: 10px 24px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      color: var(--text);
+    }
+
+    .difficulty-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .difficulty-btn:hover {
+      border-color: var(--primary);
+    }
+

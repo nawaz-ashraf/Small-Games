@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <defs>
+    <linearGradient id="puzBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="120" rx="10" fill="url(#puzBg)"/>
+  <!-- Jigsaw Grid Cells with Interlocking Tabs -->
+  <g fill="none" stroke="#FFFFFF" stroke-width="1.8" opacity="0.85">
+    <!-- Outer Board border -->
+    <rect x="25" y="15" width="150" height="90" rx="4"/>
+    <!-- Vertical Division with Interlocking Tab -->
+    <path d="M 100 15 L 100 48 C 108 48 112 55 112 60 C 112 65 108 72 100 72 L 100 105" />
+    <!-- Horizontal Division with Interlocking Tab -->
+    <path d="M 25 60 L 52 60 C 52 52 59 48 64 48 C 69 48 76 52 76 60 L 100 60 C 100 52 107 48 112 48 C 117 48 124 52 124 60 L 175 60" />
+  </g>
+  <!-- Center Star Sparkle -->
+  <circle cx="100" cy="60" r="3" fill="#FDE047"/>
+</svg>

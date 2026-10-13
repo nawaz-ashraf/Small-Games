@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200" height="120">
+  <defs>
+    <radialGradient id="pongBgGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </radialGradient>
+    <filter id="pongNeonGlow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="120" rx="10" fill="url(#pongBgGrad)"/>
+  <!-- Court Center Net -->
+  <line x1="100" y1="10" x2="100" y2="110" stroke="#334155" stroke-width="2" stroke-dasharray="4,4"/>
+  <!-- Player Paddle (Cyan) -->
+  <rect x="18" y="35" width="8" height="50" rx="4" fill="#38BDF8" filter="url(#pongNeonGlow)"/>
+  <!-- CPU Paddle (Magenta) -->
+  <rect x="174" y="45" width="8" height="50" rx="4" fill="#F43F5E" filter="url(#pongNeonGlow)"/>
+  <!-- Ball (Gold Glow) -->
+  <circle cx="110" cy="55" r="7" fill="#FDE047" filter="url(#pongNeonGlow)"/>
+  <!-- Ball Trail -->
+  <circle cx="85" cy="50" r="4" fill="#FDE047" opacity="0.4"/>
+  <circle cx="65" cy="46" r="2.5" fill="#FDE047" opacity="0.2"/>
+</svg>

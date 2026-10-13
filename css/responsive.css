@@ -1,0 +1,106 @@
+    @media (max-width: 768px) {
+      .festive-header-banner {
+        padding: 8px 12px 16px;
+      }
+
+      .festive-ribbon-wing {
+        max-width: 170px;
+        height: 32px;
+      }
+
+      .ribbon-strip {
+        font-size: 11px;
+        padding: 0 10px;
+        letter-spacing: 1px;
+      }
+
+      .ribbon-swallowtail {
+        width: 14px;
+        height: 32px;
+      }
+
+      .festive-ornamental-badge {
+        width: 98px;
+        height: 98px;
+      }
+
+      .badge-diya-symbol {
+        width: 28px;
+        height: 28px;
+      }
+
+      .badge-heading {
+        font-size: 10px;
+      }
+
+      .festive-ambient-corner {
+        width: 160px;
+        height: 150px;
+      }
+
+      .corner-diya-svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .festive-center-banner {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .festive-ribbon-wing {
+        display: none;
+      }
+
+      .festive-ornamental-badge {
+        width: 86px;
+        height: 86px;
+      }
+
+      .badge-diya-symbol {
+        width: 24px;
+        height: 24px;
+      }
+
+      .festive-ambient-corner {
+        width: 120px;
+        height: 120px;
+      }
+
+      .corner-diya-svg {
+        width: 42px;
+        height: 42px;
+      }
+
+      .corner-left .corner-diya-unit { left: 8px; bottom: 8px; }
+      .corner-right .corner-diya-unit { right: 8px; bottom: 8px; }
+    }
+
+    @media (max-width: 540px) {
+      .precision-track-container {
+        max-width: min(92vw, 420px);
+        border-radius: 20px;
+        padding: 16px 14px 14px;
+      }
+
+      .precision-moving-diya {
+        width: clamp(74px, 19vw, 92px);
+        height: clamp(74px, 19vw, 92px);
+      }
+
+      .precision-target-slot {
+        width: clamp(80px, 21vw, 100px);
+        height: clamp(80px, 21vw, 100px);
+      }
+
+      .target-diya-svg {
+        width: clamp(74px, 19vw, 92px);
+        height: clamp(74px, 19vw, 92px);
+      }
+
+      .arena-subtitle {
+        display: none;
+      }
+    }
